@@ -1,0 +1,18 @@
+[project]
+name = "organigramas"
+version = "0.1.0"
+description = "Generador de organigramas en PDF a partir de datos en Excel. Selecciona cabezas y genera árboles jerárquicos verticales."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.0.0",
+    "openpyxl>=3.0.0",
+    "reportlab>=4.0.0",
+]
+
+[project.scripts]
+organigramas = "organigramas.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.12.3,<0.13.0"]
+build-backend = "uv_build"

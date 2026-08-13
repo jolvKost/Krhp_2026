@@ -68,6 +68,12 @@ def main():
             print(f"❌ Error: {e}")
             return 1
         
+        metadata_actual = heads_manager.obtener_metadata(cabeza_seleccionada) if heads_manager.existe_cabeza(cabeza_seleccionada) else {}
+        metadata = _solicitar_metadata_organigrama(cabeza_seleccionada, metadata_actual)
+        if metadata is None:
+            print("❌ Operación cancelada.")
+            return 1
+
         # 6. Generar PDF
         print("\n📄 Generando PDF...")
         ruta_pdf = _solicitar_ubicacion_pdf(cabeza_seleccionada)
@@ -75,10 +81,17 @@ def main():
             print("❌ Operación cancelada.")
             return 1
         
+        ruta_base = Path(ruta_pdf)
+        nombre_base = ruta_base.stem
+        ruta_es = ruta_base.with_name(f"{nombre_base}_es.pdf")
+        ruta_en = ruta_base.with_name(f"{nombre_base}_en.pdf")
+
         renderer = PDFRenderer()
-        renderer.generar_pdf(nodo_raiz, ruta_pdf)
+        renderer.generar_pdf(nodo_raiz, str(ruta_es), idioma="es", metadata=metadata)
+        renderer.generar_pdf(nodo_raiz, str(ruta_en), idioma="en", metadata=metadata)
+        heads_manager.guardar_metadata(cabeza_seleccionada, metadata)
         
-        print(f"\n✅ ¡Éxito! Organigrama generado en: {ruta_pdf}")
+        print(f"\n✅ ¡Éxito! Organigramas generados en: {ruta_es} y {ruta_en}")
         
         # 7. Ofrecer generar otro
         print("\n" + "="*60)
@@ -96,6 +109,33 @@ def main():
         logger.error(f"Error inesperado: {e}", exc_info=True)
         print(f"\n❌ Error inesperado: {e}")
         return 1
+
+
+def _solicitar_metadata_organigrama(cabeza: str, metadata_actual: dict | None) -> dict | None:
+    """Solicita los datos del organigrama, reutilizando valores previos si existen."""
+    metadata = metadata_actual or {}
+    es_nuevo = not metadata or not any(metadata.get(k) for k in ("departamento", "centro_costos", "responsable"))
+
+    if es_nuevo:
+        print(f"\n📝 Datos del organigrama para '{cabeza}'")
+        metadata["departamento"] = input("Departamento: ").strip() or "N/A"
+        metadata["centro_costos"] = input("Centro de costos: ").strip() or "N/A"
+        metadata["responsable"] = input("Responsable: ").strip() or "N/A"
+        return metadata
+
+    print(f"\n📝 Datos actuales para '{cabeza}'")
+    for clave, valor in metadata.items():
+        if valor:
+            print(f"  - {clave}: {valor}")
+
+    respuesta = input("¿Desea modificar alguno de estos campos? (s/n): ").strip().lower()
+    if respuesta != "s":
+        return metadata
+
+    metadata["departamento"] = input(f"Departamento [{metadata.get('departamento') or 'N/A'}]: ").strip() or metadata.get("departamento") or "N/A"
+    metadata["centro_costos"] = input(f"Centro de costos [{metadata.get('centro_costos') or 'N/A'}]: ").strip() or metadata.get("centro_costos") or "N/A"
+    metadata["responsable"] = input(f"Responsable [{metadata.get('responsable') or 'N/A'}]: ").strip() or metadata.get("responsable") or "N/A"
+    return metadata
 
 
 def _solicitar_archivo_excel() -> str | None:

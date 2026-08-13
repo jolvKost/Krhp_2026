@@ -19,6 +19,14 @@ class Persona:
     curp: Optional[str] = None
     cal_migratoria: Optional[str] = None
     planta: Optional[str] = None
+
+
+@dataclass
+class OrganigramaMetadata:
+    """Metadatos asociados a una cabeza del organigrama."""
+    departamento: Optional[str] = None
+    centro_costos: Optional[str] = None
+    responsable: Optional[str] = None
     
     def __post_init__(self):
         """Validaciones post-inicialización."""

@@ -117,19 +117,43 @@ class PDFRenderer:
     def __init__(self):
         self.fuente_nombre = "Helvetica"
         self.fuente_titulo = "Helvetica-Bold"
+
+    def _textos_por_idioma(self, idioma: str = "es") -> dict:
+        """Devuelve los textos del PDF según idioma."""
+        if idioma.lower() == "en":
+            return {
+                "titulo": "Organization Chart",
+                "posicion": "Position",
+                "ceco": "Cost Center",
+                "departamento": "Department",
+                "responsable": "Responsible",
+                "generado": "Generated automatically",
+                "personas": "people",
+            }
+        return {
+            "titulo": "Organigrama",
+            "posicion": "Posición",
+            "ceco": "CeCo",
+            "departamento": "Departamento",
+            "responsable": "Responsable",
+            "generado": "Generado automáticamente",
+            "personas": "personas",
+        }
     
-    def generar_pdf(self, nodo_raiz: Nodo, ruta_salida: str) -> None:
+    def generar_pdf(self, nodo_raiz: Nodo, ruta_salida: str, idioma: str = "es", metadata: dict | None = None) -> None:
         """
         Genera un PDF con el organigrama.
         
         Args:
             nodo_raiz: Nodo raíz del árbol
             ruta_salida: Ruta donde guardar el PDF
+            idioma: Idioma del documento ('es' o 'en')
+            metadata: Metadatos a mostrar en el documento
         """
         ruta = Path(ruta_salida)
         ruta.parent.mkdir(parents=True, exist_ok=True)
         
-        logger.info(f"Generando PDF: {ruta}")
+        logger.info(f"Generando PDF: {ruta} ({idioma})")
         
         # Crear organigrama con posiciones calculadas
         org = Organigrama(nodo_raiz)
@@ -140,22 +164,28 @@ class PDFRenderer:
         
         # Crear canvas
         c = canvas.Canvas(str(ruta), pagesize=(page_width, page_height))
+        textos = self._textos_por_idioma(idioma)
         
         # Agregar título
         cabeza = nodo_raiz.persona
-        titulo = f"Organigrama: {cabeza.nombre_abreviado}"
+        titulo = f"{textos['titulo']}: {cabeza.nombre_abreviado}"
         c.setFont(self.fuente_titulo, 16)
         c.drawString(0.5 * inch, page_height - 0.5 * inch, titulo)
         
         # Información adicional
         info_y = page_height - 0.8 * inch
         c.setFont(self.fuente_nombre, 9)
-        c.drawString(0.5 * inch, info_y, f"Posición: {cabeza.posicion or 'N/A'}")
-        c.drawString(0.5 * inch, info_y - 0.2 * inch, f"CeCo: {cabeza.ceco or 'N/A'}")
+        c.drawString(0.5 * inch, info_y, f"{textos['posicion']}: {cabeza.posicion or 'N/A'}")
+        c.drawString(0.5 * inch, info_y - 0.2 * inch, f"{textos['ceco']}: {cabeza.ceco or 'N/A'}")
+        if metadata:
+            departamento = metadata.get('departamento') or 'N/A'
+            responsable = metadata.get('responsable') or 'N/A'
+            c.drawString(0.5 * inch, info_y - 0.4 * inch, f"{textos['departamento']}: {departamento}")
+            c.drawString(0.5 * inch, info_y - 0.6 * inch, f"{textos['responsable']}: {responsable}")
         
         # Área de dibujo
         margin_left = 0.5 * inch
-        margin_top = 1.2 * inch
+        margin_top = 1.6 * inch
         drawing_width = page_width - 2 * margin_left
         drawing_height = page_height - margin_top - 0.5 * inch
         
@@ -171,7 +201,7 @@ class PDFRenderer:
         c.drawString(
             0.5 * inch,
             0.3 * inch,
-            f"Generado automáticamente - {len(nodo_raiz.obtener_todos_descendientes())} personas"
+            f"{textos['generado']} - {len(nodo_raiz.obtener_todos_descendientes())} {textos['personas']}"
         )
         
         c.save()

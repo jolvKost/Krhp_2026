@@ -3,7 +3,7 @@
 import json
 import logging
 from pathlib import Path
-from typing import List
+from typing import List, Dict, Any
 
 logger = logging.getLogger(__name__)
 
@@ -50,7 +50,7 @@ class HeadsManager:
         Args:
             cabezas: Lista de nombres de cabezas
         """
-        data = {"cabezas": list(set(cabezas))}  # Eliminar duplicados
+        data = {"cabezas": list(dict.fromkeys(cabezas))}
         
         try:
             with open(self.archivo_heads, 'w', encoding='utf-8') as f:
@@ -60,6 +60,52 @@ class HeadsManager:
         except Exception as e:
             logger.error(f"Error al guardar heads.json: {e}")
             raise
+
+    def _leer_json(self) -> Dict[str, Any]:
+        """Lee el contenido del archivo JSON o devuelve un diccionario vacío."""
+        if not self.archivo_heads.exists():
+            return {}
+        try:
+            with open(self.archivo_heads, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+            return data if isinstance(data, dict) else {}
+        except Exception as e:
+            logger.error(f"Error al leer heads.json: {e}")
+            return {}
+
+    def _guardar_json(self, data: Dict[str, Any]) -> None:
+        """Persiste el contenido JSON del gestor."""
+        with open(self.archivo_heads, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=2, ensure_ascii=False)
+
+    def existe_cabeza(self, nombre: str) -> bool:
+        """Indica si una cabeza ya existe en el registro."""
+        return nombre in self.cabezas
+
+    def guardar_metadata(self, nombre: str, metadata: Dict[str, Any]) -> None:
+        """Guarda los datos asociados a una cabeza para uso posterior."""
+        data = self._leer_json()
+        data.setdefault("cabezas", [])
+        if nombre not in data["cabezas"]:
+            data["cabezas"].append(nombre)
+        data.setdefault("metadata", {})
+        data["metadata"][nombre] = {
+            "departamento": metadata.get("departamento"),
+            "centro_costos": metadata.get("centro_costos"),
+            "responsable": metadata.get("responsable"),
+        }
+        self._guardar_json(data)
+        self.cabezas = list(dict.fromkeys(data["cabezas"]))
+
+    def obtener_metadata(self, nombre: str) -> Dict[str, Any]:
+        """Devuelve la metadata guardada para una cabeza o valores vacíos."""
+        data = self._leer_json()
+        metadata = data.get("metadata", {}).get(nombre, {})
+        return {
+            "departamento": metadata.get("departamento") or "",
+            "centro_costos": metadata.get("centro_costos") or "",
+            "responsable": metadata.get("responsable") or "",
+        }
     
     def agregar_cabeza(self, nombre: str) -> bool:
         """

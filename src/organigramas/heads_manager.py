@@ -45,18 +45,17 @@ class HeadsManager:
     
     def guardar_cabezas(self, cabezas: List[str]) -> None:
         """
-        Guarda la lista de cabezas en el archivo JSON.
-        
+        Guarda la lista de cabezas en el archivo JSON, preservando la metadata existente.
+
         Args:
             cabezas: Lista de nombres de cabezas
         """
-        data = {"cabezas": list(dict.fromkeys(cabezas))}
-        
         try:
-            with open(self.archivo_heads, 'w', encoding='utf-8') as f:
-                json.dump(data, f, indent=2, ensure_ascii=False)
-                self.cabezas = data["cabezas"]
-                logger.info(f"Guardadas {len(self.cabezas)} cabezas en {self.archivo_heads}")
+            data = self._leer_json()
+            data["cabezas"] = list(dict.fromkeys(cabezas))
+            self._guardar_json(data)
+            self.cabezas = data["cabezas"]
+            logger.info(f"Guardadas {len(self.cabezas)} cabezas en {self.archivo_heads}")
         except Exception as e:
             logger.error(f"Error al guardar heads.json: {e}")
             raise

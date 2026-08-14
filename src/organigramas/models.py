@@ -22,21 +22,6 @@ class Persona:
 
 
 @dataclass
-class OrganigramaMetadata:
-    """Metadatos asociados a una cabeza del organigrama."""
-    departamento: Optional[str] = None
-    centro_costos: Optional[str] = None
-    responsable: Optional[str] = None
-    
-    def __post_init__(self):
-        """Validaciones post-inicialización."""
-        if not self.numero_personal:
-            raise ValueError("numero_personal es obligatorio")
-        if not self.nombre_abreviado:
-            raise ValueError("nombre_abreviado es obligatorio")
-
-
-@dataclass
 class Nodo:
     """Nodo en el árbol jerárquico de un organigrama."""
     

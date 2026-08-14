@@ -5,6 +5,7 @@ import logging
 from pathlib import Path
 
 from .excel_parser import ExcelParser
+from .excel_integrator import interfaz_integracion_interactiva
 from .hierarchy import HierarchyManager
 from .heads_manager import HeadsManager
 from .pdf_renderer import PDFRenderer
@@ -22,15 +23,16 @@ def main():
     try:
         logger.info("Iniciando Generador de Organigramas")
         while True:
-            resultado = _generar_organigrama()
-            if resultado != 0:
-                return resultado
-
-            print("\n" + "="*60)
-            generar_otro = input("¿Generar otro organigrama? (s/n): ").strip().lower()
-            if generar_otro != 's':
+            opcion = _solicitar_accion_principal()
+            if opcion == "0":
                 print("Gracias por usar el Generador de Organigramas.")
                 return 0
+            if opcion == "1":
+                resultado = _generar_organigrama()
+                if resultado != 0:
+                    return resultado
+            elif opcion == "2":
+                interfaz_integracion_interactiva()
     except KeyboardInterrupt:
         print("\n❌ Operación cancelada por el usuario.")
         return 1
@@ -38,6 +40,22 @@ def main():
         logger.error(f"Error inesperado: {e}", exc_info=True)
         print(f"\n❌ Error inesperado: {e}")
         return 1
+
+
+def _solicitar_accion_principal() -> str:
+    """Muestra el menú principal y devuelve la opción elegida ('0', '1' o '2')."""
+    print("\n" + "=" * 60)
+    print("GENERADOR DE ORGANIGRAMAS")
+    print("=" * 60)
+    print("  1. Generar organigrama")
+    print("  2. Integrar Excels")
+    print("  0. Salir")
+
+    while True:
+        opcion = input("\n¿Qué deseas hacer? (0-2): ").strip()
+        if opcion in ("0", "1", "2"):
+            return opcion
+        print("❌ Opción inválida.")
 
 
 def _generar_organigrama() -> int:

@@ -35,7 +35,11 @@ def test_imports():
         print("  6. Importando cli...", end=" ")
         from organigramas.cli import main
         print("✓")
-        
+
+        print("  7. Importando gui...", end=" ")
+        from organigramas.gui import main as gui_main
+        print("✓")
+
         print("\n✅ Todas las importaciones exitosas!")
         return True
     

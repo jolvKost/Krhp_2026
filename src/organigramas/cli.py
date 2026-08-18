@@ -21,87 +21,17 @@ def main():
     """Función principal de la CLI."""
     try:
         logger.info("Iniciando Generador de Organigramas")
-        
-        # 1. Solicitar ruta del archivo Excel
-        ruta_excel = _solicitar_archivo_excel()
-        if not ruta_excel:
-            print("❌ Operación cancelada.")
-            return 1
-        
-        # 2. Cargar datos del Excel
-        print("\n📂 Cargando datos del Excel...")
-        parser = ExcelParser()
-        personas = parser.leer_excel(ruta_excel)
-        
-        if not personas:
-            print("❌ No se encontraron datos en el Excel.")
-            return 1
-        
-        print(f"✓ Cargadas {len(personas)} personas")
-        
-        # 3. Validar estructura jerárquica
-        print("\n🔍 Analizando estructura jerárquica...")
-        hierarchy = HierarchyManager(personas)
-        reporte = hierarchy.validar_estructura()
-        
-        print(f"✓ Encontradas {len(reporte['cabezas_posibles'])} cabezas posibles")
-        if reporte['advertencias']:
-            for adv in reporte['advertencias']:
-                print(f"⚠️  {adv}")
-        
-        # 4. Seleccionar cabeza usando HeadsManager
-        print("\n👥 Seleccionando cabeza del organigrama...")
-        heads_manager = HeadsManager()
-        cabeza_seleccionada = heads_manager.interfaz_seleccion_interactiva(
-            reporte['cabezas_posibles']
-        )
-        
-        if not cabeza_seleccionada:
-            print("❌ Operación cancelada.")
-            return 1
-        
-        # 5. Construir árbol jerárquico
-        print(f"\n🌳 Construyendo árbol para: {cabeza_seleccionada}")
-        try:
-            nodo_raiz = hierarchy.construir_arbol(cabeza_seleccionada)
-        except ValueError as e:
-            print(f"❌ Error: {e}")
-            return 1
-        
-        metadata_actual = heads_manager.obtener_metadata(cabeza_seleccionada) if heads_manager.existe_cabeza(cabeza_seleccionada) else {}
-        metadata = _solicitar_metadata_organigrama(cabeza_seleccionada, metadata_actual)
-        if metadata is None:
-            print("❌ Operación cancelada.")
-            return 1
 
-        # 6. Generar PDF
-        print("\n📄 Generando PDF...")
-        ruta_pdf = _solicitar_ubicacion_pdf(cabeza_seleccionada)
-        if not ruta_pdf:
-            print("❌ Operación cancelada.")
-            return 1
-        
-        ruta_base = Path(ruta_pdf)
-        nombre_base = ruta_base.stem
-        ruta_es = ruta_base.with_name(f"{nombre_base}_es.pdf")
-        ruta_en = ruta_base.with_name(f"{nombre_base}_en.pdf")
+        while True:
+            codigo = _generar_un_organigrama()
+            if codigo != 0:
+                return codigo
 
-        renderer = PDFRenderer()
-        renderer.generar_pdf(nodo_raiz, str(ruta_es), idioma="es", metadata=metadata)
-        renderer.generar_pdf(nodo_raiz, str(ruta_en), idioma="en", metadata=metadata)
-        heads_manager.guardar_metadata(cabeza_seleccionada, metadata)
-        
-        print(f"\n✅ ¡Éxito! Organigramas generados en: {ruta_es} y {ruta_en}")
-        
-        # 7. Ofrecer generar otro
-        print("\n" + "="*60)
-        generar_otro = input("¿Generar otro organigrama? (s/n): ").strip().lower()
-        if generar_otro == 's':
-            return main()  # Recursivamente llamar main
-        
-        print("Gracias por usar el Generador de Organigramas.")
-        return 0
-    
+            print("\n" + "=" * 60)
+            if input("¿Generar otro organigrama? (s/n): ").strip().lower() != 's':
+                print("Gracias por usar el Generador de Organigramas.")
+                return 0
+
     except KeyboardInterrupt:
         print("\n❌ Operación cancelada por el usuario.")
         return 1
@@ -109,6 +39,89 @@ def main():
         logger.error(f"Error inesperado: {e}", exc_info=True)
         print(f"\n❌ Error inesperado: {e}")
         return 1
+
+
+def _generar_un_organigrama() -> int:
+    """Corre el pipeline completo una vez. Devuelve 0 si generó los PDFs."""
+    # 1. Solicitar ruta del archivo Excel
+    ruta_excel = _solicitar_archivo_excel()
+    if not ruta_excel:
+        print("❌ Operación cancelada.")
+        return 1
+
+    # 2. Cargar datos del Excel
+    print("\n📂 Cargando datos del Excel...")
+    parser = ExcelParser()
+    personas = parser.leer_excel(ruta_excel)
+
+    if not personas:
+        print("❌ No se encontraron datos en el Excel.")
+        return 1
+
+    print(f"✓ Cargadas {len(personas)} personas")
+
+    # 3. Validar estructura jerárquica
+    print("\n🔍 Analizando estructura jerárquica...")
+    hierarchy = HierarchyManager(personas)
+    reporte = hierarchy.validar_estructura()
+
+    print(f"✓ Encontradas {len(reporte['cabezas_posibles'])} cabezas posibles")
+    for adv in reporte['advertencias']:
+        print(f"⚠️  {adv}")
+
+    # 4. Seleccionar cabeza usando HeadsManager. Lo que viaja es el Nº pers.
+    print("\n👥 Seleccionando cabeza del organigrama...")
+    heads_manager = HeadsManager()
+    numero_cabeza = heads_manager.interfaz_seleccion_interactiva(
+        reporte['cabezas_posibles'], buscar=hierarchy.buscar_por_texto
+    )
+
+    if not numero_cabeza:
+        print("❌ Operación cancelada.")
+        return 1
+
+    # 5. Construir árbol jerárquico
+    try:
+        nodo_raiz = hierarchy.construir_arbol(numero_cabeza)
+    except ValueError as e:
+        print(f"❌ Error: {e}")
+        return 1
+
+    cabeza = nodo_raiz.persona
+    etiqueta = f"{cabeza.numero_personal} — {cabeza.nombre_abreviado}"
+    print(f"\n🌳 Árbol de {etiqueta}: "
+          f"{len(nodo_raiz.obtener_todos_descendientes())} personas, "
+          f"{nodo_raiz.profundidad() + 1} niveles")
+
+    metadata_actual = (
+        heads_manager.obtener_metadata(numero_cabeza)
+        if heads_manager.existe_cabeza(numero_cabeza)
+        else {}
+    )
+    metadata = _solicitar_metadata_organigrama(etiqueta, metadata_actual)
+    if metadata is None:
+        print("❌ Operación cancelada.")
+        return 1
+
+    # 6. Generar PDF
+    print("\n📄 Generando PDF...")
+    ruta_pdf = _solicitar_ubicacion_pdf(cabeza)
+    if not ruta_pdf:
+        print("❌ Operación cancelada.")
+        return 1
+
+    ruta_base = Path(ruta_pdf)
+    nombre_base = ruta_base.stem
+    ruta_es = ruta_base.with_name(f"{nombre_base}_es.pdf")
+    ruta_en = ruta_base.with_name(f"{nombre_base}_en.pdf")
+
+    renderer = PDFRenderer()
+    renderer.generar_pdf(nodo_raiz, str(ruta_es), idioma="es", metadata=metadata)
+    renderer.generar_pdf(nodo_raiz, str(ruta_en), idioma="en", metadata=metadata)
+    heads_manager.guardar_metadata(numero_cabeza, cabeza.nombre_abreviado, metadata)
+
+    print(f"\n✅ ¡Éxito! Organigramas generados en: {ruta_es} y {ruta_en}")
+    return 0
 
 
 def _solicitar_metadata_organigrama(cabeza: str, metadata_actual: dict | None) -> dict | None:
@@ -169,11 +182,11 @@ def _solicitar_archivo_excel() -> str | None:
         return ruta
 
 
-def _solicitar_ubicacion_pdf(nombre_cabeza: str) -> str | None:
+def _solicitar_ubicacion_pdf(cabeza) -> str | None:
     """Solicita al usuario dónde guardar el PDF."""
-    # Generar nombre por defecto
-    nombre_sanitizado = nombre_cabeza.replace(" ", "_").replace(".", "")
-    nombre_default = f"organigrama_{nombre_sanitizado}.pdf"
+    # El Nº pers. va en el nombre del archivo: dos homonimos ya no se pisan.
+    nombre_sanitizado = cabeza.nombre_abreviado.replace(" ", "_").replace(".", "")
+    nombre_default = f"organigrama_{cabeza.numero_personal}_{nombre_sanitizado}.pdf"
     
     # Ubicación por defecto: carpeta actual
     ubicacion_default = Path.cwd() / nombre_default

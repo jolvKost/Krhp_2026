@@ -40,10 +40,9 @@ def test_imports():
         return True
     
     except Exception as e:
+        # Sin el raise, pytest veia "return False" como un test que pasa.
         print(f"\n❌ Error: {e}")
-        import traceback
-        traceback.print_exc()
-        return False
+        raise
 
 
 def test_basic_creation():
@@ -57,7 +56,7 @@ def test_basic_creation():
         print("  1. Creando Persona...", end=" ")
         p1 = Persona(
             numero_personal="001",
-            nombre_completo="Juan Pérez",
+            nombres="Juan",
             nombre_abreviado="J. Pérez",
             apellido_paterno="Pérez",
             posicion="Director",
@@ -74,7 +73,7 @@ def test_basic_creation():
         print("  3. Agregando hijo...", end=" ")
         p2 = Persona(
             numero_personal="002",
-            nombre_completo="María García",
+            nombres="María",
             nombre_abreviado="M. García",
             apellido_paterno="García",
             posicion="Gerente",
@@ -95,10 +94,9 @@ def test_basic_creation():
         return True
     
     except Exception as e:
+        # Sin el raise, pytest veia "return False" como un test que pasa.
         print(f"\n❌ Error: {e}")
-        import traceback
-        traceback.print_exc()
-        return False
+        raise
 
 
 if __name__ == "__main__":

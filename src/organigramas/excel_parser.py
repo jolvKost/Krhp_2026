@@ -45,7 +45,7 @@ def cargar_catalogo_areas(ruta: str | Path = CATALOGO_AREAS) -> Dict[str, str]:
 ENCABEZADOS_ESPERADOS = {
     "numero_personal": ["Nº pers.", "nº pers", "numero personal", "n° pers"],
     "nombre_empleado": ["Nombre del empleado o candidat", "nombre del empleado", "nombre empleado"],
-    "nombre_completo": ["Nombre(s)", "nombre"],
+    "nombres": ["Nombre(s)", "nombre"],
     "apellido_paterno": ["Apellido Paterno", "apellido paterno"],
     "apellido_materno": ["Apellido Materno", "apellido materno"],
     "posicion": ["Denominación de la posición", "denominacion posicion", "posicion"],
@@ -107,9 +107,32 @@ class ExcelParser:
             except Exception as e:
                 logger.warning(f"Error en fila {idx + 2}: {e}")
                 continue
-        
+
         logger.info(f"Se extrajeron {len(personas)} personas del Excel")
+        self._advertir_numeros_duplicados(personas)
         return personas
+
+    @staticmethod
+    def _advertir_numeros_duplicados(personas: List[Persona]) -> List[str]:
+        """
+        Reporta Nº pers. repetidos: el Nº pers. es la llave de todo el pipeline,
+        y un duplicado hace que una persona sobreescriba a otra en el indice.
+
+        Solo se emiten numeros, nunca nombres, para no volcar PII a consola.
+        """
+        vistos, duplicados = set(), []
+        for persona in personas:
+            if persona.numero_personal in vistos:
+                duplicados.append(persona.numero_personal)
+            vistos.add(persona.numero_personal)
+
+        if duplicados:
+            muestra = ", ".join(sorted(set(duplicados))[:5])
+            logger.warning(
+                f"{len(duplicados)} filas con Nº pers. duplicado (ej.: {muestra}). "
+                "Se conservara la ultima de cada uno."
+            )
+        return duplicados
     
     def _mapear_encabezados(self, encabezados_excel: List[str]) -> None:
         """Mapea los encabezados del Excel a nuestros campos esperados."""
@@ -125,7 +148,7 @@ class ExcelParser:
                     break
         
         # Validar que tenemos los campos críticos
-        campos_requeridos = ["numero_personal", "nombre_completo", "apellido_paterno"]
+        campos_requeridos = ["numero_personal", "nombres", "apellido_paterno"]
         for campo in campos_requeridos:
             if campo not in self.encabezados_mapa:
                 raise ValueError(
@@ -138,13 +161,13 @@ class ExcelParser:
         
         # Campos obligatorios
         numero_personal = str(row.get(self.encabezados_mapa["numero_personal"], "")).strip()
-        nombre_completo = str(row.get(self.encabezados_mapa["nombre_completo"], "")).strip()
+        nombres = str(row.get(self.encabezados_mapa["nombres"], "")).strip()
         apellido_paterno = str(row.get(self.encabezados_mapa["apellido_paterno"], "")).strip()
-        
+
         # Validar campos obligatorios
         if not numero_personal or pd.isna(numero_personal) or numero_personal == "nan":
             return None
-        if not nombre_completo or pd.isna(nombre_completo) or nombre_completo == "nan":
+        if not nombres or pd.isna(nombres) or nombres == "nan":
             return None
         if not apellido_paterno or pd.isna(apellido_paterno) or apellido_paterno == "nan":
             return None
@@ -154,7 +177,7 @@ class ExcelParser:
             row, self.encabezados_mapa.get("apellido_materno")
         )
         nombre_abreviado = self._generar_nombre_abreviado(
-            nombre_completo, apellido_paterno, apellido_materno
+            nombres, apellido_paterno, apellido_materno
         )
         posicion = self._obtener_valor_opcional(
             row, self.encabezados_mapa.get("posicion")
@@ -182,7 +205,7 @@ class ExcelParser:
         
         return Persona(
             numero_personal=numero_personal,
-            nombre_completo=nombre_completo,
+            nombres=nombres,
             nombre_abreviado=nombre_abreviado,
             apellido_paterno=apellido_paterno,
             apellido_materno=apellido_materno,
@@ -197,7 +220,7 @@ class ExcelParser:
     
     @staticmethod
     def _generar_nombre_abreviado(
-        nombre_completo: str,
+        nombres: str,
         apellido_paterno: str,
         apellido_materno: str | None = None,
     ) -> str:
@@ -207,8 +230,11 @@ class ExcelParser:
 
         Replica la columna AA del Excel HC_Controlling:
         =LEFT(Nombre(s),1) & "." & " " & Apellido Paterno & " " & Apellido Materno
+
+        Es texto para DESPLEGAR, no una llave: dos personas distintas pueden
+        generar el mismo abreviado.
         """
-        inicial = nombre_completo.strip()[:1].upper()
+        inicial = nombres.strip()[:1].upper()
         partes = [f"{inicial}." if inicial else "", apellido_paterno, apellido_materno]
         return " ".join(p for p in partes if p)
     

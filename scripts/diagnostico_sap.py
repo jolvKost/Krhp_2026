@@ -39,7 +39,7 @@ def cobertura_de_claves(df, mapa: dict, campo_jefe: str) -> list[str]:
     def col(campo):
         return df[mapa[campo]].fillna("").astype(str) if campo in mapa else None
 
-    nombres, paterno, materno = col("nombre_completo"), col("apellido_paterno"), col("apellido_materno")
+    nombres, paterno, materno = col("nombres"), col("apellido_paterno"), col("apellido_materno")
     n1 = nombres.str.split().str[0].fillna("")
     n2 = nombres.str.split().str[1].fillna("")
 
@@ -98,6 +98,37 @@ def cobertura_de_claves(df, mapa: dict, campo_jefe: str) -> list[str]:
     return lineas
 
 
+def encabezados_de_todas_las_hojas(ruta: str) -> list[str]:
+    """
+    Lista los encabezados (fila 1) de cada hoja del libro.
+
+    Sirve para buscar una columna tipo "Nº pers. del encargado": si existe, la
+    arista jefe->subordinado deja de depender de nombres. Solo lee la fila de
+    encabezados, nunca datos, asi que el reporte no expone PII.
+    """
+    lineas = ["=== Encabezados por hoja (fila 1, sin datos) ==="]
+    libro = pd.ExcelFile(ruta)
+    for hoja in libro.sheet_names:
+        try:
+            columnas = list(pd.read_excel(libro, sheet_name=hoja, nrows=0).columns)
+        except Exception as e:
+            lineas.append(f"  [{hoja}] no legible: {e}")
+            continue
+        lineas.append(f"  [{hoja}] {len(columnas)} columnas")
+        for columna in columnas:
+            marca = "  <-- posible jefe por Nº pers." if _parece_jefe_por_numero(columna) else ""
+            lineas.append(f"      {columna}{marca}")
+    return lineas
+
+
+def _parece_jefe_por_numero(encabezado) -> bool:
+    """Heuristica SOLO para resaltar candidatos en el reporte, no para parsear."""
+    texto = str(encabezado).casefold()
+    menciona_jefe = any(p in texto for p in ("encargado", "jefe", "supervisor", "superior"))
+    menciona_numero = any(p in texto for p in ("pers", "num", "nº", "n°", "id"))
+    return menciona_jefe and menciona_numero
+
+
 def diagnosticar(ruta: str) -> str:
     lineas = [f"Archivo: {ruta}", ""]
 
@@ -105,6 +136,9 @@ def diagnosticar(ruta: str) -> str:
     hojas = pd.ExcelFile(ruta).sheet_names
     lineas.append(f"Hojas del libro: {hojas}")
     lineas.append(f"Hoja leida (la primera): {hojas[0]}")
+    lineas.append("")
+
+    lineas.extend(encabezados_de_todas_las_hojas(ruta))
     lineas.append("")
 
     parser = ExcelParser()
@@ -122,9 +156,9 @@ def diagnosticar(ruta: str) -> str:
 
     df = pd.read_excel(ruta, sheet_name=0)
 
-    # Las dos columnas de jefe se miden POR SEPARADO. excel_parser usa
-    # Cal.Migratoria solo como fallback de "Nombre del encargado"; mezclarlas
-    # (como hacia una version previa de este script) falsea las cuentas.
+    # Las dos columnas de jefe se miden POR SEPARADO. excel_parser arma el arbol
+    # desde Cal.Migratoria; "Nombre del encargado" se mide solo para dejar
+    # evidencia de que es una etiqueta de area. Mezclarlas falsea las cuentas.
     for campo in ("supervisor", "cal_migratoria"):
         if campo not in mapeados:
             continue
@@ -171,6 +205,12 @@ def _selfcheck() -> None:
     assert normalizar('"PEREZ, JUAN PEDRO"') == "perez juan pedro"
     # el orden sigue distinguiendo "Apellido Nombre" de "Nombre Apellido"
     assert normalizar("PEREZ, JUAN") != normalizar("JUAN PEREZ")
+
+    # el resaltado de candidatos exige AMBAS ideas: jefe Y numero
+    assert _parece_jefe_por_numero("Nº pers. del encargado")
+    assert _parece_jefe_por_numero("ID Supervisor")
+    assert not _parece_jefe_por_numero("Nombre del encargado")
+    assert not _parece_jefe_por_numero("Nº pers.")
     print("selfcheck OK")
 
 

@@ -98,23 +98,29 @@ def test_jefe_directo_se_resuelve_desde_cal_migratoria(tmp_path):
     assert subordinado.supervisor_nombre == '"PEREZ, JUAN PEDRO"'
     assert jefe.supervisor_nombre is None
 
-    arbol = HierarchyManager(personas).construir_arbol(jefe.nombre_abreviado)
+    # La cabeza se pide por Nº pers., no por nombre
+    arbol = HierarchyManager(personas).construir_arbol("1001")
     assert [h.persona.numero_personal for h in arbol.hijos] == ["1002"]
+    # Y la arista quedó resuelta a Nº pers., no a un string
+    assert subordinado.supervisor_numero == "1001"
+
+
+def persona(num, paterno, nombres, jefe=None, materno=None):
+    """Constructor corto de Persona para los tests de jerarquía."""
+    from organigramas.models import Persona
+
+    return Persona(
+        numero_personal=num,
+        nombres=nombres,
+        nombre_abreviado=f"{nombres[:1]}. {paterno}",
+        apellido_paterno=paterno,
+        apellido_materno=materno,
+        supervisor_nombre=jefe,
+    )
 
 
 def test_cabezas_se_ordenan_por_subordinados():
     """El menu solo muestra 10 cabezas: las que mandan gente deben ir primero."""
-    from organigramas.models import Persona
-
-    def persona(num, paterno, nombres, jefe=None):
-        return Persona(
-            numero_personal=num,
-            nombre_completo=nombres,
-            nombre_abreviado=f"{nombres[:1]}. {paterno}",
-            apellido_paterno=paterno,
-            supervisor_nombre=jefe,
-        )
-
     # SOLIS no tiene jefe ni subordinados; PEREZ no tiene jefe pero manda a dos.
     personas = [
         persona("1", "SOLIS", "EVA"),
@@ -128,6 +134,102 @@ def test_cabezas_se_ordenan_por_subordinados():
     assert [c.numero_personal for c in cabezas] == ["2", "1"]
     # No se filtra a nadie: la hoja suelta sigue estando, sólo que al final
     assert len(cabezas) == 2
+
+
+def test_homonimos_no_heredan_subordinados_ajenos():
+    """
+    El bug de fondo: dos personas distintas con el mismo Ap.Paterno + Nombre(s).
+
+    Antes la ultima ganaba el indice y se quedaba con TODOS los subordinados de
+    la otra. Ahora el nombre es ambiguo -> no resuelve, y se reporta.
+    """
+    personas = [
+        persona("1001", "PEREZ", "JUAN", materno="LOPEZ"),
+        persona("1002", "PEREZ", "JUAN", materno="GARCIA"),  # distinto empleado
+        persona("1003", "RUIZ", "ANA", jefe="PEREZ, JUAN"),
+    ]
+
+    manager = HierarchyManager(personas)
+
+    assert personas[2].supervisor_numero is None
+    assert manager.construir_arbol("1001").hijos == []
+    assert manager.construir_arbol("1002").hijos == []
+    assert manager.nombres_ambiguos == {"perez juan"}
+
+
+def test_nombres_de_pila_no_son_identificador():
+    """"Nombre(s)" por si solo no indexa: cientos de personas comparten uno."""
+    personas = [
+        persona("1", "SOLIS", "MARIA GUADALUPE"),
+        persona("2", "RUIZ", "MARIA GUADALUPE"),
+        persona("3", "MORA", "LUIS", jefe="MARIA GUADALUPE"),
+    ]
+
+    manager = HierarchyManager(personas)
+
+    assert personas[2].supervisor_numero is None
+    assert manager.hijos_por_jefe == {}
+
+
+def test_ciclo_no_cuelga_ni_duplica():
+    """A manda a B y B manda a A: el arbol debe terminar."""
+    personas = [
+        persona("1", "PEREZ", "JUAN", jefe="RUIZ, ANA"),
+        persona("2", "RUIZ", "ANA", jefe="PEREZ, JUAN"),
+    ]
+
+    arbol = HierarchyManager(personas).construir_arbol("1")
+
+    assert [p.numero_personal for p in arbol.obtener_todos_descendientes()] == ["1", "2"]
+
+
+def test_nadie_es_su_propio_jefe():
+    personas = [persona("1", "PEREZ", "JUAN", jefe="PEREZ, JUAN")]
+
+    manager = HierarchyManager(personas)
+
+    assert personas[0].supervisor_numero is None
+    assert manager.obtener_todas_las_cabezas_posibles()[0].numero_personal == "1"
+
+
+def test_numero_personal_duplicado_se_reporta():
+    duplicados = ExcelParser._advertir_numeros_duplicados(
+        [
+            persona("1001", "PEREZ", "JUAN"),
+            persona("1001", "RUIZ", "ANA"),
+            persona("1002", "MORA", "LUIS"),
+        ]
+    )
+
+    assert duplicados == ["1001"]
+
+
+def test_validar_estructura_reporta_cobertura_real():
+    """
+    El reporte debe hacer VISIBLE cuanta gente quedo sin jefe resuelto, y
+    distinguir "el jefe no existe" de "el nombre del jefe es ambiguo": son
+    problemas de datos distintos y antes se contaban dos veces.
+    """
+    personas = [
+        persona("1", "PEREZ", "JUAN", materno="LOPEZ"),
+        persona("2", "PEREZ", "JUAN", materno="GARCIA"),  # homonimo de 1
+        persona("3", "RUIZ", "ANA", jefe="PEREZ, JUAN"),  # ambiguo
+        persona("4", "MORA", "LUIS", jefe="NADIE, QUE EXISTA"),  # inexistente
+        persona("5", "SOLIS", "EVA", jefe="RUIZ, ANA"),  # resuelto
+    ]
+
+    reporte = HierarchyManager(personas).validar_estructura()
+
+    assert reporte["jefes_resueltos"] == 1
+    # "3" encabeza la lista porque es la unica de las cuatro que manda a alguien
+    assert [c.numero_personal for c in reporte["cabezas_posibles"]] == ["3", "1", "2", "4"]
+
+    advertencias = " | ".join(reporte["advertencias"])
+    assert "2 personas sin dato de jefe" in advertencias
+    assert "1 personas cuyo jefe no existe" in advertencias
+    assert "nadie que exista" in advertencias  # ejemplo concreto, no vacio
+    assert "1 personas cuyo jefe coincide con mas de una" in advertencias
+    assert "1/5 personas" in advertencias
 
 
 def test_area_resuelve_con_ceco_flotante(tmp_path):

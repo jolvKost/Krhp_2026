@@ -6,17 +6,24 @@ from typing import List, Optional
 
 @dataclass
 class Persona:
-    """Representa a una persona en la base de datos de empleados."""
-    
+    """
+    Representa a una persona en la base de datos de empleados.
+
+    `numero_personal` (Nº pers.) es LA identidad. Ningun campo de nombre sirve
+    como identificador: `nombres` es solo la columna "Nombre(s)" (nombres de
+    pila) y `nombre_abreviado` es texto para desplegar en la caja del PDF.
+    """
+
     numero_personal: str
-    nombre_completo: str
+    nombres: str  # Columna "Nombre(s)" del SAP: nombres de pila, NO el nombre completo
     nombre_abreviado: str  # Inicial + Apellido Paterno + Apellido Materno
     apellido_paterno: str
     apellido_materno: Optional[str] = None
     posicion: Optional[str] = None
     ceco: Optional[str] = None
     area: Optional[str] = None  # Derivada del CeCo vía catálogo (hoja "CC" del Excel)
-    supervisor_nombre: Optional[str] = None
+    supervisor_nombre: Optional[str] = None  # Dato crudo del Excel, para diagnostico
+    supervisor_numero: Optional[str] = None  # Nº pers. del jefe: la arista real del arbol
     curp: Optional[str] = None
     cal_migratoria: Optional[str] = None
     planta: Optional[str] = None

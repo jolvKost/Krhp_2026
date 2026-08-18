@@ -7,6 +7,7 @@ enmascarado (Xxxx en vez de letras) para poder compartirlo sin exponer nombres.
 
 import argparse
 import re
+import unicodedata
 from collections import Counter
 from pathlib import Path
 
@@ -21,6 +22,49 @@ def enmascarar(texto: str) -> str:
     texto = re.sub(r"[0-9]", "9", texto)
     texto = re.sub(r"[^\W\d_]", lambda m: "X" if m.group().isupper() else "x", texto)
     return texto
+
+
+def normalizar(texto) -> str:
+    """Minusculas, sin acentos, espacios colapsados. Determinista, sin heuristicas."""
+    plano = " ".join(str(texto).split()).casefold()
+    return "".join(c for c in unicodedata.normalize("NFD", plano) if not unicodedata.combining(c))
+
+
+def cobertura_de_claves(ruta: str, mapa: dict) -> list[str]:
+    """
+    Mide que clave candidata resuelve "Nombre del encargado" con match EXACTO.
+
+    No hace matching difuso: sólo prueba combinaciones deterministas de columnas
+    y reporta cuantos supervisores distintos encuentra cada una.
+    """
+    df = pd.read_excel(ruta, sheet_name=0)
+
+    def col(campo):
+        return df[mapa[campo]].fillna("").astype(str) if campo in mapa else None
+
+    nombres, paterno, materno = col("nombre_completo"), col("apellido_paterno"), col("apellido_materno")
+
+    candidatos = {
+        "Nombre del empleado o candidat (tal cual)": col("nombre_empleado"),
+        "Nombre(s) + Ap.Paterno": nombres + " " + paterno,
+        "1er nombre + Ap.Paterno": nombres.str.split().str[0].fillna("") + " " + paterno,
+        "Nombre(s) + Ap.Paterno + Ap.Materno": nombres + " " + paterno + " " + materno,
+        "Ap.Paterno + Ap.Materno + Nombre(s)": paterno + " " + materno + " " + nombres,
+    }
+
+    supervisores = {normalizar(s) for s in col("supervisor") if normalizar(s)}
+    lineas = [
+        f"Cobertura de claves candidatas contra {len(supervisores)} supervisores distintos",
+        "(match exacto tras minusculas/sin acentos -- sin matching difuso):",
+    ]
+    for etiqueta, serie in candidatos.items():
+        if serie is None:
+            lineas.append(f"  ----  {etiqueta}: columna ausente")
+            continue
+        claves = {normalizar(v) for v in serie if normalizar(v)}
+        aciertos = sum(1 for s in supervisores if s in claves)
+        lineas.append(f"  {aciertos:>4}/{len(supervisores)}  {etiqueta}")
+    return lineas
 
 
 def diagnosticar(ruta: str) -> str:
@@ -66,6 +110,16 @@ def diagnosticar(ruta: str) -> str:
     lineas.append("Formato de 'nombre_abreviado' generado (clave del indice):")
     for forma, veces in Counter(enmascarar(p.nombre_abreviado) for p in personas).most_common(5):
         lineas.append(f"  {veces:>4}x  {forma}")
+    lineas.append("")
+
+    if "nombre_empleado" in mapeados:
+        columna = pd.read_excel(ruta, sheet_name=0)[mapeados["nombre_empleado"]].dropna()
+        lineas.append("Formato de 'Nombre del empleado o candidat' (columna hoy sin usar):")
+        for forma, veces in Counter(enmascarar(str(v)) for v in columna).most_common(5):
+            lineas.append(f"  {veces:>4}x  {forma}")
+        lineas.append("")
+
+    lineas.extend(cobertura_de_claves(ruta, mapeados))
 
     return "\n".join(lineas)
 
@@ -75,6 +129,10 @@ def _selfcheck() -> None:
     assert enmascarar("PEREZ LOPEZ JUAN") == "XXXXX XXXXX XXXX"
     assert enmascarar("J. Pérez López") == "X. Xxxxx Xxxxx"
     assert enmascarar("K1-1234") == "X9-9999"
+
+    # normalizar debe cerrar la brecha CAPS/acentos que hoy rompe el match
+    assert normalizar("  Juan   Pérez ") == "juan perez"
+    assert normalizar("PEREZ") == normalizar("Pérez")
     print("selfcheck OK")
 
 

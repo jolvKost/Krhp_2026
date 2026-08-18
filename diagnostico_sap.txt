@@ -30,11 +30,11 @@ Formato de 'Nombre del encargado' (enmascarado, compartible):
      3x  Xxxxx Xxxxxxx
      3x  Xxxxxxx Xxxxxxx
      2x  Xxxxxxxx Xxxxxxx
-     2x  Xxxxxxxxx Xxxxxxx
-     2x  Xxxxxx Xxxxxxx
-     2x  Xxxxxxx Xxxxx
-     2x  Xxxxx Xxxxxxxx
+     2x  Xxxxx Xxxxxx
      2x  Xxxx Xxxxxx X9
+     2x  Xxxxx Xxxxxxxx
+     2x  Xxxxxxx Xxxxx
+     2x  Xxxxxx Xxxxxxxx
 
 Formato de 'nombre_abreviado' generado (clave del indice):
    165x  X. XXXXXXX XXXXXX
@@ -42,3 +42,18 @@ Formato de 'nombre_abreviado' generado (clave del indice):
    160x  X. XXXXXX XXXXXX
    147x  X. XXXXXX XXXXXXX
    123x  X. XXXXX XXXXXXX
+
+Formato de 'Nombre del empleado o candidat' (columna hoy sin usar):
+    23x  XXXXXX XXXXXX XXXXXX
+    20x  XXXXXXX XXXXXXX XXXXXX
+    16x  XXXXXXX XXXXXX XXXXXXX
+    16x  XXXXXX XXXXXX XXXXXXX
+    16x  XXXXXX XXXXXXXX XXXXXXX
+
+Cobertura de claves candidatas contra 56 supervisores distintos
+(match exacto tras minusculas/sin acentos -- sin matching difuso):
+     0/56  Nombre del empleado o candidat (tal cual)
+    15/56  Nombre(s) + Ap.Paterno
+    26/56  1er nombre + Ap.Paterno
+     0/56  Nombre(s) + Ap.Paterno + Ap.Materno
+     0/56  Ap.Paterno + Ap.Materno + Nombre(s)

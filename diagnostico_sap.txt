@@ -1,4 +1,5 @@
-Archivo:
+Archivo: C:\Users\olver016.KOSTALMX\Downloads\Reporte para Organigrama 07 ago 26.xlsx
+
 Hojas del libro: ['Format', 'Header', 'Pivot', 'Sub1', 'Sub2', 'Sub3', 'Sub4', 'Sub5', 'Sub6', 'Sub7', 'Sub8', 'Sub9', 'Sub10', 'RawData', 'RawHeader']
 Hoja leida (la primera): Format
 
@@ -18,48 +19,64 @@ Campos mapeados (13/13):
   OK alta: Alta
 
 Personas extraidas: 2874
-Con supervisor: 2874 | sin supervisor: 0
-Jefes distintos nombrados: 56 -> ~51 reportes directos por jefe
 
-Supervisores que SI resuelven: 0
-Supervisores que NO resuelven: 56 distintos
+--- Columna 'Nombre del encargado' ---
+  Con dato: 2874 | en blanco: 0 | jefes distintos: 56 -> ~51 reportes por jefe
+  Formato (enmascarado, compartible):
+     1173x  Xxxxxxx Xxxxx
+      482x  Xxx Xxxx X9
+      299x  Xxxx Xxxxxxxxx
+      120x  Xxxxxx Xxxxxx
+      119x  Xxxxxxxx Xxxxxxx
+      114x  Xxx Xxxxxxxxxx
 
-Formato de 'Nombre del encargado' (enmascarado, compartible):
-     4x  Xxxxxx Xxxxx
-     4x  Xxxxxx Xxxxxx
-     3x  Xxxxxxx Xxxxxxx
-     3x  Xxxxx Xxxxxxx
-     2x  Xxxx Xxxxxx X9
-     2x  Xxxxxxx Xxxxx
-     2x  Xxxxxxxxx Xxxxxxx
-     2x  Xxxxx Xxxxxx
-     2x  Xxxxxx Xxxxxxx
-     2x  Xxxxxxxx Xxxxxxx
+--- Columna 'Cal.Migratoria' ---
+  Con dato: 1828 | en blanco: 1046 | jefes distintos: 203 -> ~9 reportes por jefe
+  Formato (enmascarado, compartible):
+      450x  "XXXXXX, XXXXXX XXXX"
+      146x  "XXXXX, XXXXX"
+      114x  "XXXXXXX, XXXXX"
+       71x  "XXXXXXX, XXXXX XXXXXXX"
+       44x  "XXXXXX, XXXXXX"
+       42x  "XXXXXXXXX, XXXXXXXX"
 
-Formato de 'nombre_abreviado' generado (clave del indice):
+Formato de 'nombre_abreviado' generado (clave actual del indice):
    165x  X. XXXXXXX XXXXXX
    161x  X. XXXXXXX XXXXXXX
    160x  X. XXXXXX XXXXXX
    147x  X. XXXXXX XXXXXXX
    123x  X. XXXXX XXXXXXX
 
-Formato de 'Nombre del empleado o candidat' (columna hoy sin usar):
-    23x  XXXXXX XXXXXX XXXXXX
-    20x  XXXXXXX XXXXXXX XXXXXX
-    16x  XXXXXXX XXXXXX XXXXXXX
-    16x  XXXXXX XXXXXX XXXXXXX
-    16x  XXXXXX XXXXXXXX XXXXXXX
+=== Cobertura contra 'Cal.Migratoria' ===
+1828 personas con jefe | 1046 en blanco | 203 jefes distintos
+(match exacto tras minusculas/sin acentos/sin comas, sin matching difuso):
+     0/203 jefes      0/1828 personas  Nombre del empleado o candidat (tal cual)
+     0/203 jefes      0/1828 personas  Nombre(s) + Ap.Paterno
+     0/203 jefes      0/1828 personas  1er nombre + Ap.Paterno
+     0/203 jefes      0/1828 personas  1er nombre + Ap.Materno
+     0/203 jefes      0/1828 personas  2do nombre + Ap.Paterno
+     0/203 jefes      0/1828 personas  Nombre(s) + Ap.Paterno + Ap.Materno
+     0/203 jefes      0/1828 personas  Ap.Paterno + Nombre(s)
+     1/203 jefes      1/1828 personas  Ap.Paterno + 1er nombre
+     0/203 jefes      0/1828 personas  Ap.Paterno + Ap.Materno + Nombre(s)
+     0/203 jefes      0/1828 personas  Ap.Paterno + Ap.Materno + 1er nombre
 
-Cobertura de claves candidatas contra 56 supervisores distintos
-(2874 personas con supervisor; match exacto tras minusculas/sin acentos,
-sin matching difuso):
+UNION de todas las claves: 1/203 jefes  |  1/1828 personas
+Sin resolver por ninguna clave determinista: 202 jefes  |  1827 personas
+
+=== Cobertura contra 'Nombre del encargado' ===
+2874 personas con jefe | 0 en blanco | 56 jefes distintos
+(match exacto tras minusculas/sin acentos/sin comas, sin matching difuso):
      0/56 jefes      0/2874 personas  Nombre del empleado o candidat (tal cual)
     15/56 jefes   1248/2874 personas  Nombre(s) + Ap.Paterno
     26/56 jefes   1682/2874 personas  1er nombre + Ap.Paterno
      3/56 jefes     11/2874 personas  1er nombre + Ap.Materno
      6/56 jefes    201/2874 personas  2do nombre + Ap.Paterno
      0/56 jefes      0/2874 personas  Nombre(s) + Ap.Paterno + Ap.Materno
+     1/56 jefes      3/2874 personas  Ap.Paterno + Nombre(s)
+     1/56 jefes      3/2874 personas  Ap.Paterno + 1er nombre
      0/56 jefes      0/2874 personas  Ap.Paterno + Ap.Materno + Nombre(s)
+     0/56 jefes      0/2874 personas  Ap.Paterno + Ap.Materno + 1er nombre
 
-UNION de todas las claves: 30/56 jefes  |  1859/2874 personas
-Sin resolver por ninguna clave determinista: 26 jefes  |  1015 personas
+UNION de todas las claves: 31/56 jefes  |  1862/2874 personas
+Sin resolver por ninguna clave determinista: 25 jefes  |  1012 personas

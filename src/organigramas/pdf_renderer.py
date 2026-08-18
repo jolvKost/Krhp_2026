@@ -319,14 +319,19 @@ class PDFRenderer:
         c.setFillColorRGB(0.95, 0.96, 1.0)
         c.rect(x - ancho/2, y - alto/2, ancho, alto, fill=True, stroke=True)
         
+        # Área (columna O del Excel): sólo si el catálogo CeCo -> Área la resolvió
+        c.setFont(self.fuente_nombre, 6)
+        if persona.area:
+            c.drawCentredString(x, y + 0.4 * inch, persona.area[:30])
+
         # Dibujar texto
         c.setFont(self.fuente_titulo, 9)
         c.drawCentredString(x, y + 0.25 * inch, persona.nombre_abreviado)
-        
+
         # Posición y CeCo
         c.setFont(self.fuente_nombre, 7)
         posicion_text = persona.posicion[:25] if persona.posicion else "N/A"
         c.drawCentredString(x, y, posicion_text)
-        
+
         ceco_text = f"[{persona.ceco}]" if persona.ceco else "[---]"
         c.drawCentredString(x, y - 0.2 * inch, ceco_text)

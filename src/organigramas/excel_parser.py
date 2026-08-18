@@ -1,13 +1,45 @@
 """Parser de archivos Excel para extraer datos de empleados."""
 
+import json
 import pandas as pd
 from pathlib import Path
-from typing import List
+from typing import Dict, List
 import logging
 
 from .models import Persona
 
 logger = logging.getLogger(__name__)
+
+# Catálogo CeCo -> Área, equivalente a la hoja "CC" del Excel HC_Controlling.
+# Formato: {"1234": "Producción", ...}
+CATALOGO_AREAS = Path("data/areas.json")
+
+
+def _clave_ceco(valor) -> str:
+    """Normaliza un CeCo a string sin decimales: pandas puede leerlo como 1234.0."""
+    texto = str(valor).strip()
+    return texto[:-2] if texto.endswith(".0") else texto
+
+
+def cargar_catalogo_areas(ruta: str | Path = CATALOGO_AREAS) -> Dict[str, str]:
+    """
+    Carga el catálogo CeCo -> Área desde JSON.
+
+    Si el archivo no existe devuelve {}: el área queda en None y el resto del
+    pipeline sigue funcionando igual.
+    """
+    ruta = Path(ruta)
+    if not ruta.exists():
+        logger.info(f"Catálogo de áreas no encontrado: {ruta}")
+        return {}
+
+    try:
+        with open(ruta, encoding="utf-8") as f:
+            datos = json.load(f)
+        return {_clave_ceco(k): str(v).strip() for k, v in datos.items()}
+    except Exception as e:
+        logger.error(f"Error al leer catálogo de áreas: {e}")
+        return {}
 
 # Encabezados esperados en el Excel (case-insensitive matching)
 ENCABEZADOS_ESPERADOS = {
@@ -30,8 +62,11 @@ ENCABEZADOS_ESPERADOS = {
 class ExcelParser:
     """Parser para archivos Excel con datos de empleados."""
     
-    def __init__(self):
+    def __init__(self, catalogo_areas: Dict[str, str] | None = None):
         self.encabezados_mapa = {}  # Mapeo de Excel a nuestros campos
+        self.catalogo_areas = (
+            catalogo_areas if catalogo_areas is not None else cargar_catalogo_areas()
+        )
     
     def leer_excel(self, ruta_archivo: str) -> List[Persona]:
         """
@@ -114,12 +149,12 @@ class ExcelParser:
         if not apellido_paterno or pd.isna(apellido_paterno) or apellido_paterno == "nan":
             return None
         
-        # Generar nombre abreviado: Inicial(es) + Apellido Paterno
-        nombre_abreviado = self._generar_nombre_abreviado(nombre_completo, apellido_paterno)
-        
         # Campos opcionales
         apellido_materno = self._obtener_valor_opcional(
             row, self.encabezados_mapa.get("apellido_materno")
+        )
+        nombre_abreviado = self._generar_nombre_abreviado(
+            nombre_completo, apellido_paterno, apellido_materno
         )
         posicion = self._obtener_valor_opcional(
             row, self.encabezados_mapa.get("posicion")
@@ -152,6 +187,7 @@ class ExcelParser:
             apellido_materno=apellido_materno,
             posicion=posicion,
             ceco=ceco,
+            area=self.catalogo_areas.get(_clave_ceco(ceco)) if ceco else None,
             supervisor_nombre=supervisor_nombre,
             curp=curp,
             cal_migratoria=cal_migratoria,
@@ -159,18 +195,21 @@ class ExcelParser:
         )
     
     @staticmethod
-    def _generar_nombre_abreviado(nombre_completo: str, apellido_paterno: str) -> str:
+    def _generar_nombre_abreviado(
+        nombre_completo: str,
+        apellido_paterno: str,
+        apellido_materno: str | None = None,
+    ) -> str:
         """
-        Genera nombre abreviado: Inicial(es) de nombre(s) + Apellido Paterno.
-        Ej: "Juan Pedro" + "Pérez" -> "J.P. Pérez"
+        Genera nombre abreviado: inicial del nombre + apellidos.
+        Ej: "Juan Pedro" + "Pérez" + "López" -> "J. Pérez López"
+
+        Replica la columna AA del Excel HC_Controlling:
+        =LEFT(Nombre(s),1) & "." & " " & Apellido Paterno & " " & Apellido Materno
         """
-        partes_nombre = nombre_completo.strip().split()
-        
-        # Tomar iniciales de cada parte del nombre
-        iniciales = [parte[0].upper() for parte in partes_nombre if parte]
-        nombre_abrev = ". ".join(iniciales) + ". " if iniciales else ""
-        
-        return f"{nombre_abrev}{apellido_paterno}"
+        inicial = nombre_completo.strip()[:1].upper()
+        partes = [f"{inicial}." if inicial else "", apellido_paterno, apellido_materno]
+        return " ".join(p for p in partes if p)
     
     @staticmethod
     def _obtener_valor_opcional(row, encabezado: str | None) -> str | None:

@@ -10,11 +10,12 @@ class Persona:
     
     numero_personal: str
     nombre_completo: str
-    nombre_abreviado: str  # Inicial(es) + Apellido Paterno
+    nombre_abreviado: str  # Inicial + Apellido Paterno + Apellido Materno
     apellido_paterno: str
     apellido_materno: Optional[str] = None
     posicion: Optional[str] = None
     ceco: Optional[str] = None
+    area: Optional[str] = None  # Derivada del CeCo vía catálogo (hoja "CC" del Excel)
     supervisor_nombre: Optional[str] = None
     curp: Optional[str] = None
     cal_migratoria: Optional[str] = None
@@ -27,13 +28,6 @@ class OrganigramaMetadata:
     departamento: Optional[str] = None
     centro_costos: Optional[str] = None
     responsable: Optional[str] = None
-    
-    def __post_init__(self):
-        """Validaciones post-inicialización."""
-        if not self.numero_personal:
-            raise ValueError("numero_personal es obligatorio")
-        if not self.nombre_abreviado:
-            raise ValueError("nombre_abreviado es obligatorio")
 
 
 @dataclass

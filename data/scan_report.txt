@@ -1,0 +1,2176 @@
+Reporte de formulas - scan_excel_logic.py
+Archivo: C:\Prueba\Krhp_2026\data\Macro_HC_Controlling.xlsm
+Generado: 2026-08-18 11:55:40
+
+=== ADVERTENCIA ===
+Este reporte contiene UNICAMENTE texto de formulas, nunca valores de celda.
+Una formula puede incluir un literal embebido, ej: =IF(A2="Juan Perez",...)
+Este script NO detecta ni redacta datos personales automaticamente
+(deliberado: un detector heuristico de PII no es confiable).
+Revisa este archivo visualmente (~1 min) antes de compartir cualquier fragmento.
+
+=== Hoja: CC ===
+Encabezados (fila 1): CC SAP | ÁREA | Actualización | Columna1 | Columna2 |  |  |  |  | 
+Formulas encontradas: 0
+
+=== Hoja: SAP ===
+Encabezados (fila 1): =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() |  |  |  | =COLUMN() | =COLUMN()
+Formulas encontradas: 30
+  A1 -> =COLUMN()
+  B1 -> =COLUMN()
+  C1 -> =COLUMN()
+  D1 -> =COLUMN()
+  E1 -> =COLUMN()
+  F1 -> =COLUMN()
+  G1 -> =COLUMN()
+  H1 -> =COLUMN()
+  I1 -> =COLUMN()
+  J1 -> =COLUMN()
+  K1 -> =COLUMN()
+  L1 -> =COLUMN()
+  P1 -> =COLUMN()
+  Q1 -> =COLUMN()
+  P3 -> =IFERROR((VLOOKUP(A3,Organigrama!$A:$M,13,0)),"Falta en Organigrama")
+  P4 -> =IFERROR((VLOOKUP(A4,Organigrama!$A:$M,13,0)),"Falta en Organigrama")
+  P5 -> =IFERROR((VLOOKUP(A5,Organigrama!$A:$M,13,0)),"Falta en Organigrama")
+  P6 -> =IFERROR((VLOOKUP(A6,Organigrama!$A:$M,13,0)),"Falta en Organigrama")
+  P7 -> =IFERROR((VLOOKUP(A7,Organigrama!$A:$M,13,0)),"Falta en Organigrama")
+  P8 -> =IFERROR((VLOOKUP(A8,Organigrama!$A:$M,13,0)),"Falta en Organigrama")
+  P9 -> =IFERROR((VLOOKUP(A9,Organigrama!$A:$M,13,0)),"Falta en Organigrama")
+  P10 -> =IFERROR((VLOOKUP(A10,Organigrama!$A:$M,13,0)),"Falta en Organigrama")
+  P11 -> =IFERROR((VLOOKUP(A11,Organigrama!$A:$M,13,0)),"Falta en Organigrama")
+  P12 -> =IFERROR((VLOOKUP(A12,Organigrama!$A:$M,13,0)),"Falta en Organigrama")
+  P13 -> =IFERROR((VLOOKUP(A13,Organigrama!$A:$M,13,0)),"Falta en Organigrama")
+  P14 -> =IFERROR((VLOOKUP(A14,Organigrama!$A:$M,13,0)),"Falta en Organigrama")
+  P15 -> =IFERROR((VLOOKUP(A15,Organigrama!$A:$M,13,0)),"Falta en Organigrama")
+  P16 -> =IFERROR((VLOOKUP(A16,Organigrama!$A:$M,13,0)),"Falta en Organigrama")
+  P17 -> =IFERROR((VLOOKUP(A17,Organigrama!$A:$M,13,0)),"Falta en Organigrama")
+  P38 -> =IFERROR((VLOOKUP(A38,Organigrama!$A:$M,13,0)),"Falta en Organigrama")
+
+=== Hoja: Organigrama ===
+Encabezados (fila 1): =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() | =COLUMN() |  | =COLUMN() | =COLUMN() |  | Resp. Hoja |  |  | Resp. Hoja |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+Formulas encontradas: 977
+  A1 -> =COLUMN()
+  B1 -> =COLUMN()
+  C1 -> =COLUMN()
+  D1 -> =COLUMN()
+  E1 -> =COLUMN()
+  F1 -> =COLUMN()
+  G1 -> =COLUMN()
+  H1 -> =COLUMN()
+  I1 -> =COLUMN()
+  J1 -> =COLUMN()
+  K1 -> =COLUMN()
+  L1 -> =COLUMN()
+  M1 -> =COLUMN()
+  N1 -> =COLUMN()
+  O1 -> =COLUMN()
+  P1 -> =COLUMN()
+  Q1 -> =COLUMN()
+  R1 -> =COLUMN()
+  S1 -> =COLUMN()
+  T1 -> =COLUMN()
+  U1 -> =COLUMN()
+  V1 -> =COLUMN()
+  W1 -> =COLUMN()
+  X1 -> =COLUMN()
+  Y1 -> =COLUMN()
+  Z1 -> =COLUMN()
+  AA1 -> =COLUMN()
+  AC1 -> =COLUMN()
+  AD1 -> =COLUMN()
+  B2 -> =B1-1
+  C2 -> =C1-1
+  D2 -> =D1-1
+  E2 -> =E1-1
+  F2 -> =F1-1
+  G2 -> =G1-1
+  H2 -> =H1-1
+  I2 -> =I1-1
+  J2 -> =J1-1
+  K2 -> =K1-1
+  L2 -> =L1-1
+  M2 -> =M1-1
+  N2 -> =N1-1
+  O2 -> =O1-1
+  P2 -> =P1-1
+  Q2 -> =Q1-1
+  R2 -> =R1-1
+  S2 -> =S1-1
+  T2 -> =T1-1
+  U2 -> =U1-1
+  V2 -> =V1-1
+  W2 -> =W1-1
+  X2 -> =X1-1
+  Y2 -> =Y1-1
+  Z2 -> =Z1-1
+  AA2 -> =AA1-1
+  AB2 -> =AB1-1
+  AC2 -> =AC1-1
+  AD2 -> =AD1-1
+  B3 -> =COUNT(B5:B118)
+  O3 -> =COUNTA(O5:O118)
+  P3 -> =COUNT(P5:P118)
+  Q3 -> =O3-P3
+  T3 -> =SAP!$C$1
+  W3 -> =SAP!$H$1
+  X3 -> =SAP!$I$1
+  Y3 -> =SAP!$J$1
+  A5 -> =P5
+  L5 -> =COUNT(B5:K5)
+  M5 -> =IF(L5>=1,"Asignado","No Asignado")
+  N5 -> =IFERROR((VLOOKUP(R5,índice!$D$7:$K$17,8,0)),"-")
+  T5 -> =IFERROR(VLOOKUP($P5,SAP!$A:$J,T$3,0),T6)
+  U5 -> =IFERROR(VLOOKUP(P5,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W5 -> =IFERROR(VLOOKUP($P5,SAP!$A:$J,W$3,0),"")
+  Y5 -> =IFERROR(VLOOKUP($P5,SAP!$A:$J,Y$3,0),"")
+  Z5 -> =LEFT(Y5,1)
+  AA5 -> =Z5&"."&" "&W5&" "&X5
+  AB5 -> =COUNTIFS($B$4:B5,B5)
+  AD5 -> =IF(S5=U5,"OK","ERROR")
+  AE5 -> =IFERROR(VLOOKUP(P5,SAP!$A:$P,16,0),"BAJA")
+  A6 -> =P6
+  L6 -> =COUNT(B6:K6)
+  M6 -> =IF(L6>=1,"Asignado","No Asignado")
+  N6 -> =IFERROR((VLOOKUP(R6,índice!$D$7:$K$17,8,0)),"-")
+  U6 -> =IFERROR(VLOOKUP(P6,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W6 -> =IFERROR(VLOOKUP($P6,SAP!$A:$J,W$3,0),"")
+  X6 -> =IFERROR(VLOOKUP($P6,SAP!$A:$J,X$3,0),"")
+  Y6 -> =IFERROR(VLOOKUP($P6,SAP!$A:$J,Y$3,0),"")
+  Z6 -> =LEFT(Y6,1)
+  AA6 -> =Z6&"."&" "&W6&" "&X6
+  AB6 -> =COUNTIFS($B$4:B6,B6)
+  AD6 -> =IF(S6=U6,"OK","ERROR")
+  AE6 -> =IFERROR(VLOOKUP(P6,SAP!$A:$P,16,0),"BAJA")
+  A7 -> =P7
+  L7 -> =COUNT(B7:K7)
+  M7 -> =IF(L7>=1,"Asignado","No Asignado")
+  N7 -> =IFERROR((VLOOKUP(R7,índice!$D$7:$K$17,8,0)),"-")
+  U7 -> =IFERROR(VLOOKUP(P7,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W7 -> =IFERROR(VLOOKUP($P7,SAP!$A:$J,W$3,0),"")
+  X7 -> =IFERROR(VLOOKUP($P7,SAP!$A:$J,X$3,0),"")
+  Y7 -> =IFERROR(VLOOKUP($P7,SAP!$A:$J,Y$3,0),"")
+  Z7 -> =LEFT(Y7,1)
+  AA7 -> =Z7&"."&" "&W7&" "&X7
+  AB7 -> =COUNTIFS($B$4:B7,B7)
+  AD7 -> =IF(S7=U7,"OK","ERROR")
+  AE7 -> =IFERROR(VLOOKUP(P7,SAP!$A:$P,16,0),"BAJA")
+  A8 -> =P8
+  L8 -> =COUNT(B8:K8)
+  M8 -> =IF(L8>=1,"Asignado","No Asignado")
+  N8 -> =IFERROR((VLOOKUP(R8,índice!$D$7:$K$17,8,0)),"-")
+  Q8 -> =IF(P8="","Acting",IF(IF(AA8=".  ",AC8,AA8)=0,"-",IF(AA8=".  ",AC8,AA8)))
+  T8 -> =IFERROR(VLOOKUP($P8,SAP!$A:$J,T$3,0),T9)
+  U8 -> =IFERROR(VLOOKUP(P8,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W8 -> =IFERROR(VLOOKUP($P8,SAP!$A:$J,W$3,0),"")
+  X8 -> =IFERROR(VLOOKUP($P8,SAP!$A:$J,X$3,0),"")
+  Y8 -> =IFERROR(VLOOKUP($P8,SAP!$A:$J,Y$3,0),"")
+  Z8 -> =LEFT(Y8,1)
+  AA8 -> =Z8&"."&" "&W8&" "&X8
+  AB8 -> =COUNTIFS($B$4:B8,B8)
+  AD8 -> =IF(S8=U8,"OK","ERROR")
+  AE8 -> =IFERROR(VLOOKUP(P8,SAP!$A:$P,16,0),"BAJA")
+  A9 -> =P9
+  L9 -> =COUNT(B9:K9)
+  M9 -> =IF(L9>=1,"Asignado","No Asignado")
+  N9 -> =IFERROR((VLOOKUP(R9,índice!$D$7:$K$17,8,0)),"-")
+  Q9 -> =IF(P9="","Acting",IF(IF(AA9=".  ",AC9,AA9)=0,"-",IF(AA9=".  ",AC9,AA9)))
+  T9 -> =IFERROR(VLOOKUP($P9,SAP!$A:$J,T$3,0),T10)
+  U9 -> =IFERROR(VLOOKUP(P9,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W9 -> =IFERROR(VLOOKUP($P9,SAP!$A:$J,W$3,0),"")
+  X9 -> =IFERROR(VLOOKUP($P9,SAP!$A:$J,X$3,0),"")
+  Y9 -> =IFERROR(VLOOKUP($P9,SAP!$A:$J,Y$3,0),"")
+  Z9 -> =LEFT(Y9,1)
+  AA9 -> =Z9&"."&" "&W9&" "&X9
+  AB9 -> =COUNTIFS($B$4:B9,B9)
+  AD9 -> =IF(S9=U9,"OK","ERROR")
+  AE9 -> =IFERROR(VLOOKUP(P9,SAP!$A:$P,16,0),"BAJA")
+  A10 -> =P10
+  L10 -> =COUNT(B10:K10)
+  M10 -> =IF(L10>=1,"Asignado","No Asignado")
+  N10 -> =IFERROR((VLOOKUP(R10,índice!$D$7:$K$17,8,0)),"-")
+  Q10 -> =IF(P10="","Acting",IF(IF(AA10=".  ",AC10,AA10)=0,"-",IF(AA10=".  ",AC10,AA10)))
+  T10 -> =IFERROR(VLOOKUP($P10,SAP!$A:$J,T$3,0),T11)
+  U10 -> =IFERROR(VLOOKUP(P10,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W10 -> =IFERROR(VLOOKUP($P10,SAP!$A:$J,W$3,0),"")
+  X10 -> =IFERROR(VLOOKUP($P10,SAP!$A:$J,X$3,0),"")
+  Y10 -> =IFERROR(VLOOKUP($P10,SAP!$A:$J,Y$3,0),"")
+  Z10 -> =LEFT(Y10,1)
+  AA10 -> =Z10&"."&" "&W10&" "&X10
+  AB10 -> =COUNTIFS($B$4:B10,B10)
+  AD10 -> =IF(S10=U10,"OK","ERROR")
+  AE10 -> =IFERROR(VLOOKUP(P10,SAP!$A:$P,16,0),"BAJA")
+  A11 -> =P11
+  L11 -> =COUNT(B11:K11)
+  M11 -> =IF(L11>=1,"Asignado","No Asignado")
+  N11 -> =IFERROR((VLOOKUP(R11,índice!$D$7:$K$17,8,0)),"-")
+  Q11 -> =IF(P11="","Acting",IF(IF(AA11=".  ",AC11,AA11)=0,"-",IF(AA11=".  ",AC11,AA11)))
+  T11 -> =IFERROR(VLOOKUP($P11,SAP!$A:$J,T$3,0),T12)
+  U11 -> =IFERROR(VLOOKUP(P11,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W11 -> =IFERROR(VLOOKUP($P11,SAP!$A:$J,W$3,0),"")
+  X11 -> =IFERROR(VLOOKUP($P11,SAP!$A:$J,X$3,0),"")
+  Y11 -> =IFERROR(VLOOKUP($P11,SAP!$A:$J,Y$3,0),"")
+  Z11 -> =LEFT(Y11,1)
+  AA11 -> =Z11&"."&" "&W11&" "&X11
+  AB11 -> =COUNTIFS($B$4:B11,B11)
+  AD11 -> =IF(S11=U11,"OK","ERROR")
+  AE11 -> =IFERROR(VLOOKUP(P11,SAP!$A:$P,16,0),"BAJA")
+  A12 -> =P12
+  L12 -> =COUNT(B12:K12)
+  M12 -> =IF(L12>=1,"Asignado","No Asignado")
+  N12 -> =IFERROR((VLOOKUP(R12,índice!$D$7:$K$17,8,0)),"-")
+  Q12 -> =IF(P12="","Acting",IF(IF(AA12=".  ",AC12,AA12)=0,"-",IF(AA12=".  ",AC12,AA12)))
+  T12 -> =IFERROR(VLOOKUP($P12,SAP!$A:$J,T$3,0),T13)
+  U12 -> =IFERROR(VLOOKUP(P12,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W12 -> =IFERROR(VLOOKUP($P12,SAP!$A:$J,W$3,0),"")
+  X12 -> =IFERROR(VLOOKUP($P12,SAP!$A:$J,X$3,0),"")
+  Y12 -> =IFERROR(VLOOKUP($P12,SAP!$A:$J,Y$3,0),"")
+  Z12 -> =LEFT(Y12,1)
+  AA12 -> =Z12&"."&" "&W12&" "&X12
+  AB12 -> =COUNTIFS($B$4:B12,B12)
+  AD12 -> =IF(S12=U12,"OK","ERROR")
+  AE12 -> =IFERROR(VLOOKUP(P12,SAP!$A:$P,16,0),"BAJA")
+  A13 -> =P13
+  L13 -> =COUNT(B13:K13)
+  M13 -> =IF(L13>=1,"Asignado","No Asignado")
+  N13 -> =IFERROR((VLOOKUP(R13,índice!$D$7:$K$17,8,0)),"-")
+  Q13 -> =IF(P13="","Acting",IF(IF(AA13=".  ",AC13,AA13)=0,"-",IF(AA13=".  ",AC13,AA13)))
+  T13 -> =IFERROR(VLOOKUP($P13,SAP!$A:$J,T$3,0),T14)
+  U13 -> =IFERROR(VLOOKUP(P13,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W13 -> =IFERROR(VLOOKUP($P13,SAP!$A:$J,W$3,0),"")
+  X13 -> =IFERROR(VLOOKUP($P13,SAP!$A:$J,X$3,0),"")
+  Y13 -> =IFERROR(VLOOKUP($P13,SAP!$A:$J,Y$3,0),"")
+  Z13 -> =LEFT(Y13,1)
+  AA13 -> =Z13&"."&" "&W13&" "&X13
+  AB13 -> =COUNTIFS($B$4:B13,B13)
+  AD13 -> =IF(S13=U13,"OK","ERROR")
+  AE13 -> =IFERROR(VLOOKUP(P13,SAP!$A:$P,16,0),"BAJA")
+  A14 -> =P14
+  L14 -> =COUNT(B14:K14)
+  M14 -> =IF(L14>=1,"Asignado","No Asignado")
+  N14 -> =IFERROR((VLOOKUP(R14,índice!$D$7:$K$17,8,0)),"-")
+  Q14 -> =IF(P14="","Acting",IF(IF(AA14=".  ",AC14,AA14)=0,"-",IF(AA14=".  ",AC14,AA14)))
+  T14 -> =IFERROR(VLOOKUP($P14,SAP!$A:$J,T$3,0),T15)
+  U14 -> =IFERROR(VLOOKUP(P14,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W14 -> =IFERROR(VLOOKUP($P14,SAP!$A:$J,W$3,0),"")
+  X14 -> =IFERROR(VLOOKUP($P14,SAP!$A:$J,X$3,0),"")
+  Y14 -> =IFERROR(VLOOKUP($P14,SAP!$A:$J,Y$3,0),"")
+  Z14 -> =LEFT(Y14,1)
+  AA14 -> =Z14&"."&" "&W14&" "&X14
+  AB14 -> =COUNTIFS($B$4:B14,B14)
+  AD14 -> =IF(S14=U14,"OK","ERROR")
+  AE14 -> =IFERROR(VLOOKUP(P14,SAP!$A:$P,16,0),"BAJA")
+  A15 -> =P15
+  L15 -> =COUNT(B15:K15)
+  M15 -> =IF(L15>=1,"Asignado","No Asignado")
+  N15 -> =IFERROR((VLOOKUP(R15,índice!$D$7:$K$17,8,0)),"-")
+  Q15 -> =IF(P15="","Acting",IF(IF(AA15=".  ",AC15,AA15)=0,"-",IF(AA15=".  ",AC15,AA15)))
+  T15 -> =IFERROR(VLOOKUP($P15,SAP!$A:$J,T$3,0),T16)
+  U15 -> =IFERROR(VLOOKUP(P15,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W15 -> =IFERROR(VLOOKUP($P15,SAP!$A:$J,W$3,0),"")
+  X15 -> =IFERROR(VLOOKUP($P15,SAP!$A:$J,X$3,0),"")
+  Y15 -> =IFERROR(VLOOKUP($P15,SAP!$A:$J,Y$3,0),"")
+  Z15 -> =LEFT(Y15,1)
+  AA15 -> =Z15&"."&" "&W15&" "&X15
+  AB15 -> =COUNTIFS($B$4:B15,B15)
+  AD15 -> =IF(S15=U15,"OK","ERROR")
+  AE15 -> =IFERROR(VLOOKUP(P15,SAP!$A:$P,16,0),"BAJA")
+  A16 -> =P16
+  L16 -> =COUNT(B16:K16)
+  M16 -> =IF(L16>=1,"Asignado","No Asignado")
+  N16 -> =IFERROR((VLOOKUP(R16,índice!$D$7:$K$17,8,0)),"-")
+  Q16 -> =IF(P16="","Acting",IF(IF(AA16=".  ",AC16,AA16)=0,"-",IF(AA16=".  ",AC16,AA16)))
+  T16 -> =IFERROR(VLOOKUP($P16,SAP!$A:$J,T$3,0),T17)
+  U16 -> =IFERROR(VLOOKUP(P16,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W16 -> =IFERROR(VLOOKUP($P16,SAP!$A:$J,W$3,0),"")
+  X16 -> =IFERROR(VLOOKUP($P16,SAP!$A:$J,X$3,0),"")
+  Y16 -> =IFERROR(VLOOKUP($P16,SAP!$A:$J,Y$3,0),"")
+  Z16 -> =LEFT(Y16,1)
+  AA16 -> =Z16&"."&" "&W16&" "&X16
+  AB16 -> =COUNTIFS($B$4:B16,B16)
+  AD16 -> =IF(S16=U16,"OK","ERROR")
+  AE16 -> =IFERROR(VLOOKUP(P16,SAP!$A:$P,16,0),"BAJA")
+  A17 -> =P17
+  L17 -> =COUNT(B17:K17)
+  M17 -> =IF(L17>=1,"Asignado","No Asignado")
+  N17 -> =IFERROR((VLOOKUP(R17,índice!$D$7:$K$17,8,0)),"-")
+  T17 -> =IFERROR(VLOOKUP($P17,SAP!$A:$J,T$3,0),T18)
+  U17 -> =IFERROR(VLOOKUP(P17,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W17 -> =IFERROR(VLOOKUP($P17,SAP!$A:$J,W$3,0),"")
+  X17 -> =IFERROR(VLOOKUP($P17,SAP!$A:$J,X$3,0),"")
+  Y17 -> =IFERROR(VLOOKUP($P17,SAP!$A:$J,Y$3,0),"")
+  Z17 -> =LEFT(Y17,1)
+  AA17 -> =Z17&"."&" "&W17&" "&X17
+  AB17 -> =COUNTIFS($B$4:B17,B17)
+  AD17 -> =IF(S17=U17,"OK","ERROR")
+  AE17 -> =IFERROR(VLOOKUP(P17,SAP!$A:$P,16,0),"BAJA")
+  A18 -> =P18
+  L18 -> =COUNT(B18:K18)
+  M18 -> =IF(L18>=1,"Asignado","No Asignado")
+  N18 -> =IFERROR((VLOOKUP(R18,índice!$D$7:$K$17,8,0)),"-")
+  Q18 -> =IF(P18="","Acting",IF(IF(AA18=".  ",AC18,AA18)=0,"-",IF(AA18=".  ",AC18,AA18)))
+  T18 -> =IFERROR(VLOOKUP($P18,SAP!$A:$J,T$3,0),T19)
+  U18 -> =IFERROR(VLOOKUP(P18,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W18 -> =IFERROR(VLOOKUP($P18,SAP!$A:$J,W$3,0),"")
+  X18 -> =IFERROR(VLOOKUP($P18,SAP!$A:$J,X$3,0),"")
+  Y18 -> =IFERROR(VLOOKUP($P18,SAP!$A:$J,Y$3,0),"")
+  Z18 -> =LEFT(Y18,1)
+  AA18 -> =Z18&"."&" "&W18&" "&X18
+  AB18 -> =COUNTIFS($B$4:B18,B18)
+  AD18 -> =IF(S18=U18,"OK","ERROR")
+  AE18 -> =IFERROR(VLOOKUP(P18,SAP!$A:$P,16,0),"BAJA")
+  A19 -> =P19
+  L19 -> =COUNT(B19:K19)
+  M19 -> =IF(L19>=1,"Asignado","No Asignado")
+  N19 -> =IFERROR((VLOOKUP(R19,índice!$D$7:$K$17,8,0)),"-")
+  Q19 -> =IF(P19="","Acting",IF(IF(AA19=".  ",AC19,AA19)=0,"-",IF(AA19=".  ",AC19,AA19)))
+  T19 -> =IFERROR(VLOOKUP($P19,SAP!$A:$J,T$3,0),T20)
+  U19 -> =IFERROR(VLOOKUP(P19,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W19 -> =IFERROR(VLOOKUP($P19,SAP!$A:$J,W$3,0),"")
+  X19 -> =IFERROR(VLOOKUP($P19,SAP!$A:$J,X$3,0),"")
+  Y19 -> =IFERROR(VLOOKUP($P19,SAP!$A:$J,Y$3,0),"")
+  Z19 -> =LEFT(Y19,1)
+  AA19 -> =Z19&"."&" "&W19&" "&X19
+  AB19 -> =COUNTIFS($B$4:B19,B19)
+  AD19 -> =IF(S19=U19,"OK","ERROR")
+  AE19 -> =IFERROR(VLOOKUP(P19,SAP!$A:$P,16,0),"BAJA")
+  A20 -> =P20
+  L20 -> =COUNT(B20:K20)
+  M20 -> =IF(L20>=1,"Asignado","No Asignado")
+  N20 -> =IFERROR((VLOOKUP(R20,índice!$D$7:$K$17,8,0)),"-")
+  Q20 -> =IF(P20="","Acting",IF(IF(AA20=".  ",AC20,AA20)=0,"-",IF(AA20=".  ",AC20,AA20)))
+  T20 -> =IFERROR(VLOOKUP($P20,SAP!$A:$J,T$3,0),T21)
+  U20 -> =IFERROR(VLOOKUP(P20,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W20 -> =IFERROR(VLOOKUP($P20,SAP!$A:$J,W$3,0),"")
+  X20 -> =IFERROR(VLOOKUP($P20,SAP!$A:$J,X$3,0),"")
+  Y20 -> =IFERROR(VLOOKUP($P20,SAP!$A:$J,Y$3,0),"")
+  Z20 -> =LEFT(Y20,1)
+  AA20 -> =Z20&"."&" "&W20&" "&X20
+  AB20 -> =COUNTIFS($B$4:B20,B20)
+  AD20 -> =IF(S20=U20,"OK","ERROR")
+  AE20 -> =IFERROR(VLOOKUP(P20,SAP!$A:$P,16,0),"BAJA")
+  A21 -> =P21
+  L21 -> =COUNT(B21:K21)
+  M21 -> =IF(L21>=1,"Asignado","No Asignado")
+  N21 -> =IFERROR((VLOOKUP(R21,índice!$D$7:$K$17,8,0)),"-")
+  Q21 -> =IF(P21="","Acting",IF(IF(AA21=".  ",AC21,AA21)=0,"-",IF(AA21=".  ",AC21,AA21)))
+  T21 -> =IFERROR(VLOOKUP($P21,SAP!$A:$J,T$3,0),T22)
+  U21 -> =IFERROR(VLOOKUP(P21,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W21 -> =IFERROR(VLOOKUP($P21,SAP!$A:$J,W$3,0),"")
+  X21 -> =IFERROR(VLOOKUP($P21,SAP!$A:$J,X$3,0),"")
+  Y21 -> =IFERROR(VLOOKUP($P21,SAP!$A:$J,Y$3,0),"")
+  Z21 -> =LEFT(Y21,1)
+  AA21 -> =Z21&"."&" "&W21&" "&X21
+  AB21 -> =COUNTIFS($B$4:B21,B21)
+  AD21 -> =IF(S21=U21,"OK","ERROR")
+  AE21 -> =IFERROR(VLOOKUP(P21,SAP!$A:$P,16,0),"BAJA")
+  A22 -> =P22
+  L22 -> =COUNT(B22:K22)
+  M22 -> =IF(L22>=1,"Asignado","No Asignado")
+  N22 -> =IFERROR((VLOOKUP(R22,índice!$D$7:$K$17,8,0)),"-")
+  Q22 -> =IF(P22="","Acting",IF(IF(AA22=".  ",AC22,AA22)=0,"-",IF(AA22=".  ",AC22,AA22)))
+  T22 -> =IFERROR(VLOOKUP($P22,SAP!$A:$J,T$3,0),T23)
+  U22 -> =IFERROR(VLOOKUP(P22,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W22 -> =IFERROR(VLOOKUP($P22,SAP!$A:$J,W$3,0),"")
+  X22 -> =IFERROR(VLOOKUP($P22,SAP!$A:$J,X$3,0),"")
+  Y22 -> =IFERROR(VLOOKUP($P22,SAP!$A:$J,Y$3,0),"")
+  Z22 -> =LEFT(Y22,1)
+  AA22 -> =Z22&"."&" "&W22&" "&X22
+  AB22 -> =COUNTIFS($B$4:B22,B22)
+  AD22 -> =IF(S22=U22,"OK","ERROR")
+  AE22 -> =IFERROR(VLOOKUP(P22,SAP!$A:$P,16,0),"BAJA")
+  A23 -> =P23
+  L23 -> =COUNT(B23:K23)
+  M23 -> =IF(L23>=1,"Asignado","No Asignado")
+  N23 -> =IFERROR((VLOOKUP(R23,índice!$D$7:$K$17,8,0)),"-")
+  Q23 -> =IF(P23="","Acting",IF(IF(AA23=".  ",AC23,AA23)=0,"-",IF(AA23=".  ",AC23,AA23)))
+  T23 -> =IFERROR(VLOOKUP($P23,SAP!$A:$J,T$3,0),T24)
+  U23 -> =IFERROR(VLOOKUP(P23,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W23 -> =IFERROR(VLOOKUP($P23,SAP!$A:$J,W$3,0),"")
+  X23 -> =IFERROR(VLOOKUP($P23,SAP!$A:$J,X$3,0),"")
+  Y23 -> =IFERROR(VLOOKUP($P23,SAP!$A:$J,Y$3,0),"")
+  Z23 -> =LEFT(Y23,1)
+  AA23 -> =Z23&"."&" "&W23&" "&X23
+  AB23 -> =COUNTIFS($B$4:B23,B23)
+  AD23 -> =IF(S23=U23,"OK","ERROR")
+  AE23 -> =IFERROR(VLOOKUP(P23,SAP!$A:$P,16,0),"BAJA")
+  A24 -> =P24
+  L24 -> =COUNT(B24:K24)
+  M24 -> =IF(L24>=1,"Asignado","No Asignado")
+  N24 -> =IFERROR((VLOOKUP(R24,índice!$D$7:$K$17,8,0)),"-")
+  Q24 -> =IF(P24="","Acting",IF(IF(AA24=".  ",AC24,AA24)=0,"-",IF(AA24=".  ",AC24,AA24)))
+  T24 -> =IFERROR(VLOOKUP($P24,SAP!$A:$J,T$3,0),T25)
+  U24 -> =IFERROR(VLOOKUP(P24,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W24 -> =IFERROR(VLOOKUP($P24,SAP!$A:$J,W$3,0),"")
+  X24 -> =IFERROR(VLOOKUP($P24,SAP!$A:$J,X$3,0),"")
+  Y24 -> =IFERROR(VLOOKUP($P24,SAP!$A:$J,Y$3,0),"")
+  Z24 -> =LEFT(Y24,1)
+  AA24 -> =Z24&"."&" "&W24&" "&X24
+  AB24 -> =COUNTIFS($B$4:B24,B24)
+  AD24 -> =IF(S24=U24,"OK","ERROR")
+  AE24 -> =IFERROR(VLOOKUP(P24,SAP!$A:$P,16,0),"BAJA")
+  A25 -> =P25
+  L25 -> =COUNT(B25:K25)
+  M25 -> =IF(L25>=1,"Asignado","No Asignado")
+  N25 -> =IFERROR((VLOOKUP(R25,índice!$D$7:$K$17,8,0)),"-")
+  Q25 -> =IF(P25="","Acting",IF(IF(AA25=".  ",AC25,AA25)=0,"-",IF(AA25=".  ",AC25,AA25)))
+  T25 -> =IFERROR(VLOOKUP($P25,SAP!$A:$J,T$3,0),T26)
+  U25 -> =IFERROR(VLOOKUP(P25,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W25 -> =IFERROR(VLOOKUP($P25,SAP!$A:$J,W$3,0),"")
+  X25 -> =IFERROR(VLOOKUP($P25,SAP!$A:$J,X$3,0),"")
+  Y25 -> =IFERROR(VLOOKUP($P25,SAP!$A:$J,Y$3,0),"")
+  Z25 -> =LEFT(Y25,1)
+  AA25 -> =Z25&"."&" "&W25&" "&X25
+  AB25 -> =COUNTIFS($B$4:B25,B25)
+  AD25 -> =IF(S25=U25,"OK","ERROR")
+  AE25 -> =IFERROR(VLOOKUP(P25,SAP!$A:$P,16,0),"BAJA")
+  A26 -> =P26
+  L26 -> =COUNT(B26:K26)
+  M26 -> =IF(L26>=1,"Asignado","No Asignado")
+  N26 -> =IFERROR((VLOOKUP(R26,índice!$D$7:$K$17,8,0)),"-")
+  Q26 -> =IF(P26="","Acting",IF(IF(AA26=".  ",AC26,AA26)=0,"-",IF(AA26=".  ",AC26,AA26)))
+  T26 -> =IFERROR(VLOOKUP($P26,SAP!$A:$J,T$3,0),T27)
+  U26 -> =IFERROR(VLOOKUP(P26,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W26 -> =IFERROR(VLOOKUP($P26,SAP!$A:$J,W$3,0),"")
+  X26 -> =IFERROR(VLOOKUP($P26,SAP!$A:$J,X$3,0),"")
+  Y26 -> =IFERROR(VLOOKUP($P26,SAP!$A:$J,Y$3,0),"")
+  Z26 -> =LEFT(Y26,1)
+  AA26 -> =Z26&"."&" "&W26&" "&X26
+  AB26 -> =COUNTIFS($B$4:B26,B26)
+  AD26 -> =IF(S26=U26,"OK","ERROR")
+  AE26 -> =IFERROR(VLOOKUP(P26,SAP!$A:$P,16,0),"BAJA")
+  A27 -> =P27
+  L27 -> =COUNT(B27:K27)
+  M27 -> =IF(L27>=1,"Asignado","No Asignado")
+  N27 -> =IFERROR((VLOOKUP(R27,índice!$D$7:$K$17,8,0)),"-")
+  Q27 -> =IF(P27="","Acting",IF(IF(AA27=".  ",AC27,AA27)=0,"-",IF(AA27=".  ",AC27,AA27)))
+  T27 -> =IFERROR(VLOOKUP($P27,SAP!$A:$J,T$3,0),T28)
+  U27 -> =IFERROR(VLOOKUP(P27,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W27 -> =IFERROR(VLOOKUP($P27,SAP!$A:$J,W$3,0),"")
+  X27 -> =IFERROR(VLOOKUP($P27,SAP!$A:$J,X$3,0),"")
+  Y27 -> =IFERROR(VLOOKUP($P27,SAP!$A:$J,Y$3,0),"")
+  Z27 -> =LEFT(Y27,1)
+  AA27 -> =Z27&"."&" "&W27&" "&X27
+  AB27 -> =COUNTIFS($B$4:B27,B27)
+  AD27 -> =IF(S27=U27,"OK","ERROR")
+  AE27 -> =IFERROR(VLOOKUP(P27,SAP!$A:$P,16,0),"BAJA")
+  A28 -> =P28
+  L28 -> =COUNT(B28:K28)
+  M28 -> =IF(L28>=1,"Asignado","No Asignado")
+  N28 -> =IFERROR((VLOOKUP(R28,índice!$D$7:$K$17,8,0)),"-")
+  Q28 -> =IF(P28="","Acting",IF(IF(AA28=".  ",AC28,AA28)=0,"-",IF(AA28=".  ",AC28,AA28)))
+  T28 -> =IFERROR(VLOOKUP($P28,SAP!$A:$J,T$3,0),T29)
+  U28 -> =IFERROR(VLOOKUP(P28,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W28 -> =IFERROR(VLOOKUP($P28,SAP!$A:$J,W$3,0),"")
+  X28 -> =IFERROR(VLOOKUP($P28,SAP!$A:$J,X$3,0),"")
+  Y28 -> =IFERROR(VLOOKUP($P28,SAP!$A:$J,Y$3,0),"")
+  Z28 -> =LEFT(Y28,1)
+  AA28 -> =Z28&"."&" "&W28&" "&X28
+  AB28 -> =COUNTIFS($B$4:B28,B28)
+  AD28 -> =IF(S28=U28,"OK","ERROR")
+  AE28 -> =IFERROR(VLOOKUP(P28,SAP!$A:$P,16,0),"BAJA")
+  A29 -> =P29
+  L29 -> =COUNT(B29:K29)
+  M29 -> =IF(L29>=1,"Asignado","No Asignado")
+  N29 -> =IFERROR((VLOOKUP(R29,índice!$D$7:$K$17,8,0)),"-")
+  Q29 -> =IF(P29="","Acting",IF(IF(AA29=".  ",AC29,AA29)=0,"-",IF(AA29=".  ",AC29,AA29)))
+  T29 -> =IFERROR(VLOOKUP($P29,SAP!$A:$J,T$3,0),T30)
+  U29 -> =IFERROR(VLOOKUP(P29,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W29 -> =IFERROR(VLOOKUP($P29,SAP!$A:$J,W$3,0),"")
+  X29 -> =IFERROR(VLOOKUP($P29,SAP!$A:$J,X$3,0),"")
+  Y29 -> =IFERROR(VLOOKUP($P29,SAP!$A:$J,Y$3,0),"")
+  Z29 -> =LEFT(Y29,1)
+  AA29 -> =Z29&"."&" "&W29&" "&X29
+  AB29 -> =COUNTIFS($B$4:B29,B29)
+  AD29 -> =IF(S29=U29,"OK","ERROR")
+  AE29 -> =IFERROR(VLOOKUP(P29,SAP!$A:$P,16,0),"BAJA")
+  A30 -> =P30
+  L30 -> =COUNT(B30:K30)
+  M30 -> =IF(L30>=1,"Asignado","No Asignado")
+  N30 -> =IFERROR((VLOOKUP(R30,índice!$D$7:$K$17,8,0)),"-")
+  Q30 -> =IF(P30="","Acting",IF(IF(AA30=".  ",AC30,AA30)=0,"-",IF(AA30=".  ",AC30,AA30)))
+  T30 -> =IFERROR(VLOOKUP($P30,SAP!$A:$J,T$3,0),T31)
+  U30 -> =IFERROR(VLOOKUP(P30,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W30 -> =IFERROR(VLOOKUP($P30,SAP!$A:$J,W$3,0),"")
+  X30 -> =IFERROR(VLOOKUP($P30,SAP!$A:$J,X$3,0),"")
+  Y30 -> =IFERROR(VLOOKUP($P30,SAP!$A:$J,Y$3,0),"")
+  Z30 -> =LEFT(Y30,1)
+  AA30 -> =Z30&"."&" "&W30&" "&X30
+  AB30 -> =COUNTIFS($B$4:B30,B30)
+  AD30 -> =IF(S30=U30,"OK","ERROR")
+  AE30 -> =IFERROR(VLOOKUP(P30,SAP!$A:$P,16,0),"BAJA")
+  A31 -> =P31
+  L31 -> =COUNT(B31:K31)
+  M31 -> =IF(L31>=1,"Asignado","No Asignado")
+  N31 -> =IFERROR((VLOOKUP(R31,índice!$D$7:$K$17,8,0)),"-")
+  Q31 -> =IF(P31="","Acting",IF(IF(AA31=".  ",AC31,AA31)=0,"-",IF(AA31=".  ",AC31,AA31)))
+  T31 -> =IFERROR(VLOOKUP($P31,SAP!$A:$J,T$3,0),T32)
+  U31 -> =IFERROR(VLOOKUP(P31,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W31 -> =IFERROR(VLOOKUP($P31,SAP!$A:$J,W$3,0),"")
+  X31 -> =IFERROR(VLOOKUP($P31,SAP!$A:$J,X$3,0),"")
+  Y31 -> =IFERROR(VLOOKUP($P31,SAP!$A:$J,Y$3,0),"")
+  Z31 -> =LEFT(Y31,1)
+  AA31 -> =Z31&"."&" "&W31&" "&X31
+  AB31 -> =COUNTIFS($B$4:B31,B31)
+  AD31 -> =IF(S31=U31,"OK","ERROR")
+  AE31 -> =IFERROR(VLOOKUP(P31,SAP!$A:$P,16,0),"BAJA")
+  A32 -> =P32
+  L32 -> =COUNT(B32:K32)
+  M32 -> =IF(L32>=1,"Asignado","No Asignado")
+  N32 -> =IFERROR((VLOOKUP(R32,índice!$D$7:$K$17,8,0)),"-")
+  Q32 -> =IF(P32="","Acting",IF(IF(AA32=".  ",AC32,AA32)=0,"-",IF(AA32=".  ",AC32,AA32)))
+  T32 -> =IFERROR(VLOOKUP($P32,SAP!$A:$J,T$3,0),T33)
+  U32 -> =IFERROR(VLOOKUP(P32,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W32 -> =IFERROR(VLOOKUP($P32,SAP!$A:$J,W$3,0),"")
+  X32 -> =IFERROR(VLOOKUP($P32,SAP!$A:$J,X$3,0),"")
+  Y32 -> =IFERROR(VLOOKUP($P32,SAP!$A:$J,Y$3,0),"")
+  Z32 -> =LEFT(Y32,1)
+  AA32 -> =Z32&"."&" "&W32&" "&X32
+  AB32 -> =COUNTIFS($B$4:B32,B32)
+  AD32 -> =IF(S32=U32,"OK","ERROR")
+  AE32 -> =IFERROR(VLOOKUP(P32,SAP!$A:$P,16,0),"BAJA")
+  A33 -> =P33
+  L33 -> =COUNT(B33:K33)
+  M33 -> =IF(L33>=1,"Asignado","No Asignado")
+  N33 -> =IFERROR((VLOOKUP(R33,índice!$D$7:$K$17,8,0)),"-")
+  Q33 -> =IF(P33="","Acting",IF(IF(AA33=".  ",AC33,AA33)=0,"-",IF(AA33=".  ",AC33,AA33)))
+  T33 -> =IFERROR(VLOOKUP($P33,SAP!$A:$J,T$3,0),T34)
+  U33 -> =IFERROR(VLOOKUP(P33,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W33 -> =IFERROR(VLOOKUP($P33,SAP!$A:$J,W$3,0),"")
+  X33 -> =IFERROR(VLOOKUP($P33,SAP!$A:$J,X$3,0),"")
+  Y33 -> =IFERROR(VLOOKUP($P33,SAP!$A:$J,Y$3,0),"")
+  Z33 -> =LEFT(Y33,1)
+  AA33 -> =Z33&"."&" "&W33&" "&X33
+  AB33 -> =COUNTIFS($B$4:B33,B33)
+  AD33 -> =IF(S33=U33,"OK","ERROR")
+  AE33 -> =IFERROR(VLOOKUP(P33,SAP!$A:$P,16,0),"BAJA")
+  A34 -> =P34
+  L34 -> =COUNT(B34:K34)
+  M34 -> =IF(L34>=1,"Asignado","No Asignado")
+  N34 -> =IFERROR((VLOOKUP(R34,índice!$D$7:$K$17,8,0)),"-")
+  Q34 -> =IF(P34="","Acting",IF(IF(AA34=".  ",AC34,AA34)=0,"-",IF(AA34=".  ",AC34,AA34)))
+  T34 -> =IFERROR(VLOOKUP($P34,SAP!$A:$J,T$3,0),T35)
+  U34 -> =IFERROR(VLOOKUP(P34,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W34 -> =IFERROR(VLOOKUP($P34,SAP!$A:$J,W$3,0),"")
+  X34 -> =IFERROR(VLOOKUP($P34,SAP!$A:$J,X$3,0),"")
+  Y34 -> =IFERROR(VLOOKUP($P34,SAP!$A:$J,Y$3,0),"")
+  Z34 -> =LEFT(Y34,1)
+  AA34 -> =Z34&"."&" "&W34&" "&X34
+  AB34 -> =COUNTIFS($B$4:B34,B34)
+  AD34 -> =IF(S34=U34,"OK","ERROR")
+  AE34 -> =IFERROR(VLOOKUP(P34,SAP!$A:$P,16,0),"BAJA")
+  A35 -> =P35
+  L35 -> =COUNT(B35:K35)
+  M35 -> =IF(L35>=1,"Asignado","No Asignado")
+  N35 -> =IFERROR((VLOOKUP(R35,índice!$D$7:$K$17,8,0)),"-")
+  Q35 -> =IF(P35="","Acting",IF(IF(AA35=".  ",AC35,AA35)=0,"-",IF(AA35=".  ",AC35,AA35)))
+  T35 -> =IFERROR(VLOOKUP($P35,SAP!$A:$J,T$3,0),T36)
+  U35 -> =IFERROR(VLOOKUP(P35,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W35 -> =IFERROR(VLOOKUP($P35,SAP!$A:$J,W$3,0),"")
+  X35 -> =IFERROR(VLOOKUP($P35,SAP!$A:$J,X$3,0),"")
+  Y35 -> =IFERROR(VLOOKUP($P35,SAP!$A:$J,Y$3,0),"")
+  Z35 -> =LEFT(Y35,1)
+  AA35 -> =Z35&"."&" "&W35&" "&X35
+  AB35 -> =COUNTIFS($B$4:B35,B35)
+  AD35 -> =IF(S35=U35,"OK","ERROR")
+  AE35 -> =IFERROR(VLOOKUP(P35,SAP!$A:$P,16,0),"BAJA")
+  A36 -> =P36
+  L36 -> =COUNT(B36:K36)
+  M36 -> =IF(L36>=1,"Asignado","No Asignado")
+  N36 -> =IFERROR((VLOOKUP(R36,índice!$D$7:$K$17,8,0)),"-")
+  Q36 -> =IF(P36="","Acting",IF(IF(AA36=".  ",AC36,AA36)=0,"-",IF(AA36=".  ",AC36,AA36)))
+  T36 -> =IFERROR(VLOOKUP($P36,SAP!$A:$J,T$3,0),T37)
+  U36 -> =IFERROR(VLOOKUP(P36,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W36 -> =IFERROR(VLOOKUP($P36,SAP!$A:$J,W$3,0),"")
+  X36 -> =IFERROR(VLOOKUP($P36,SAP!$A:$J,X$3,0),"")
+  Y36 -> =IFERROR(VLOOKUP($P36,SAP!$A:$J,Y$3,0),"")
+  Z36 -> =LEFT(Y36,1)
+  AA36 -> =Z36&"."&" "&W36&" "&X36
+  AB36 -> =COUNTIFS($B$4:B36,B36)
+  AD36 -> =IF(S36=U36,"OK","ERROR")
+  AE36 -> =IFERROR(VLOOKUP(P36,SAP!$A:$P,16,0),"BAJA")
+  A37 -> =P37
+  L37 -> =COUNT(B37:K37)
+  M37 -> =IF(L37>=1,"Asignado","No Asignado")
+  N37 -> =IFERROR((VLOOKUP(R37,índice!$D$7:$K$17,8,0)),"-")
+  Q37 -> =IF(P37="","Acting",IF(IF(AA37=".  ",AC37,AA37)=0,"-",IF(AA37=".  ",AC37,AA37)))
+  T37 -> =IFERROR(VLOOKUP($P37,SAP!$A:$J,T$3,0),T38)
+  U37 -> =IFERROR(VLOOKUP(P37,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W37 -> =IFERROR(VLOOKUP($P37,SAP!$A:$J,W$3,0),"")
+  X37 -> =IFERROR(VLOOKUP($P37,SAP!$A:$J,X$3,0),"")
+  Y37 -> =IFERROR(VLOOKUP($P37,SAP!$A:$J,Y$3,0),"")
+  Z37 -> =LEFT(Y37,1)
+  AA37 -> =Z37&"."&" "&W37&" "&X37
+  AB37 -> =COUNTIFS($B$4:B37,B37)
+  AD37 -> =IF(S37=U37,"OK","ERROR")
+  AE37 -> =IFERROR(VLOOKUP(P37,SAP!$A:$P,16,0),"BAJA")
+  A38 -> =P38
+  L38 -> =COUNT(B38:K38)
+  M38 -> =IF(L38>=1,"Asignado","No Asignado")
+  N38 -> =IFERROR((VLOOKUP(R38,índice!$D$7:$K$17,8,0)),"-")
+  Q38 -> =IF(P38="","Acting",IF(IF(AA38=".  ",AC38,AA38)=0,"-",IF(AA38=".  ",AC38,AA38)))
+  T38 -> =IFERROR(VLOOKUP($P38,SAP!$A:$J,T$3,0),T39)
+  U38 -> =IFERROR(VLOOKUP(P38,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W38 -> =IFERROR(VLOOKUP($P38,SAP!$A:$J,W$3,0),"")
+  X38 -> =IFERROR(VLOOKUP($P38,SAP!$A:$J,X$3,0),"")
+  Y38 -> =IFERROR(VLOOKUP($P38,SAP!$A:$J,Y$3,0),"")
+  Z38 -> =LEFT(Y38,1)
+  AA38 -> =Z38&"."&" "&W38&" "&X38
+  AB38 -> =COUNTIFS($B$4:B38,B38)
+  AD38 -> =IF(S38=U38,"OK","ERROR")
+  AE38 -> =IFERROR(VLOOKUP(P38,SAP!$A:$P,16,0),"BAJA")
+  A39 -> =P39
+  L39 -> =COUNT(B39:K39)
+  M39 -> =IF(L39>=1,"Asignado","No Asignado")
+  N39 -> =IFERROR((VLOOKUP(R39,índice!$D$7:$K$17,8,0)),"-")
+  Q39 -> =IF(P39="","Acting",IF(IF(AA39=".  ",AC39,AA39)=0,"-",IF(AA39=".  ",AC39,AA39)))
+  T39 -> =IFERROR(VLOOKUP($P39,SAP!$A:$J,T$3,0),T40)
+  U39 -> =IFERROR(VLOOKUP(P39,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W39 -> =IFERROR(VLOOKUP($P39,SAP!$A:$J,W$3,0),"")
+  X39 -> =IFERROR(VLOOKUP($P39,SAP!$A:$J,X$3,0),"")
+  Y39 -> =IFERROR(VLOOKUP($P39,SAP!$A:$J,Y$3,0),"")
+  Z39 -> =LEFT(Y39,1)
+  AA39 -> =Z39&"."&" "&W39&" "&X39
+  AB39 -> =COUNTIFS($B$4:B39,B39)
+  AD39 -> =IF(S39=U39,"OK","ERROR")
+  AE39 -> =IFERROR(VLOOKUP(P39,SAP!$A:$P,16,0),"BAJA")
+  A40 -> =P40
+  L40 -> =COUNT(B40:K40)
+  M40 -> =IF(L40>=1,"Asignado","No Asignado")
+  N40 -> =IFERROR((VLOOKUP(R40,índice!$D$7:$K$17,8,0)),"-")
+  Q40 -> =IF(P40="","Acting",IF(IF(AA40=".  ",AC40,AA40)=0,"-",IF(AA40=".  ",AC40,AA40)))
+  T40 -> =IFERROR(VLOOKUP($P40,SAP!$A:$J,T$3,0),T41)
+  U40 -> =IFERROR(VLOOKUP(P40,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W40 -> =IFERROR(VLOOKUP($P40,SAP!$A:$J,W$3,0),"")
+  X40 -> =IFERROR(VLOOKUP($P40,SAP!$A:$J,X$3,0),"")
+  Y40 -> =IFERROR(VLOOKUP($P40,SAP!$A:$J,Y$3,0),"")
+  Z40 -> =LEFT(Y40,1)
+  AA40 -> =Z40&"."&" "&W40&" "&X40
+  AB40 -> =COUNTIFS($B$4:B40,B40)
+  AD40 -> =IF(S40=U40,"OK","ERROR")
+  AE40 -> =IFERROR(VLOOKUP(P40,SAP!$A:$P,16,0),"BAJA")
+  A41 -> =P41
+  L41 -> =COUNT(B41:K41)
+  M41 -> =IF(L41>=1,"Asignado","No Asignado")
+  N41 -> =IFERROR((VLOOKUP(R41,índice!$D$7:$K$17,8,0)),"-")
+  Q41 -> =IF(P41="","Acting",IF(IF(AA41=".  ",AC41,AA41)=0,"-",IF(AA41=".  ",AC41,AA41)))
+  T41 -> =IFERROR(VLOOKUP($P41,SAP!$A:$J,T$3,0),T42)
+  U41 -> =IFERROR(VLOOKUP(P41,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W41 -> =IFERROR(VLOOKUP($P41,SAP!$A:$J,W$3,0),"")
+  X41 -> =IFERROR(VLOOKUP($P41,SAP!$A:$J,X$3,0),"")
+  Y41 -> =IFERROR(VLOOKUP($P41,SAP!$A:$J,Y$3,0),"")
+  Z41 -> =LEFT(Y41,1)
+  AA41 -> =Z41&"."&" "&W41&" "&X41
+  AB41 -> =COUNTIFS($B$4:B41,B41)
+  AD41 -> =IF(S41=U41,"OK","ERROR")
+  AE41 -> =IFERROR(VLOOKUP(P41,SAP!$A:$P,16,0),"BAJA")
+  A42 -> =P42
+  L42 -> =COUNT(B42:K42)
+  M42 -> =IF(L42>=1,"Asignado","No Asignado")
+  N42 -> =IFERROR((VLOOKUP(R42,índice!$D$7:$K$17,8,0)),"-")
+  Q42 -> =IF(P42="","Acting",IF(IF(AA42=".  ",AC42,AA42)=0,"-",IF(AA42=".  ",AC42,AA42)))
+  T42 -> =IFERROR(VLOOKUP($P42,SAP!$A:$J,T$3,0),T43)
+  U42 -> =IFERROR(VLOOKUP(P42,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W42 -> =IFERROR(VLOOKUP($P42,SAP!$A:$J,W$3,0),"")
+  X42 -> =IFERROR(VLOOKUP($P42,SAP!$A:$J,X$3,0),"")
+  Y42 -> =IFERROR(VLOOKUP($P42,SAP!$A:$J,Y$3,0),"")
+  Z42 -> =LEFT(Y42,1)
+  AA42 -> =Z42&"."&" "&W42&" "&X42
+  AB42 -> =COUNTIFS($B$4:B42,B42)
+  AD42 -> =IF(S42=U42,"OK","ERROR")
+  AE42 -> =IFERROR(VLOOKUP(P42,SAP!$A:$P,16,0),"BAJA")
+  A43 -> =P43
+  L43 -> =COUNT(B43:K43)
+  M43 -> =IF(L43>=1,"Asignado","No Asignado")
+  N43 -> =IFERROR((VLOOKUP(R43,índice!$D$7:$K$17,8,0)),"-")
+  Q43 -> =IF(P43="","Acting",IF(IF(AA43=".  ",AC43,AA43)=0,"-",IF(AA43=".  ",AC43,AA43)))
+  T43 -> =IFERROR(VLOOKUP($P43,SAP!$A:$J,T$3,0),T44)
+  U43 -> =IFERROR(VLOOKUP(P43,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W43 -> =IFERROR(VLOOKUP($P43,SAP!$A:$J,W$3,0),"")
+  X43 -> =IFERROR(VLOOKUP($P43,SAP!$A:$J,X$3,0),"")
+  Y43 -> =IFERROR(VLOOKUP($P43,SAP!$A:$J,Y$3,0),"")
+  Z43 -> =LEFT(Y43,1)
+  AA43 -> =Z43&"."&" "&W43&" "&X43
+  AB43 -> =COUNTIFS($B$4:B43,B43)
+  AD43 -> =IF(S43=U43,"OK","ERROR")
+  AE43 -> =IFERROR(VLOOKUP(P43,SAP!$A:$P,16,0),"BAJA")
+  A44 -> =P44
+  L44 -> =COUNT(B44:K44)
+  M44 -> =IF(L44>=1,"Asignado","No Asignado")
+  N44 -> =IFERROR((VLOOKUP(R44,índice!$D$7:$K$17,8,0)),"-")
+  Q44 -> =IF(P44="","Acting",IF(IF(AA44=".  ",AC44,AA44)=0,"-",IF(AA44=".  ",AC44,AA44)))
+  T44 -> =IFERROR(VLOOKUP($P44,SAP!$A:$J,T$3,0),T45)
+  U44 -> =IFERROR(VLOOKUP(P44,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W44 -> =IFERROR(VLOOKUP($P44,SAP!$A:$J,W$3,0),"")
+  X44 -> =IFERROR(VLOOKUP($P44,SAP!$A:$J,X$3,0),"")
+  Y44 -> =IFERROR(VLOOKUP($P44,SAP!$A:$J,Y$3,0),"")
+  Z44 -> =LEFT(Y44,1)
+  AA44 -> =Z44&"."&" "&W44&" "&X44
+  AB44 -> =COUNTIFS($B$4:B44,B44)
+  AD44 -> =IF(S44=U44,"OK","ERROR")
+  AE44 -> =IFERROR(VLOOKUP(P44,SAP!$A:$P,16,0),"BAJA")
+  A45 -> =P45
+  L45 -> =COUNT(B45:K45)
+  M45 -> =IF(L45>=1,"Asignado","No Asignado")
+  N45 -> =IFERROR((VLOOKUP(R45,índice!$D$7:$K$17,8,0)),"-")
+  Q45 -> =IF(P45="","Acting",IF(IF(AA45=".  ",AC45,AA45)=0,"-",IF(AA45=".  ",AC45,AA45)))
+  T45 -> =IFERROR(VLOOKUP($P45,SAP!$A:$J,T$3,0),T46)
+  U45 -> =IFERROR(VLOOKUP(P45,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W45 -> =IFERROR(VLOOKUP($P45,SAP!$A:$J,W$3,0),"")
+  X45 -> =IFERROR(VLOOKUP($P45,SAP!$A:$J,X$3,0),"")
+  Y45 -> =IFERROR(VLOOKUP($P45,SAP!$A:$J,Y$3,0),"")
+  Z45 -> =LEFT(Y45,1)
+  AA45 -> =Z45&"."&" "&W45&" "&X45
+  AB45 -> =COUNTIFS($B$4:B45,B45)
+  AD45 -> =IF(S45=U45,"OK","ERROR")
+  AE45 -> =IFERROR(VLOOKUP(P45,SAP!$A:$P,16,0),"BAJA")
+  A46 -> =P46
+  L46 -> =COUNT(B46:K46)
+  M46 -> =IF(L46>=1,"Asignado","No Asignado")
+  N46 -> =IFERROR((VLOOKUP(R46,índice!$D$7:$K$17,8,0)),"-")
+  Q46 -> =IF(P46="","Acting",IF(IF(AA46=".  ",AC46,AA46)=0,"-",IF(AA46=".  ",AC46,AA46)))
+  T46 -> =IFERROR(VLOOKUP($P46,SAP!$A:$J,T$3,0),T47)
+  U46 -> =IFERROR(VLOOKUP(P46,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W46 -> =IFERROR(VLOOKUP($P46,SAP!$A:$J,W$3,0),"")
+  X46 -> =IFERROR(VLOOKUP($P46,SAP!$A:$J,X$3,0),"")
+  Y46 -> =IFERROR(VLOOKUP($P46,SAP!$A:$J,Y$3,0),"")
+  Z46 -> =LEFT(Y46,1)
+  AA46 -> =Z46&"."&" "&W46&" "&X46
+  AB46 -> =COUNTIFS($B$4:B46,B46)
+  AD46 -> =IF(S46=U46,"OK","ERROR")
+  AE46 -> =IFERROR(VLOOKUP(P46,SAP!$A:$P,16,0),"BAJA")
+  A47 -> =P47
+  L47 -> =COUNT(B47:K47)
+  M47 -> =IF(L47>=1,"Asignado","No Asignado")
+  N47 -> =IFERROR((VLOOKUP(R47,índice!$D$7:$K$17,8,0)),"-")
+  Q47 -> =IF(P47="","Acting",IF(IF(AA47=".  ",AC47,AA47)=0,"-",IF(AA47=".  ",AC47,AA47)))
+  T47 -> =IFERROR(VLOOKUP($P47,SAP!$A:$J,T$3,0),T48)
+  U47 -> =IFERROR(VLOOKUP(P47,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W47 -> =IFERROR(VLOOKUP($P47,SAP!$A:$J,W$3,0),"")
+  X47 -> =IFERROR(VLOOKUP($P47,SAP!$A:$J,X$3,0),"")
+  Y47 -> =IFERROR(VLOOKUP($P47,SAP!$A:$J,Y$3,0),"")
+  Z47 -> =LEFT(Y47,1)
+  AA47 -> =Z47&"."&" "&W47&" "&X47
+  AB47 -> =COUNTIFS($B$4:B47,B47)
+  AD47 -> =IF(S47=U47,"OK","ERROR")
+  AE47 -> =IFERROR(VLOOKUP(P47,SAP!$A:$P,16,0),"BAJA")
+  A48 -> =P48
+  L48 -> =COUNT(B48:K48)
+  M48 -> =IF(L48>=1,"Asignado","No Asignado")
+  N48 -> =IFERROR((VLOOKUP(R48,índice!$D$7:$K$17,8,0)),"-")
+  Q48 -> =IF(P48="","Acting",IF(IF(AA48=".  ",AC48,AA48)=0,"-",IF(AA48=".  ",AC48,AA48)))
+  T48 -> =IFERROR(VLOOKUP($P48,SAP!$A:$J,T$3,0),T49)
+  U48 -> =IFERROR(VLOOKUP(P48,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W48 -> =IFERROR(VLOOKUP($P48,SAP!$A:$J,W$3,0),"")
+  X48 -> =IFERROR(VLOOKUP($P48,SAP!$A:$J,X$3,0),"")
+  Y48 -> =IFERROR(VLOOKUP($P48,SAP!$A:$J,Y$3,0),"")
+  Z48 -> =LEFT(Y48,1)
+  AA48 -> =Z48&"."&" "&W48&" "&X48
+  AB48 -> =COUNTIFS($B$4:B48,B48)
+  AD48 -> =IF(S48=U48,"OK","ERROR")
+  AE48 -> =IFERROR(VLOOKUP(P48,SAP!$A:$P,16,0),"BAJA")
+  A49 -> =P49
+  L49 -> =COUNT(B49:K49)
+  M49 -> =IF(L49>=1,"Asignado","No Asignado")
+  N49 -> =IFERROR((VLOOKUP(R49,índice!$D$7:$K$17,8,0)),"-")
+  Q49 -> =IF(P49="","Acting",IF(IF(AA49=".  ",AC49,AA49)=0,"-",IF(AA49=".  ",AC49,AA49)))
+  T49 -> =IFERROR(VLOOKUP($P49,SAP!$A:$J,T$3,0),T50)
+  U49 -> =IFERROR(VLOOKUP(P49,SAP!A:F,6,0),"FALTA EN REPORTE SAP")
+  W49 -> =IFERROR(VLOOKUP($P49,SAP!$A:$J,W$3,0),"")
+  X49 -> =IFERROR(VLOOKUP($P49,SAP!$A:$J,X$3,0),"")
+  Y49 -> =IFERROR(VLOOKUP($P49,SAP!$A:$J,Y$3,0),"")
+  Z49 -> =LEFT(Y49,1)
+  AA49 -> =Z49&"."&" "&W49&" "&X49
+  AB49 -> =COUNTIFS($B$4:B49,B49)
+  AD49 -> =IF(S49=U49,"OK","ERROR")
+  AE49 -> =IFERROR(VLOOKUP(P49,SAP!$A:$P,16,0),"BAJA")
+  A50 -> =P50
+  L50 -> =COUNT(B50:K50)
+  M50 -> =IF(L50>=1,"Asignado","No Asignado")
+  N50 -> =IFERROR((VLOOKUP(R50,índice!$D$7:$K$17,8,0)),"-")
+  A51 -> =P51
+  L51 -> =COUNT(B51:K51)
+  M51 -> =IF(L51>=1,"Asignado","No Asignado")
+  N51 -> =IFERROR((VLOOKUP(R51,índice!$D$7:$K$17,8,0)),"-")
+  A52 -> =P52
+  L52 -> =COUNT(B52:K52)
+  M52 -> =IF(L52>=1,"Asignado","No Asignado")
+  N52 -> =IFERROR((VLOOKUP(R52,índice!$D$7:$K$17,8,0)),"-")
+  A53 -> =P53
+  L53 -> =COUNT(B53:K53)
+  M53 -> =IF(L53>=1,"Asignado","No Asignado")
+  N53 -> =IFERROR((VLOOKUP(R53,índice!$D$7:$K$17,8,0)),"-")
+  A54 -> =P54
+  L54 -> =COUNT(B54:K54)
+  M54 -> =IF(L54>=1,"Asignado","No Asignado")
+  N54 -> =IFERROR((VLOOKUP(R54,índice!$D$7:$K$17,8,0)),"-")
+  A55 -> =P55
+  L55 -> =COUNT(B55:K55)
+  M55 -> =IF(L55>=1,"Asignado","No Asignado")
+  N55 -> =IFERROR((VLOOKUP(R55,índice!$D$7:$K$17,8,0)),"-")
+  A56 -> =P56
+  L56 -> =COUNT(B56:K56)
+  M56 -> =IF(L56>=1,"Asignado","No Asignado")
+  N56 -> =IFERROR((VLOOKUP(R56,índice!$D$7:$K$17,8,0)),"-")
+  A57 -> =P57
+  L57 -> =COUNT(B57:K57)
+  M57 -> =IF(L57>=1,"Asignado","No Asignado")
+  N57 -> =IFERROR((VLOOKUP(R57,índice!$D$7:$K$17,8,0)),"-")
+  A58 -> =P58
+  L58 -> =COUNT(B58:K58)
+  M58 -> =IF(L58>=1,"Asignado","No Asignado")
+  N58 -> =IFERROR((VLOOKUP(R58,índice!$D$7:$K$17,8,0)),"-")
+  A59 -> =P59
+  L59 -> =COUNT(B59:K59)
+  M59 -> =IF(L59>=1,"Asignado","No Asignado")
+  N59 -> =IFERROR((VLOOKUP(R59,índice!$D$7:$K$17,8,0)),"-")
+  A60 -> =P60
+  L60 -> =COUNT(B60:K60)
+  M60 -> =IF(L60>=1,"Asignado","No Asignado")
+  N60 -> =IFERROR((VLOOKUP(R60,índice!$D$7:$K$17,8,0)),"-")
+  A61 -> =P61
+  L61 -> =COUNT(B61:K61)
+  M61 -> =IF(L61>=1,"Asignado","No Asignado")
+  N61 -> =IFERROR((VLOOKUP(R61,índice!$D$7:$K$17,8,0)),"-")
+  A62 -> =P62
+  L62 -> =COUNT(B62:K62)
+  M62 -> =IF(L62>=1,"Asignado","No Asignado")
+  N62 -> =IFERROR((VLOOKUP(R62,índice!$D$7:$K$17,8,0)),"-")
+  A63 -> =P63
+  L63 -> =COUNT(B63:K63)
+  M63 -> =IF(L63>=1,"Asignado","No Asignado")
+  N63 -> =IFERROR((VLOOKUP(R63,índice!$D$7:$K$17,8,0)),"-")
+  A64 -> =P64
+  L64 -> =COUNT(B64:K64)
+  M64 -> =IF(L64>=1,"Asignado","No Asignado")
+  N64 -> =IFERROR((VLOOKUP(R64,índice!$D$7:$K$17,8,0)),"-")
+  A65 -> =P65
+  L65 -> =COUNT(B65:K65)
+  M65 -> =IF(L65>=1,"Asignado","No Asignado")
+  N65 -> =IFERROR((VLOOKUP(R65,índice!$D$7:$K$17,8,0)),"-")
+  A66 -> =P66
+  L66 -> =COUNT(B66:K66)
+  M66 -> =IF(L66>=1,"Asignado","No Asignado")
+  N66 -> =IFERROR((VLOOKUP(R66,índice!$D$7:$K$17,8,0)),"-")
+  A67 -> =P67
+  L67 -> =COUNT(B67:K67)
+  M67 -> =IF(L67>=1,"Asignado","No Asignado")
+  N67 -> =IFERROR((VLOOKUP(R67,índice!$D$7:$K$17,8,0)),"-")
+  A68 -> =P68
+  L68 -> =COUNT(B68:K68)
+  M68 -> =IF(L68>=1,"Asignado","No Asignado")
+  N68 -> =IFERROR((VLOOKUP(R68,índice!$D$7:$K$17,8,0)),"-")
+  A69 -> =P69
+  L69 -> =COUNT(B69:K69)
+  M69 -> =IF(L69>=1,"Asignado","No Asignado")
+  N69 -> =IFERROR((VLOOKUP(R69,índice!$D$7:$K$17,8,0)),"-")
+  A70 -> =P70
+  L70 -> =COUNT(B70:K70)
+  M70 -> =IF(L70>=1,"Asignado","No Asignado")
+  N70 -> =IFERROR((VLOOKUP(R70,índice!$D$7:$K$17,8,0)),"-")
+  A71 -> =P71
+  L71 -> =COUNT(B71:K71)
+  M71 -> =IF(L71>=1,"Asignado","No Asignado")
+  N71 -> =IFERROR((VLOOKUP(R71,índice!$D$7:$K$17,8,0)),"-")
+  A72 -> =P72
+  L72 -> =COUNT(B72:K72)
+  M72 -> =IF(L72>=1,"Asignado","No Asignado")
+  N72 -> =IFERROR((VLOOKUP(R72,índice!$D$7:$K$17,8,0)),"-")
+  A73 -> =P73
+  L73 -> =COUNT(B73:K73)
+  M73 -> =IF(L73>=1,"Asignado","No Asignado")
+  N73 -> =IFERROR((VLOOKUP(R73,índice!$D$7:$K$17,8,0)),"-")
+  A74 -> =P74
+  L74 -> =COUNT(B74:K74)
+  M74 -> =IF(L74>=1,"Asignado","No Asignado")
+  N74 -> =IFERROR((VLOOKUP(R74,índice!$D$7:$K$17,8,0)),"-")
+  A75 -> =P75
+  L75 -> =COUNT(B75:K75)
+  M75 -> =IF(L75>=1,"Asignado","No Asignado")
+  N75 -> =IFERROR((VLOOKUP(R75,índice!$D$7:$K$17,8,0)),"-")
+  A76 -> =P76
+  L76 -> =COUNT(B76:K76)
+  M76 -> =IF(L76>=1,"Asignado","No Asignado")
+  N76 -> =IFERROR((VLOOKUP(R76,índice!$D$7:$K$17,8,0)),"-")
+  A77 -> =P77
+  L77 -> =COUNT(B77:K77)
+  M77 -> =IF(L77>=1,"Asignado","No Asignado")
+  N77 -> =IFERROR((VLOOKUP(R77,índice!$D$7:$K$17,8,0)),"-")
+  A78 -> =P78
+  L78 -> =COUNT(B78:K78)
+  M78 -> =IF(L78>=1,"Asignado","No Asignado")
+  N78 -> =IFERROR((VLOOKUP(R78,índice!$D$7:$K$17,8,0)),"-")
+  A79 -> =P79
+  L79 -> =COUNT(B79:K79)
+  M79 -> =IF(L79>=1,"Asignado","No Asignado")
+  N79 -> =IFERROR((VLOOKUP(R79,índice!$D$7:$K$17,8,0)),"-")
+  A80 -> =P80
+  L80 -> =COUNT(B80:K80)
+  M80 -> =IF(L80>=1,"Asignado","No Asignado")
+  N80 -> =IFERROR((VLOOKUP(R80,índice!$D$7:$K$17,8,0)),"-")
+  A81 -> =P81
+  L81 -> =COUNT(B81:K81)
+  M81 -> =IF(L81>=1,"Asignado","No Asignado")
+  N81 -> =IFERROR((VLOOKUP(R81,índice!$D$7:$K$17,8,0)),"-")
+  A82 -> =P82
+  L82 -> =COUNT(B82:K82)
+  M82 -> =IF(L82>=1,"Asignado","No Asignado")
+  N82 -> =IFERROR((VLOOKUP(R82,índice!$D$7:$K$17,8,0)),"-")
+  A83 -> =P83
+  L83 -> =COUNT(B83:K83)
+  M83 -> =IF(L83>=1,"Asignado","No Asignado")
+  N83 -> =IFERROR((VLOOKUP(R83,índice!$D$7:$K$17,8,0)),"-")
+  A84 -> =P84
+  L84 -> =COUNT(B84:K84)
+  M84 -> =IF(L84>=1,"Asignado","No Asignado")
+  N84 -> =IFERROR((VLOOKUP(R84,índice!$D$7:$K$17,8,0)),"-")
+  A85 -> =P85
+  L85 -> =COUNT(B85:K85)
+  M85 -> =IF(L85>=1,"Asignado","No Asignado")
+  N85 -> =IFERROR((VLOOKUP(R85,índice!$D$7:$K$17,8,0)),"-")
+  L86 -> =COUNT(B86:K86)
+  M86 -> =IF(L86>=1,"Asignado","No Asignado")
+  N86 -> =IFERROR((VLOOKUP(R86,índice!$D$7:$K$17,8,0)),"-")
+  L87 -> =COUNT(B87:K87)
+  M87 -> =IF(L87>=1,"Asignado","No Asignado")
+  N87 -> =IFERROR((VLOOKUP(R87,índice!$D$7:$K$17,8,0)),"-")
+  L88 -> =COUNT(B88:K88)
+  M88 -> =IF(L88>=1,"Asignado","No Asignado")
+  N88 -> =IFERROR((VLOOKUP(R88,índice!$D$7:$K$17,8,0)),"-")
+  L89 -> =COUNT(B89:K89)
+  M89 -> =IF(L89>=1,"Asignado","No Asignado")
+  N89 -> =IFERROR((VLOOKUP(R89,índice!$D$7:$K$17,8,0)),"-")
+  L90 -> =COUNT(B90:K90)
+  M90 -> =IF(L90>=1,"Asignado","No Asignado")
+  N90 -> =IFERROR((VLOOKUP(R90,índice!$D$7:$K$17,8,0)),"-")
+  L91 -> =COUNT(B91:K91)
+  M91 -> =IF(L91>=1,"Asignado","No Asignado")
+  N91 -> =IFERROR((VLOOKUP(R91,índice!$D$7:$K$17,8,0)),"-")
+  L92 -> =COUNT(B92:K92)
+  M92 -> =IF(L92>=1,"Asignado","No Asignado")
+  N92 -> =IFERROR((VLOOKUP(R92,índice!$D$7:$K$17,8,0)),"-")
+  L93 -> =COUNT(B93:K93)
+  M93 -> =IF(L93>=1,"Asignado","No Asignado")
+  N93 -> =IFERROR((VLOOKUP(R93,índice!$D$7:$K$17,8,0)),"-")
+  L94 -> =COUNT(B94:K94)
+  M94 -> =IF(L94>=1,"Asignado","No Asignado")
+  N94 -> =IFERROR((VLOOKUP(R94,índice!$D$7:$K$17,8,0)),"-")
+  L95 -> =COUNT(B95:K95)
+  M95 -> =IF(L95>=1,"Asignado","No Asignado")
+  N95 -> =IFERROR((VLOOKUP(R95,índice!$D$7:$K$17,8,0)),"-")
+  L96 -> =COUNT(B96:K96)
+  M96 -> =IF(L96>=1,"Asignado","No Asignado")
+  N96 -> =IFERROR((VLOOKUP(R96,índice!$D$7:$K$17,8,0)),"-")
+  L97 -> =COUNT(B97:K97)
+  M97 -> =IF(L97>=1,"Asignado","No Asignado")
+  N97 -> =IFERROR((VLOOKUP(R97,índice!$D$7:$K$17,8,0)),"-")
+  L98 -> =COUNT(B98:K98)
+  M98 -> =IF(L98>=1,"Asignado","No Asignado")
+  N98 -> =IFERROR((VLOOKUP(R98,índice!$D$7:$K$17,8,0)),"-")
+  L99 -> =COUNT(B99:K99)
+  M99 -> =IF(L99>=1,"Asignado","No Asignado")
+  N99 -> =IFERROR((VLOOKUP(R99,índice!$D$7:$K$17,8,0)),"-")
+  L100 -> =COUNT(B100:K100)
+  M100 -> =IF(L100>=1,"Asignado","No Asignado")
+  N100 -> =IFERROR((VLOOKUP(R100,índice!$D$7:$K$17,8,0)),"-")
+  L101 -> =COUNT(B101:K101)
+  M101 -> =IF(L101>=1,"Asignado","No Asignado")
+  N101 -> =IFERROR((VLOOKUP(R101,índice!$D$7:$K$17,8,0)),"-")
+  L102 -> =COUNT(B102:K102)
+  M102 -> =IF(L102>=1,"Asignado","No Asignado")
+  N102 -> =IFERROR((VLOOKUP(R102,índice!$D$7:$K$17,8,0)),"-")
+  L103 -> =COUNT(B103:K103)
+  M103 -> =IF(L103>=1,"Asignado","No Asignado")
+  N103 -> =IFERROR((VLOOKUP(R103,índice!$D$7:$K$17,8,0)),"-")
+  L104 -> =COUNT(B104:K104)
+  M104 -> =IF(L104>=1,"Asignado","No Asignado")
+  N104 -> =IFERROR((VLOOKUP(R104,índice!$D$7:$K$17,8,0)),"-")
+  L105 -> =COUNT(B105:K105)
+  M105 -> =IF(L105>=1,"Asignado","No Asignado")
+  N105 -> =IFERROR((VLOOKUP(R105,índice!$D$7:$K$17,8,0)),"-")
+  L106 -> =COUNT(B106:K106)
+  M106 -> =IF(L106>=1,"Asignado","No Asignado")
+  N106 -> =IFERROR((VLOOKUP(R106,índice!$D$7:$K$17,8,0)),"-")
+  L107 -> =COUNT(B107:K107)
+  M107 -> =IF(L107>=1,"Asignado","No Asignado")
+  N107 -> =IFERROR((VLOOKUP(R107,índice!$D$7:$K$17,8,0)),"-")
+  L108 -> =COUNT(B108:K108)
+  M108 -> =IF(L108>=1,"Asignado","No Asignado")
+  N108 -> =IFERROR((VLOOKUP(R108,índice!$D$7:$K$17,8,0)),"-")
+  L109 -> =COUNT(B109:K109)
+  M109 -> =IF(L109>=1,"Asignado","No Asignado")
+  N109 -> =IFERROR((VLOOKUP(R109,índice!$D$7:$K$17,8,0)),"-")
+  L110 -> =COUNT(B110:K110)
+  M110 -> =IF(L110>=1,"Asignado","No Asignado")
+  N110 -> =IFERROR((VLOOKUP(R110,índice!$D$7:$K$17,8,0)),"-")
+  L111 -> =COUNT(B111:K111)
+  M111 -> =IF(L111>=1,"Asignado","No Asignado")
+  N111 -> =IFERROR((VLOOKUP(R111,índice!$D$7:$K$17,8,0)),"-")
+  L112 -> =COUNT(B112:K112)
+  M112 -> =IF(L112>=1,"Asignado","No Asignado")
+  N112 -> =IFERROR((VLOOKUP(R112,índice!$D$7:$K$17,8,0)),"-")
+  L113 -> =COUNT(B113:K113)
+  M113 -> =IF(L113>=1,"Asignado","No Asignado")
+  N113 -> =IFERROR((VLOOKUP(R113,índice!$D$7:$K$17,8,0)),"-")
+  L114 -> =COUNT(B114:K114)
+  M114 -> =IF(L114>=1,"Asignado","No Asignado")
+  N114 -> =IFERROR((VLOOKUP(R114,índice!$D$7:$K$17,8,0)),"-")
+  L115 -> =COUNT(B115:K115)
+  M115 -> =IF(L115>=1,"Asignado","No Asignado")
+  N115 -> =IFERROR((VLOOKUP(R115,índice!$D$7:$K$17,8,0)),"-")
+  L116 -> =COUNT(B116:K116)
+  M116 -> =IF(L116>=1,"Asignado","No Asignado")
+  N116 -> =IFERROR((VLOOKUP(R116,índice!$D$7:$K$17,8,0)),"-")
+  L117 -> =COUNT(B117:K117)
+  M117 -> =IF(L117>=1,"Asignado","No Asignado")
+  N117 -> =IFERROR((VLOOKUP(R117,índice!$D$7:$K$17,8,0)),"-")
+  L118 -> =COUNT(B118:K118)
+  M118 -> =IF(L118>=1,"Asignado","No Asignado")
+  N118 -> =IFERROR((VLOOKUP(R118,índice!$D$7:$K$17,8,0)),"-")
+
+=== Hoja: 1 ===
+Encabezados (fila 1):  |  | 
+ |  |  |  |  |  |  |  |  |  |  | Plan de Organización
+DATO MODIFICADO MANUALMENTE POR PRIVACIDAD |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | MX-APL 3.1 |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  | Plan de Organización
+DATO MODIFICADO MANUALMENTE POR PRIVACIDAD |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | MX-APL 3.1 |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+Formulas encontradas: 100
+  Y6 -> =IFERROR((VLOOKUP($X6,Organigrama!$B$4:$AD$2009,'1'!$DF$6,0)),"")
+  AC6 -> =IFERROR((VLOOKUP($X6,Organigrama!$B$4:$AD$2009,'1'!$DG$6,0)),"")
+  CA6 -> =Y6
+  CE6 -> =AC6
+  DF6 -> =Organigrama!$O$2
+  DG6 -> =Organigrama!$T$2
+  DH6 -> =Organigrama!$S$2
+  DI6 -> =Organigrama!$Q$2
+  Y7 -> =IFERROR((VLOOKUP($X6,Organigrama!$B$4:$AD$2009,'1'!$DH$6,0)),"")
+  AC7 -> =IFERROR((VLOOKUP($X7,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y8 -> =IFERROR((VLOOKUP($X8,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC8 -> =IFERROR((VLOOKUP($X8,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y9 -> =IFERROR((VLOOKUP($X6,Organigrama!$B$4:$AD$2009,'1'!$DI$6,0)),"")
+  CA9 -> =Y9
+  Y10 -> =IFERROR((VLOOKUP($X10,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC10 -> =IFERROR((VLOOKUP($X10,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y12 -> =IFERROR((VLOOKUP($X12,Organigrama!$B$4:$AD$2009,'1'!$DF$6,0)),"")
+  AC12 -> =IFERROR((VLOOKUP($X12,Organigrama!$B$4:$AD$2009,'1'!$DG$6,0)),"")
+  CA12 -> =Y12
+  CE12 -> =AC12
+  Y13 -> =IFERROR((VLOOKUP($X12,Organigrama!$B$4:$AD$2009,'1'!$DH$6,0)),"")
+  AC13 -> =IFERROR((VLOOKUP($X13,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y14 -> =IFERROR((VLOOKUP($X14,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC14 -> =IFERROR((VLOOKUP($X14,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y15 -> =IFERROR((VLOOKUP($X12,Organigrama!$B$4:$AD$2009,'1'!$DI$6,0)),"")
+  CA15 -> =IFERROR((VLOOKUP($X12,Organigrama!$B19:$AD$2010,'1'!$DI$6,0)),"")
+  Y18 -> =IFERROR((VLOOKUP($X18,Organigrama!$B$4:$AD$2009,'1'!$DF$6,0)),"")
+  AC18 -> =IFERROR((VLOOKUP($X18,Organigrama!$B$4:$AD$2009,'1'!$DG$6,0)),"")
+  CA18 -> =Y18
+  CE18 -> =AC18
+  Y19 -> =IFERROR((VLOOKUP($X18,Organigrama!$B$4:$AD$2009,'1'!$DH$6,0)),"")
+  AC19 -> =IFERROR((VLOOKUP($X19,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y20 -> =IFERROR((VLOOKUP($X20,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC20 -> =IFERROR((VLOOKUP($X20,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y21 -> =IFERROR((VLOOKUP($X18,Organigrama!$B$4:$AD$2009,'1'!$DI$6,0)),"")
+  CA21 -> =Y21
+  Y24 -> =IFERROR((VLOOKUP($X24,Organigrama!$B$4:$AD$2009,'1'!$DF$6,0)),"")
+  AC24 -> =IFERROR((VLOOKUP($X24,Organigrama!$B$4:$AD$2009,'1'!$DG$6,0)),"")
+  CA24 -> =Y24
+  CE24 -> =AC24
+  Y25 -> =IFERROR((VLOOKUP($X24,Organigrama!$B$4:$AD$2009,'1'!$DH$6,0)),"")
+  AC25 -> =IFERROR((VLOOKUP($X25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y26 -> =IFERROR((VLOOKUP($X26,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC26 -> =IFERROR((VLOOKUP($X26,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y27 -> =IFERROR((VLOOKUP($X24,Organigrama!$B$4:$AD$2009,'1'!$DI$6,0)),"")
+  CA27 -> =Y27
+  S31 -> =IFERROR((VLOOKUP($R31,Organigrama!$B$4:$AD$2009,'1'!$DF$6,0)),"")
+  W31 -> =IFERROR((VLOOKUP($R31,Organigrama!$B$4:$AD$2009,'1'!$DG$6,0)),"")
+  AE31 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2009,'1'!$DF$6,0)),"")
+  AI31 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2009,'1'!$DG$6,0)),"")
+  BU31 -> =S31
+  BY31 -> =W31
+  CG31 -> =AE31
+  CK31 -> =AI31
+  S32 -> =IFERROR((VLOOKUP($R31,Organigrama!$B$4:$AD$2009,'1'!$DH$6,0)),"")
+  W32 -> =IFERROR((VLOOKUP($X32,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AE32 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2009,'1'!$DH$6,0)),"")
+  AI32 -> =IFERROR((VLOOKUP($X32,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  S33 -> =IFERROR((VLOOKUP($X33,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  W33 -> =IFERROR((VLOOKUP($X33,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AE33 -> =IFERROR((VLOOKUP($X33,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AI33 -> =IFERROR((VLOOKUP($X33,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  S34 -> =IFERROR((VLOOKUP($R31,Organigrama!$B$4:$AD$2009,'1'!$DI$6,0)),"")
+  AE34 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2009,'1'!$DI$6,0)),"")
+  BU34 -> =S34
+  CG34 -> =AE34
+  S37 -> =IFERROR((VLOOKUP($R37,Organigrama!$B$4:$AD$2009,'1'!$DF$6,0)),"")
+  W37 -> =IFERROR((VLOOKUP($R37,Organigrama!$B$4:$AD$2009,'1'!$DG$6,0)),"")
+  BU37 -> =S37
+  BY37 -> =W37
+  S38 -> =IFERROR((VLOOKUP($R37,Organigrama!$B$4:$AD$2009,'1'!$DH$6,0)),"")
+  W38 -> =IFERROR((VLOOKUP($X38,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  S39 -> =IFERROR((VLOOKUP($X39,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  W39 -> =IFERROR((VLOOKUP($X39,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  S40 -> =IFERROR((VLOOKUP($R37,Organigrama!$B$4:$AD$2009,'1'!$DI$6,0)),"")
+  BU40 -> =S40
+  S43 -> =IFERROR((VLOOKUP($R43,Organigrama!$B$4:$AD$2009,'1'!$DF$6,0)),"")
+  W43 -> =IFERROR((VLOOKUP($R43,Organigrama!$B$4:$AD$2009,'1'!$DG$6,0)),"")
+  BU43 -> =S43
+  BY43 -> =W43
+  S44 -> =IFERROR((VLOOKUP($R43,Organigrama!$B$4:$AD$2009,'1'!$DH$6,0)),"")
+  W44 -> =IFERROR((VLOOKUP($X44,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  S45 -> =IFERROR((VLOOKUP($X45,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  W45 -> =IFERROR((VLOOKUP($X45,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  S46 -> =IFERROR((VLOOKUP($R43,Organigrama!$B$4:$AD$2009,'1'!$DI$6,0)),"")
+  BU46 -> =S46
+  S49 -> =IFERROR((VLOOKUP($R49,Organigrama!$B$4:$AD$2009,'1'!$DF$6,0)),"")
+  W49 -> =IFERROR((VLOOKUP($R49,Organigrama!$B$4:$AD$2009,'1'!$DG$6,0)),"")
+  BU49 -> =S49
+  BY49 -> =W49
+  S50 -> =IFERROR((VLOOKUP($R49,Organigrama!$B$4:$AD$2009,'1'!$DH$6,0)),"")
+  W50 -> =IFERROR((VLOOKUP($X50,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  S51 -> =IFERROR((VLOOKUP($X51,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  W51 -> =IFERROR((VLOOKUP($X51,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  S52 -> =IFERROR((VLOOKUP($R49,Organigrama!$B$4:$AD$2009,'1'!$DI$6,0)),"")
+  BU52 -> =S52
+  D56 -> =Organigrama!#REF!
+  Q56 -> =Organigrama!$AG$4
+  BF56 -> =Organigrama!#REF!
+  BS56 -> =Organigrama!$AG$4
+
+=== Hoja: 2 ===
+Encabezados (fila 1):  |  | 
+ |  |  |  |  |  |  |  |  |  |  | Plan de Organización
+DATO MODIFICADO MANUALMENTE POR PRIVACIDAD |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | MX-APL 1.1 |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  | Plan de Organización
+DATO MODIFICADO MANUALMENTE POR PRIVACIDAD |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | MX-APL 1.1 |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+Formulas encontradas: 119
+  DF6 -> ='1'!DF6-1
+  DG6 -> ='1'!DG6-1
+  DH6 -> ='1'!DH6-1
+  DI6 -> ='1'!DI6-1
+  Y14 -> =IFERROR((VLOOKUP($X14,Organigrama!$C$4:$AD$2009,'2'!$DF$6,0)),"")
+  AC14 -> =IFERROR((VLOOKUP($X14,Organigrama!$C$4:$AD$2009,'2'!$DG$6,0)),"")
+  CA14 -> =Y14
+  CE14 -> =AC14
+  Y15 -> =IFERROR((VLOOKUP($X14,Organigrama!$C$4:$AD$2009,'2'!$DH$6,0)),"")
+  AC15 -> =IFERROR((VLOOKUP($X15,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y16 -> =IFERROR((VLOOKUP($X16,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC16 -> =IFERROR((VLOOKUP($X16,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y17 -> =IFERROR((VLOOKUP($X14,Organigrama!$C$4:$AD$2009,'2'!$DI$6,0)),"")
+  CA17 -> =Y17
+  Y20 -> =IFERROR((VLOOKUP($X20,Organigrama!$C$4:$AD$2009,'2'!$DF$6,0)),"")
+  AC20 -> =IFERROR((VLOOKUP($X20,Organigrama!$C$4:$AD$2009,'2'!$DG$6,0)),"")
+  CA20 -> =Y20
+  CE20 -> =AC20
+  Y21 -> =IFERROR((VLOOKUP($X20,Organigrama!$C$4:$AD$2009,'2'!$DH$6,0)),"")
+  AC21 -> =IFERROR((VLOOKUP($X21,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y22 -> =IFERROR((VLOOKUP($X22,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC22 -> =IFERROR((VLOOKUP($X22,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y23 -> =IFERROR((VLOOKUP($X20,Organigrama!$C$4:$AD$2009,'2'!$DI$6,0)),"")
+  CA23 -> =Y23
+  Y26 -> =IFERROR((VLOOKUP($X26,Organigrama!$C$4:$AD$2009,'2'!$DF$6,0)),"")
+  AC26 -> =IFERROR((VLOOKUP($X26,Organigrama!$C$4:$AD$2009,'2'!$DG$6,0)),"")
+  CA26 -> =Y26
+  CE26 -> =AC26
+  Y27 -> =IFERROR((VLOOKUP($X26,Organigrama!$C$4:$AD$2009,'2'!$DH$6,0)),"")
+  AC27 -> =IFERROR((VLOOKUP($X27,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y28 -> =IFERROR((VLOOKUP($X28,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC28 -> =IFERROR((VLOOKUP($X28,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y29 -> =IFERROR((VLOOKUP($X26,Organigrama!$C$4:$AD$2009,'2'!$DI$6,0)),"")
+  CA29 -> =Y29
+  G33 -> =IFERROR((VLOOKUP($F33,Organigrama!$C$4:$AD$2009,'2'!$DF$6,0)),"")
+  K33 -> =IFERROR((VLOOKUP($F33,Organigrama!$C$4:$AD$2009,'2'!$DG$6,0)),"")
+  S33 -> =IFERROR((VLOOKUP($R33,Organigrama!$C$4:$AD$2009,'2'!$DF$6,0)),"")
+  W33 -> =IFERROR((VLOOKUP($R33,Organigrama!$C$4:$AD$2009,'2'!$DG$6,0)),"")
+  AE33 -> =IFERROR((VLOOKUP($AD33,Organigrama!$C$4:$AD$2009,'2'!$DF$6,0)),"")
+  AI33 -> =IFERROR((VLOOKUP($AD33,Organigrama!$C$4:$AD$2009,'2'!$DG$6,0)),"")
+  BI33 -> =G33
+  BM33 -> =K33
+  BU33 -> =S33
+  BY33 -> =W33
+  CG33 -> =AE33
+  CK33 -> =AI33
+  G34 -> =IFERROR((VLOOKUP($F33,Organigrama!$C$4:$AD$2009,'2'!$DH$6,0)),"")
+  K34 -> =IFERROR((VLOOKUP($X34,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  S34 -> =IFERROR((VLOOKUP($R33,Organigrama!$C$4:$AD$2009,'2'!$DH$6,0)),"")
+  W34 -> =IFERROR((VLOOKUP($X34,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AE34 -> =IFERROR((VLOOKUP($AD33,Organigrama!$C$4:$AD$2009,'2'!$DH$6,0)),"")
+  AI34 -> =IFERROR((VLOOKUP($X34,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CG34 -> =AE34
+  G35 -> =IFERROR((VLOOKUP($X35,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  K35 -> =IFERROR((VLOOKUP($X35,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  S35 -> =IFERROR((VLOOKUP($X35,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  W35 -> =IFERROR((VLOOKUP($X35,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AE35 -> =IFERROR((VLOOKUP($X35,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AI35 -> =IFERROR((VLOOKUP($X35,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  G36 -> =IFERROR((VLOOKUP($F33,Organigrama!$C$4:$AD$2009,'2'!$DI$6,0)),"")
+  S36 -> =IFERROR((VLOOKUP($R33,Organigrama!$C$4:$AD$2009,'2'!$DI$6,0)),"")
+  AE36 -> =IFERROR((VLOOKUP($AD33,Organigrama!$C$4:$AD$2009,'2'!$DI$6,0)),"")
+  BI36 -> =G36
+  BU36 -> =S36
+  CG36 -> =AE36
+  G39 -> =IFERROR((VLOOKUP($F39,Organigrama!$C$4:$AD$2009,'2'!$DF$6,0)),"")
+  K39 -> =IFERROR((VLOOKUP($F39,Organigrama!$C$4:$AD$2009,'2'!$DG$6,0)),"")
+  S39 -> =IFERROR((VLOOKUP($R39,Organigrama!$C$4:$AD$2009,'2'!$DF$6,0)),"")
+  W39 -> =IFERROR((VLOOKUP($R39,Organigrama!$C$4:$AD$2009,'2'!$DG$6,0)),"")
+  AE39 -> =IFERROR((VLOOKUP($AD39,Organigrama!$C$4:$AD$2009,'2'!$DF$6,0)),"")
+  AI39 -> =IFERROR((VLOOKUP($AD39,Organigrama!$C$4:$AD$2009,'2'!$DG$6,0)),"")
+  BI39 -> =G39
+  BM39 -> =K39
+  BU39 -> =S39
+  BY39 -> =W39
+  CG39 -> =AE39
+  CK39 -> =AI39
+  G40 -> =IFERROR((VLOOKUP($F39,Organigrama!$C$4:$AD$2009,'2'!$DH$6,0)),"")
+  K40 -> =IFERROR((VLOOKUP($X40,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  S40 -> =IFERROR((VLOOKUP($R39,Organigrama!$C$4:$AD$2009,'2'!$DH$6,0)),"")
+  W40 -> =IFERROR((VLOOKUP($X40,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AE40 -> =IFERROR((VLOOKUP($AD39,Organigrama!$C$4:$AD$2009,'2'!$DH$6,0)),"")
+  AI40 -> =IFERROR((VLOOKUP($X40,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  G41 -> =IFERROR((VLOOKUP($X41,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  K41 -> =IFERROR((VLOOKUP($X41,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  S41 -> =IFERROR((VLOOKUP($X41,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  W41 -> =IFERROR((VLOOKUP($X41,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AE41 -> =IFERROR((VLOOKUP($X41,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AI41 -> =IFERROR((VLOOKUP($X41,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  G42 -> =IFERROR((VLOOKUP($F39,Organigrama!$C$4:$AD$2009,'2'!$DI$6,0)),"")
+  S42 -> =IFERROR((VLOOKUP($R39,Organigrama!$C$4:$AD$2009,'2'!$DI$6,0)),"")
+  AE42 -> =IFERROR((VLOOKUP($AD39,Organigrama!$C$4:$AD$2009,'2'!$DI$6,0)),"")
+  BI42 -> =G42
+  BU42 -> =S42
+  CG42 -> =AE42
+  S45 -> =IFERROR((VLOOKUP($R45,Organigrama!$C$4:$AD$2009,'2'!$DF$6,0)),"")
+  W45 -> =IFERROR((VLOOKUP($R45,Organigrama!$C$4:$AD$2009,'2'!$DG$6,0)),"")
+  AE45 -> =IFERROR((VLOOKUP($AD45,Organigrama!$C$4:$AD$2009,'2'!$DF$6,0)),"")
+  AI45 -> =IFERROR((VLOOKUP($AD45,Organigrama!$C$4:$AD$2009,'2'!$DG$6,0)),"")
+  BU45 -> =S45
+  BY45 -> =W45
+  CG45 -> =AE45
+  CK45 -> =AI45
+  S46 -> =IFERROR((VLOOKUP($R45,Organigrama!$C$4:$AD$2009,'2'!$DH$6,0)),"")
+  W46 -> =IFERROR((VLOOKUP($X46,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AE46 -> =IFERROR((VLOOKUP($AD45,Organigrama!$C$4:$AD$2009,'2'!$DH$6,0)),"")
+  AI46 -> =IFERROR((VLOOKUP($X46,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  S47 -> =IFERROR((VLOOKUP($X47,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  W47 -> =IFERROR((VLOOKUP($X47,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AE47 -> =IFERROR((VLOOKUP($X47,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AI47 -> =IFERROR((VLOOKUP($X47,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  S48 -> =IFERROR((VLOOKUP($R45,Organigrama!$C$4:$AD$2009,'2'!$DI$6,0)),"")
+  AE48 -> =IFERROR((VLOOKUP($AD45,Organigrama!$C$4:$AD$2009,'2'!$DI$6,0)),"")
+  BU48 -> =S48
+  CG48 -> =AE48
+  D59 -> =Organigrama!#REF!
+  Q59 -> =Organigrama!$AG$4
+  BF59 -> =Organigrama!#REF!
+  BS59 -> =Organigrama!$AG$4
+
+=== Hoja: índice ===
+Encabezados (fila 1):  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+Formulas encontradas: 3
+  K11 -> =C11
+  K12 -> =C12
+  K13 -> =C13
+
+=== Hoja: 3 ===
+Encabezados (fila 1):  |  | 
+ |  |  |  |  |  |  |  |  |  |  | Plan de Organización
+DATO MODIFICADO MANUALMENTE POR PRIVACIDAD |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | HC |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  | Organization Chart
+DATO MODIFICADO MANUALMENTE POR PRIVACIDAD |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | HC |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+Formulas encontradas: 239
+  X6 -> =IFERROR((VLOOKUP($W6,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  BZ6 -> =IFERROR((VLOOKUP($W6,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  DF6 -> ='2'!DF6-1
+  DG6 -> ='2'!DG6-1
+  DH6 -> ='2'!DH6-1
+  DI6 -> ='2'!DI6-1
+  X7 -> =IFERROR((VLOOKUP($W6,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  AB7 -> =IFERROR((VLOOKUP($X7,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BZ7 -> =IFERROR((VLOOKUP($W6,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  CD7 -> =IFERROR((VLOOKUP($X7,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  X8 -> =IFERROR((VLOOKUP($X8,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AB8 -> =IFERROR((VLOOKUP($X8,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BZ8 -> =IFERROR((VLOOKUP($X8,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CD8 -> =IFERROR((VLOOKUP($X8,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  X9 -> =IFERROR((VLOOKUP($W6,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  BZ9 -> =IFERROR((VLOOKUP($W6,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  X11 -> =IFERROR((VLOOKUP($W11,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  BZ11 -> =IFERROR((VLOOKUP($W11,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  X12 -> =IFERROR((VLOOKUP($W11,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  AB12 -> =IFERROR((VLOOKUP($X12,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CD12 -> =IFERROR((VLOOKUP($X12,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  X13 -> =IFERROR((VLOOKUP($X13,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AB13 -> =IFERROR((VLOOKUP($X13,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BZ13 -> =IFERROR((VLOOKUP($X13,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CD13 -> =IFERROR((VLOOKUP($X13,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  X14 -> =IFERROR((VLOOKUP($W11,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  BZ14 -> =IFERROR((VLOOKUP($W11,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  X15 -> =IFERROR((VLOOKUP($X12,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  BZ15 -> =IFERROR((VLOOKUP($X12,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  N18 -> =IFERROR((VLOOKUP($M18,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  AG18 -> =IFERROR((VLOOKUP($AF18,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  BP18 -> =IFERROR((VLOOKUP($M18,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  CI18 -> =IFERROR((VLOOKUP($AF18,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  N19 -> =IFERROR((VLOOKUP($M18,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  R19 -> =IFERROR((VLOOKUP($AG19,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AG19 -> =IFERROR((VLOOKUP($AF18,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  AK19 -> =IFERROR((VLOOKUP($AG19,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BT19 -> =IFERROR((VLOOKUP($AG19,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  N20 -> =IFERROR((VLOOKUP($AG20,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  R20 -> =IFERROR((VLOOKUP($AG20,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AG20 -> =IFERROR((VLOOKUP($AG20,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AK20 -> =IFERROR((VLOOKUP($AG20,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BP20 -> =IFERROR((VLOOKUP($AG20,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BT20 -> =IFERROR((VLOOKUP($AG20,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  N21 -> =IFERROR((VLOOKUP($M18,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  AG21 -> =IFERROR((VLOOKUP($AF18,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  BP21 -> =IFERROR((VLOOKUP($M18,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  CI21 -> =IFERROR((VLOOKUP($AF18,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  W22 -> =IFERROR((VLOOKUP($V22,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  AA22 -> =IFERROR((VLOOKUP($V22,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  BY22 -> =IFERROR((VLOOKUP($V22,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  CC22 -> =IFERROR((VLOOKUP($V22,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  W23 -> =IFERROR((VLOOKUP($V22,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  AA23 -> =IFERROR((VLOOKUP(#REF!,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CC23 -> =IFERROR((VLOOKUP(#REF!,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  W24 -> =IFERROR((VLOOKUP(#REF!,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AA24 -> =IFERROR((VLOOKUP(#REF!,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BY24 -> =IFERROR((VLOOKUP(#REF!,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CC24 -> =IFERROR((VLOOKUP(#REF!,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  W25 -> =IFERROR((VLOOKUP($V22,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  BY25 -> =IFERROR((VLOOKUP($V22,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  N30 -> =IFERROR((VLOOKUP($M30,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  R30 -> =IFERROR((VLOOKUP($M30,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  W30 -> =IFERROR((VLOOKUP($V30,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  AA30 -> =IFERROR((VLOOKUP($V30,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  AG30 -> =IFERROR((VLOOKUP($AF30,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  BP30 -> =IFERROR((VLOOKUP($M30,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  BT30 -> =IFERROR((VLOOKUP($M30,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  BY30 -> =IFERROR((VLOOKUP($V30,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  CC30 -> =IFERROR((VLOOKUP($V30,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  CI30 -> =IFERROR((VLOOKUP($AF30,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  N31 -> =IFERROR((VLOOKUP($M30,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  R31 -> =IFERROR((VLOOKUP($AG49,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  W31 -> =IFERROR((VLOOKUP($V30,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  AA31 -> =IFERROR((VLOOKUP($AG52,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AK31 -> =IFERROR((VLOOKUP($AG31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BP31 -> =IFERROR((VLOOKUP($M30,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  BT31 -> =IFERROR((VLOOKUP($AG49,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BY31 -> =IFERROR((VLOOKUP($V30,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  CC31 -> =IFERROR((VLOOKUP($AG52,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CM31 -> =IFERROR((VLOOKUP($AG31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  N32 -> =IFERROR((VLOOKUP($AG50,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  R32 -> =IFERROR((VLOOKUP($AG50,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  W32 -> =IFERROR((VLOOKUP($AG53,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AA32 -> =IFERROR((VLOOKUP($AG53,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AG32 -> =IFERROR((VLOOKUP($AG32,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AK32 -> =IFERROR((VLOOKUP($AG32,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BP32 -> =IFERROR((VLOOKUP($AG50,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BT32 -> =IFERROR((VLOOKUP($AG50,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BY32 -> =IFERROR((VLOOKUP($AG53,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CC32 -> =IFERROR((VLOOKUP($AG53,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CI32 -> =IFERROR((VLOOKUP($AG32,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CM32 -> =IFERROR((VLOOKUP($AG32,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  N33 -> =IFERROR((VLOOKUP($M30,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  W33 -> =IFERROR((VLOOKUP($V30,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  BP33 -> =IFERROR((VLOOKUP($M30,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  BY33 -> =IFERROR((VLOOKUP($V30,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  N36 -> =IFERROR((VLOOKUP($M36,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  R36 -> =IFERROR((VLOOKUP($M36,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  W36 -> =IFERROR((VLOOKUP($V36,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  AA36 -> =IFERROR((VLOOKUP($V36,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  AG36 -> =IFERROR((VLOOKUP($AF36,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  BP36 -> =IFERROR((VLOOKUP($M36,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  BT36 -> =IFERROR((VLOOKUP($M36,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  BY36 -> =IFERROR((VLOOKUP($V36,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  CC36 -> =IFERROR((VLOOKUP($V36,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  CI36 -> =IFERROR((VLOOKUP($AF36,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  N37 -> =IFERROR((VLOOKUP($M36,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  R37 -> =IFERROR((VLOOKUP($AG55,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  W37 -> =IFERROR((VLOOKUP($V36,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  AA37 -> =IFERROR((VLOOKUP($AG58,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AK37 -> =IFERROR((VLOOKUP($AG37,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BT37 -> =IFERROR((VLOOKUP($AG55,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CC37 -> =IFERROR((VLOOKUP($AG58,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CM37 -> =IFERROR((VLOOKUP($AG37,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  N38 -> =IFERROR((VLOOKUP($AG56,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  R38 -> =IFERROR((VLOOKUP($AG56,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  W38 -> =IFERROR((VLOOKUP($AG59,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AA38 -> =IFERROR((VLOOKUP($AG59,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AG38 -> =IFERROR((VLOOKUP($AG38,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AK38 -> =IFERROR((VLOOKUP($AG38,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BP38 -> =IFERROR((VLOOKUP($AG56,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BT38 -> =IFERROR((VLOOKUP($AG56,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BY38 -> =IFERROR((VLOOKUP($AG59,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CC38 -> =IFERROR((VLOOKUP($AG59,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CI38 -> =IFERROR((VLOOKUP($AG38,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CM38 -> =IFERROR((VLOOKUP($AG38,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  N39 -> =IFERROR((VLOOKUP($M36,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  W39 -> =IFERROR((VLOOKUP($V36,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  BP39 -> =IFERROR((VLOOKUP($M36,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  BY39 -> =IFERROR((VLOOKUP($V36,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  H41 -> =IFERROR((VLOOKUP($G41,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  L41 -> =IFERROR((VLOOKUP($G41,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  X41 -> =IFERROR((VLOOKUP(#REF!,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  AG41 -> =IFERROR((VLOOKUP($S29,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  AN41 -> =IFERROR((VLOOKUP($AM41,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  BJ41 -> =IFERROR((VLOOKUP($G41,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  BN41 -> =IFERROR((VLOOKUP($G41,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  BZ41 -> =IFERROR((VLOOKUP(#REF!,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  CI41 -> =IFERROR((VLOOKUP($S29,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  CP41 -> =IFERROR((VLOOKUP($AM41,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  H42 -> =IFERROR((VLOOKUP($G41,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  L42 -> =IFERROR((VLOOKUP($X42,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  N42 -> =IFERROR((VLOOKUP(M42,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  R42 -> =IFERROR((VLOOKUP($M42,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  X42 -> =IFERROR((VLOOKUP($X42,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AG42 -> =IFERROR((VLOOKUP($AF42,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  BJ42 -> =IFERROR((VLOOKUP($G41,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  BN42 -> =IFERROR((VLOOKUP($X42,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BP42 -> =IFERROR((VLOOKUP(BO42,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  BT42 -> =IFERROR((VLOOKUP($M42,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  BZ42 -> =IFERROR((VLOOKUP($X42,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CI42 -> =IFERROR((VLOOKUP($AF42,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  H43 -> =IFERROR((VLOOKUP($X43,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  L43 -> =IFERROR((VLOOKUP($X43,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  N43 -> =IFERROR((VLOOKUP($M42,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  R43 -> =IFERROR((VLOOKUP($AG61,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  X43 -> =IFERROR((VLOOKUP($X43,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AK43 -> =IFERROR((VLOOKUP($AG43,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BJ43 -> =IFERROR((VLOOKUP($X43,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BN43 -> =IFERROR((VLOOKUP($X43,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BT43 -> =IFERROR((VLOOKUP($AG61,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BZ43 -> =IFERROR((VLOOKUP($X43,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CM43 -> =IFERROR((VLOOKUP($AG43,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  H44 -> =IFERROR((VLOOKUP($G41,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  N44 -> =IFERROR((VLOOKUP($AG62,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  R44 -> =IFERROR((VLOOKUP($AG62,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AG44 -> =IFERROR((VLOOKUP($AG44,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AK44 -> =IFERROR((VLOOKUP($AG44,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BJ44 -> =IFERROR((VLOOKUP($G41,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  BP44 -> =IFERROR((VLOOKUP($AG62,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BT44 -> =IFERROR((VLOOKUP($AG62,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CI44 -> =IFERROR((VLOOKUP($AG44,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CM44 -> =IFERROR((VLOOKUP($AG44,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  N45 -> =IFERROR((VLOOKUP($M42,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  BP45 -> =IFERROR((VLOOKUP($M42,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  H47 -> =IFERROR((VLOOKUP($G47,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  AG47 -> =IFERROR((VLOOKUP($S35,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  AN47 -> =IFERROR((VLOOKUP($AM47,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  BJ47 -> =IFERROR((VLOOKUP($G47,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  CI47 -> =IFERROR((VLOOKUP($S35,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  CP47 -> =IFERROR((VLOOKUP($AM47,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  H48 -> =IFERROR((VLOOKUP($G47,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  AG48 -> =IFERROR((VLOOKUP($AF48,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  AK48 -> =IFERROR((VLOOKUP($AF24,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  CI48 -> =IFERROR((VLOOKUP($AF48,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  CM48 -> =IFERROR((VLOOKUP($AF24,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  H49 -> =IFERROR((VLOOKUP(#REF!,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AG49 -> =IFERROR((VLOOKUP($AF48,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  AK49 -> =IFERROR((VLOOKUP($AG49,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CM49 -> =IFERROR((VLOOKUP($AG49,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  H50 -> =IFERROR((VLOOKUP($G47,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  AG50 -> =IFERROR((VLOOKUP($AG50,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AK50 -> =IFERROR((VLOOKUP($AG50,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CI50 -> =IFERROR((VLOOKUP($AG50,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CM50 -> =IFERROR((VLOOKUP($AG50,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AG51 -> =IFERROR((VLOOKUP($AF48,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  CI51 -> =IFERROR((VLOOKUP($AF48,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  H52 -> =IFERROR((VLOOKUP($G52,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  H53 -> =IFERROR((VLOOKUP($G52,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  H54 -> =IFERROR((VLOOKUP(#REF!,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AG54 -> =IFERROR((VLOOKUP($AF54,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  AK54 -> =IFERROR((VLOOKUP($AF54,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  CI54 -> =IFERROR((VLOOKUP($AF54,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  CM54 -> =IFERROR((VLOOKUP($AF54,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  H55 -> =IFERROR((VLOOKUP($G52,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  AG55 -> =IFERROR((VLOOKUP($AF54,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  AK55 -> =IFERROR((VLOOKUP($AG55,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CM55 -> =IFERROR((VLOOKUP($AG55,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AG56 -> =IFERROR((VLOOKUP($AG56,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AK56 -> =IFERROR((VLOOKUP($AG56,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CI56 -> =IFERROR((VLOOKUP($AG56,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CM56 -> =IFERROR((VLOOKUP($AG56,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AG57 -> =IFERROR((VLOOKUP($AF54,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  CI57 -> =IFERROR((VLOOKUP($AF54,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  H58 -> =IFERROR((VLOOKUP($G58,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  H59 -> =IFERROR((VLOOKUP($G58,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  AG59 -> =IFERROR((VLOOKUP($S41,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  AN59 -> =IFERROR((VLOOKUP($AM59,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  CI59 -> =IFERROR((VLOOKUP($S41,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  CP59 -> =IFERROR((VLOOKUP($AM59,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  H60 -> =IFERROR((VLOOKUP($X60,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AG60 -> =IFERROR((VLOOKUP($AF60,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  AK60 -> =IFERROR((VLOOKUP($AF60,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  CI60 -> =IFERROR((VLOOKUP($AF60,Organigrama!$D$4:$AD$2009,'3'!$DF$6,0)),"")
+  CM60 -> =IFERROR((VLOOKUP($AF60,Organigrama!$D$4:$AD$2009,'3'!$DG$6,0)),"")
+  H61 -> =IFERROR((VLOOKUP($G58,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  AG61 -> =IFERROR((VLOOKUP($AF60,Organigrama!$D$4:$AD$2009,'3'!$DH$6,0)),"")
+  AK61 -> =IFERROR((VLOOKUP($AG61,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CM61 -> =IFERROR((VLOOKUP($AG61,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AG62 -> =IFERROR((VLOOKUP($AG62,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AK62 -> =IFERROR((VLOOKUP($AG62,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CI62 -> =IFERROR((VLOOKUP($AG62,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CM62 -> =IFERROR((VLOOKUP($AG62,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AG63 -> =IFERROR((VLOOKUP($AF60,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  CI63 -> =IFERROR((VLOOKUP($AF60,Organigrama!$D$4:$AD$2009,'3'!$DI$6,0)),"")
+  D65 -> =Organigrama!AG5
+  BF65 -> =Organigrama!AJ5
+  BS65 -> =Organigrama!AJ4
+
+=== Hoja: 4 ===
+Encabezados (fila 1):  |  | 
+ |  |  |  |  |  |  |  |  |  |  | Plan de Organización
+DATO MODIFICADO MANUALMENTE POR PRIVACIDAD |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | MX-APL 2.2 |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  | Plan de Organización
+DATO MODIFICADO MANUALMENTE POR PRIVACIDAD |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | MX-APL 2.2 |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+Formulas encontradas: 118
+  DF6 -> ='3'!DF6-1
+  DG6 -> ='3'!DG6-1
+  DH6 -> ='3'!DH6-1
+  DI6 -> ='3'!DI6-1
+  Y12 -> =IFERROR((VLOOKUP($X12,Organigrama!$E$4:$AD$2009,'4'!$DF$6,0)),"")
+  AC12 -> =IFERROR((VLOOKUP($X12,Organigrama!$E$4:$AD$2009,'4'!$DG$6,0)),"")
+  CA12 -> =Y12
+  CE12 -> =AC12
+  Y13 -> =IFERROR((VLOOKUP($X12,Organigrama!$E$4:$AD$2009,'4'!$DH$6,0)),"")
+  AC13 -> =IFERROR((VLOOKUP($X13,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y14 -> =IFERROR((VLOOKUP($X14,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC14 -> =IFERROR((VLOOKUP($X14,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y15 -> =IFERROR((VLOOKUP($X12,Organigrama!$E$4:$AD$2009,'4'!$DI$6,0)),"")
+  CA15 -> =Y15
+  P19 -> =IFERROR((VLOOKUP($O19,Organigrama!$E$4:$AD$2009,'4'!$DF$6,0)),"")
+  T19 -> =IFERROR((VLOOKUP($O19,Organigrama!$E$4:$AD$2009,'4'!$DG$6,0)),"")
+  AH19 -> =IFERROR((VLOOKUP($AG19,Organigrama!$E$4:$AD$2009,'4'!$DF$6,0)),"")
+  AL19 -> =IFERROR((VLOOKUP($AG19,Organigrama!$E$4:$AD$2009,'4'!$DG$6,0)),"")
+  BR19 -> =P19
+  BV19 -> =T19
+  CJ19 -> =AH19
+  CN19 -> =AL19
+  P20 -> =IFERROR((VLOOKUP($O19,Organigrama!$E$4:$AD$2009,'4'!$DH$6,0)),"")
+  T20 -> =IFERROR((VLOOKUP($X20,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AH20 -> =IFERROR((VLOOKUP($AG19,Organigrama!$E$4:$AD$2009,'4'!$DH$6,0)),"")
+  AL20 -> =IFERROR((VLOOKUP($X20,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  P21 -> =IFERROR((VLOOKUP($X21,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  T21 -> =IFERROR((VLOOKUP($X21,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AH21 -> =IFERROR((VLOOKUP($X21,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AL21 -> =IFERROR((VLOOKUP($X21,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  P22 -> =IFERROR((VLOOKUP($O19,Organigrama!$E$4:$AD$2009,'4'!$DI$6,0)),"")
+  AH22 -> =IFERROR((VLOOKUP($AG19,Organigrama!$E$4:$AD$2009,'4'!$DI$6,0)),"")
+  BR22 -> =P22
+  CJ22 -> =AH22
+  P25 -> =IFERROR((VLOOKUP($O25,Organigrama!$E$4:$AD$2009,'4'!$DF$6,0)),"")
+  T25 -> =IFERROR((VLOOKUP($O25,Organigrama!$E$4:$AD$2009,'4'!$DG$6,0)),"")
+  AH25 -> =IFERROR((VLOOKUP($AG25,Organigrama!$E$4:$AD$2009,'4'!$DF$6,0)),"")
+  AL25 -> =IFERROR((VLOOKUP($AG25,Organigrama!$E$4:$AD$2009,'4'!$DG$6,0)),"")
+  BR25 -> =P25
+  BV25 -> =T25
+  CJ25 -> =AH25
+  CN25 -> =AL25
+  P26 -> =IFERROR((VLOOKUP($O25,Organigrama!$E$4:$AD$2009,'4'!$DH$6,0)),"")
+  T26 -> =IFERROR((VLOOKUP($X26,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AH26 -> =IFERROR((VLOOKUP($AG25,Organigrama!$E$4:$AD$2009,'4'!$DH$6,0)),"")
+  AL26 -> =IFERROR((VLOOKUP($X26,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  P27 -> =IFERROR((VLOOKUP($X27,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  T27 -> =IFERROR((VLOOKUP($X27,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AH27 -> =IFERROR((VLOOKUP($X27,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AL27 -> =IFERROR((VLOOKUP($X27,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  P28 -> =IFERROR((VLOOKUP($O25,Organigrama!$E$4:$AD$2009,'4'!$DI$6,0)),"")
+  AH28 -> =IFERROR((VLOOKUP($AG25,Organigrama!$E$4:$AD$2009,'4'!$DI$6,0)),"")
+  BR28 -> =P28
+  CJ28 -> =AH28
+  P31 -> =IFERROR((VLOOKUP($O31,Organigrama!$E$4:$AD$2009,'4'!$DF$6,0)),"")
+  T31 -> =IFERROR((VLOOKUP($O31,Organigrama!$E$4:$AD$2009,'4'!$DG$6,0)),"")
+  AH31 -> =IFERROR((VLOOKUP($AG31,Organigrama!$E$4:$AD$2009,'4'!$DF$6,0)),"")
+  AL31 -> =IFERROR((VLOOKUP($AG31,Organigrama!$E$4:$AD$2009,'4'!$DG$6,0)),"")
+  BR31 -> =P31
+  BV31 -> =T31
+  CJ31 -> =AH31
+  CN31 -> =AL31
+  P32 -> =IFERROR((VLOOKUP($O31,Organigrama!$E$4:$AD$2009,'4'!$DH$6,0)),"")
+  T32 -> =IFERROR((VLOOKUP($X32,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AH32 -> =IFERROR((VLOOKUP($AG31,Organigrama!$E$4:$AD$2009,'4'!$DH$6,0)),"")
+  AL32 -> =IFERROR((VLOOKUP($X32,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  P33 -> =IFERROR((VLOOKUP($X33,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  T33 -> =IFERROR((VLOOKUP($X33,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AH33 -> =IFERROR((VLOOKUP($X33,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AL33 -> =IFERROR((VLOOKUP($X33,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  P34 -> =IFERROR((VLOOKUP($O31,Organigrama!$E$4:$AD$2009,'4'!$DI$6,0)),"")
+  AH34 -> =IFERROR((VLOOKUP($AG31,Organigrama!$E$4:$AD$2009,'4'!$DI$6,0)),"")
+  BR34 -> =P34
+  CJ34 -> =AH34
+  P37 -> =IFERROR((VLOOKUP($O37,Organigrama!$E$4:$AD$2009,'4'!$DF$6,0)),"")
+  T37 -> =IFERROR((VLOOKUP($O37,Organigrama!$E$4:$AD$2009,'4'!$DG$6,0)),"")
+  AH37 -> =IFERROR((VLOOKUP($AG37,Organigrama!$E$4:$AD$2009,'4'!$DF$6,0)),"")
+  AL37 -> =IFERROR((VLOOKUP($AG37,Organigrama!$E$4:$AD$2009,'4'!$DG$6,0)),"")
+  BR37 -> =P37
+  BV37 -> =T37
+  CJ37 -> =AH37
+  CN37 -> =AL37
+  P38 -> =IFERROR((VLOOKUP($O37,Organigrama!$E$4:$AD$2009,'4'!$DH$6,0)),"")
+  T38 -> =IFERROR((VLOOKUP($X38,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AH38 -> =IFERROR((VLOOKUP($AG37,Organigrama!$E$4:$AD$2009,'4'!$DH$6,0)),"")
+  AL38 -> =IFERROR((VLOOKUP($X38,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  P39 -> =IFERROR((VLOOKUP($X39,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  T39 -> =IFERROR((VLOOKUP($X39,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AH39 -> =IFERROR((VLOOKUP($X39,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AL39 -> =IFERROR((VLOOKUP($X39,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  P40 -> =IFERROR((VLOOKUP($O37,Organigrama!$E$4:$AD$2009,'4'!$DI$6,0)),"")
+  AH40 -> =IFERROR((VLOOKUP($AG37,Organigrama!$E$4:$AD$2009,'4'!$DI$6,0)),"")
+  BR40 -> =P40
+  CJ40 -> =AH40
+  AH43 -> =IFERROR((VLOOKUP($AG43,Organigrama!$E$4:$AD$2009,'4'!$DF$6,0)),"")
+  AL43 -> =IFERROR((VLOOKUP($AG43,Organigrama!$E$4:$AD$2009,'4'!$DG$6,0)),"")
+  CJ43 -> =AH43
+  CN43 -> =AL43
+  AH44 -> =IFERROR((VLOOKUP($AG43,Organigrama!$E$4:$AD$2009,'4'!$DH$6,0)),"")
+  AL44 -> =IFERROR((VLOOKUP($X44,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AH45 -> =IFERROR((VLOOKUP($X45,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AL45 -> =IFERROR((VLOOKUP($X45,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AH46 -> =IFERROR((VLOOKUP($AG43,Organigrama!$E$4:$AD$2009,'4'!$DI$6,0)),"")
+  CJ46 -> =AH46
+  AH49 -> =IFERROR((VLOOKUP($AG49,Organigrama!$E$4:$AD$2009,'4'!$DF$6,0)),"")
+  AL49 -> =IFERROR((VLOOKUP($AG49,Organigrama!$E$4:$AD$2009,'4'!$DG$6,0)),"")
+  CJ49 -> =AH49
+  CN49 -> =AL49
+  AH50 -> =IFERROR((VLOOKUP($AG49,Organigrama!$E$4:$AD$2009,'4'!$DH$6,0)),"")
+  AL50 -> =IFERROR((VLOOKUP($X50,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AH51 -> =IFERROR((VLOOKUP($X51,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AL51 -> =IFERROR((VLOOKUP($X51,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AH52 -> =IFERROR((VLOOKUP($AG49,Organigrama!$E$4:$AD$2009,'4'!$DI$6,0)),"")
+  CJ52 -> =AH52
+  D61 -> =Organigrama!#REF!
+  Q61 -> =Organigrama!$AG$4
+  BF61 -> =Organigrama!#REF!
+  BS61 -> =Organigrama!$AG$4
+
+=== Hoja: 5 ===
+Encabezados (fila 1):  |  | 
+ |  |  |  |  |  |  |  |  |  |  | Plan de Organización
+DATO MODIFICADO MANUALMENTE POR PRIVACIDAD |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | MX-APL 3.2 |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  | Plan de Organización
+DATO MODIFICADO MANUALMENTE POR PRIVACIDAD |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | MX-APL 3.2 |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+Formulas encontradas: 78
+  DF6 -> ='4'!DF6-1
+  DG6 -> ='4'!DG6-1
+  DH6 -> ='4'!DH6-1
+  DI6 -> ='4'!DI6-1
+  Y9 -> =IFERROR((VLOOKUP($X9,Organigrama!$F$4:$AD$2009,'5'!$DF$6,0)),"")
+  AC9 -> =IFERROR((VLOOKUP($X9,Organigrama!$F$4:$AD$2009,'5'!$DG$6,0)),"")
+  CA9 -> =Y9
+  CE9 -> =AC9
+  Y10 -> =IFERROR((VLOOKUP($X9,Organigrama!$F$4:$AD$2009,'5'!$DH$6,0)),"")
+  AC10 -> =IFERROR((VLOOKUP($X10,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y11 -> =IFERROR((VLOOKUP($X11,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC11 -> =IFERROR((VLOOKUP($X11,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y12 -> =IFERROR((VLOOKUP($X9,Organigrama!$F$4:$AD$2009,'5'!$DI$6,0)),"")
+  CA12 -> =Y12
+  Y15 -> =IFERROR((VLOOKUP($X15,Organigrama!$F$4:$AD$2009,'5'!$DF$6,0)),"")
+  AC15 -> =IFERROR((VLOOKUP($X15,Organigrama!$F$4:$AD$2009,'5'!$DG$6,0)),"")
+  CA15 -> =Y15
+  CE15 -> =AC15
+  Y16 -> =IFERROR((VLOOKUP($X15,Organigrama!$F$4:$AD$2009,'5'!$DH$6,0)),"")
+  AC16 -> =IFERROR((VLOOKUP($X16,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y17 -> =IFERROR((VLOOKUP($X17,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC17 -> =IFERROR((VLOOKUP($X17,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y18 -> =IFERROR((VLOOKUP($X15,Organigrama!$F$4:$AD$2009,'5'!$DI$6,0)),"")
+  CA18 -> =Y18
+  Y21 -> =IFERROR((VLOOKUP($X21,Organigrama!$F$4:$AD$2009,'5'!$DF$6,0)),"")
+  AC21 -> =IFERROR((VLOOKUP($X21,Organigrama!$F$4:$AD$2009,'5'!$DG$6,0)),"")
+  CA21 -> =Y21
+  CE21 -> =AC21
+  Y22 -> =IFERROR((VLOOKUP($X21,Organigrama!$F$4:$AD$2009,'5'!$DH$6,0)),"")
+  AC22 -> =IFERROR((VLOOKUP($X22,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y23 -> =IFERROR((VLOOKUP($X23,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC23 -> =IFERROR((VLOOKUP($X23,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y24 -> =IFERROR((VLOOKUP($X21,Organigrama!$F$4:$AD$2009,'5'!$DI$6,0)),"")
+  CA24 -> =Y24
+  Y27 -> =IFERROR((VLOOKUP($X27,Organigrama!$F$4:$AD$2009,'5'!$DF$6,0)),"")
+  AC27 -> =IFERROR((VLOOKUP($X27,Organigrama!$F$4:$AD$2009,'5'!$DG$6,0)),"")
+  CA27 -> =Y27
+  CE27 -> =AC27
+  Y28 -> =IFERROR((VLOOKUP($X27,Organigrama!$F$4:$AD$2009,'5'!$DH$6,0)),"")
+  AC28 -> =IFERROR((VLOOKUP($X28,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y29 -> =IFERROR((VLOOKUP($X29,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC29 -> =IFERROR((VLOOKUP($X29,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y30 -> =IFERROR((VLOOKUP($X27,Organigrama!$F$4:$AD$2009,'5'!$DI$6,0)),"")
+  CA30 -> =Y30
+  Y33 -> =IFERROR((VLOOKUP($X33,Organigrama!$F$4:$AD$2009,'5'!$DF$6,0)),"")
+  AC33 -> =IFERROR((VLOOKUP($X33,Organigrama!$F$4:$AD$2009,'5'!$DG$6,0)),"")
+  CA33 -> =Y33
+  CE33 -> =AC33
+  Y34 -> =IFERROR((VLOOKUP($X33,Organigrama!$F$4:$AD$2009,'5'!$DH$6,0)),"")
+  AC34 -> =IFERROR((VLOOKUP($X34,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y35 -> =IFERROR((VLOOKUP($X35,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC35 -> =IFERROR((VLOOKUP($X35,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y36 -> =IFERROR((VLOOKUP($X33,Organigrama!$F$4:$AD$2009,'5'!$DI$6,0)),"")
+  CA36 -> =Y36
+  Y39 -> =IFERROR((VLOOKUP($X39,Organigrama!$F$4:$AD$2009,'5'!$DF$6,0)),"")
+  AC39 -> =IFERROR((VLOOKUP($X39,Organigrama!$F$4:$AD$2009,'5'!$DG$6,0)),"")
+  CA39 -> =Y39
+  CE39 -> =AC39
+  Y40 -> =IFERROR((VLOOKUP($X39,Organigrama!$F$4:$AD$2009,'5'!$DH$6,0)),"")
+  AC40 -> =IFERROR((VLOOKUP($X40,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y41 -> =IFERROR((VLOOKUP($X41,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC41 -> =IFERROR((VLOOKUP($X41,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y42 -> =IFERROR((VLOOKUP($X39,Organigrama!$F$4:$AD$2009,'5'!$DI$6,0)),"")
+  CA42 -> =Y42
+  Y45 -> =IFERROR((VLOOKUP($X45,Organigrama!$F$4:$AD$2009,'5'!$DF$6,0)),"")
+  AC45 -> =IFERROR((VLOOKUP($X45,Organigrama!$F$4:$AD$2009,'5'!$DG$6,0)),"")
+  CA45 -> =Y45
+  CE45 -> =AC45
+  Y46 -> =IFERROR((VLOOKUP($X45,Organigrama!$F$4:$AD$2009,'5'!$DH$6,0)),"")
+  AC46 -> =IFERROR((VLOOKUP($X46,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y47 -> =IFERROR((VLOOKUP($X47,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC47 -> =IFERROR((VLOOKUP($X47,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y48 -> =IFERROR((VLOOKUP($X45,Organigrama!$F$4:$AD$2009,'5'!$DI$6,0)),"")
+  CA48 -> =Y48
+  D59 -> =Organigrama!#REF!
+  Q59 -> =Organigrama!$AG$4
+  BF59 -> =Organigrama!#REF!
+  BS59 -> =Organigrama!$AG$4
+
+=== Hoja: 6 ===
+Encabezados (fila 1):  |  | 
+ |  |  |  |  |  |  |  |  |  |  | Plan de Organización
+DATO MODIFICADO MANUALMENTE POR PRIVACIDAD |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | MX-APL 3.4 |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  | Plan de Organización
+DATO MODIFICADO MANUALMENTE POR PRIVACIDAD |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | MX-APL 3.4 |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+Formulas encontradas: 48
+  DF6 -> ='5'!DF6-1
+  DG6 -> ='5'!DG6-1
+  DH6 -> ='5'!DH6-1
+  DI6 -> ='5'!DI6-1
+  Y16 -> =IFERROR((VLOOKUP($X16,Organigrama!$G$4:$AD$2009,'6'!$DF$6,0)),"")
+  AC16 -> =IFERROR((VLOOKUP($X16,Organigrama!$G$4:$AD$2009,'6'!$DG$6,0)),"")
+  CA16 -> =Y16
+  CE16 -> =AC16
+  Y17 -> =IFERROR((VLOOKUP($X16,Organigrama!$G$4:$AD$2009,'6'!$DH$6,0)),"")
+  AC17 -> =IFERROR((VLOOKUP($X17,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y18 -> =IFERROR((VLOOKUP($X18,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC18 -> =IFERROR((VLOOKUP($X18,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y19 -> =IFERROR((VLOOKUP($X16,Organigrama!$G$4:$AD$2009,'6'!$DI$6,0)),"")
+  CA19 -> =Y19
+  Y22 -> =IFERROR((VLOOKUP($X22,Organigrama!$G$4:$AD$2009,'6'!$DF$6,0)),"")
+  AC22 -> =IFERROR((VLOOKUP($X22,Organigrama!$G$4:$AD$2009,'6'!$DG$6,0)),"")
+  CA22 -> =Y22
+  CE22 -> =AC22
+  Y23 -> =IFERROR((VLOOKUP($X22,Organigrama!$G$4:$AD$2009,'6'!$DH$6,0)),"")
+  AC23 -> =IFERROR((VLOOKUP($X23,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y24 -> =IFERROR((VLOOKUP($X24,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC24 -> =IFERROR((VLOOKUP($X24,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y25 -> =IFERROR((VLOOKUP($X22,Organigrama!$G$4:$AD$2009,'6'!$DI$6,0)),"")
+  CA25 -> =Y25
+  Y28 -> =IFERROR((VLOOKUP($X28,Organigrama!$G$4:$AD$2009,'6'!$DF$6,0)),"")
+  AC28 -> =IFERROR((VLOOKUP($X28,Organigrama!$G$4:$AD$2009,'6'!$DG$6,0)),"")
+  CA28 -> =Y28
+  CE28 -> =AC28
+  Y29 -> =IFERROR((VLOOKUP($X28,Organigrama!$G$4:$AD$2009,'6'!$DH$6,0)),"")
+  AC29 -> =IFERROR((VLOOKUP($X29,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y30 -> =IFERROR((VLOOKUP($X30,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC30 -> =IFERROR((VLOOKUP($X30,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y31 -> =IFERROR((VLOOKUP($X28,Organigrama!$G$4:$AD$2009,'6'!$DI$6,0)),"")
+  CA31 -> =Y31
+  Y34 -> =IFERROR((VLOOKUP($X34,Organigrama!$G$4:$AD$2009,'6'!$DF$6,0)),"")
+  AC34 -> =IFERROR((VLOOKUP($X34,Organigrama!$G$4:$AD$2009,'6'!$DG$6,0)),"")
+  CA34 -> =Y34
+  CE34 -> =AC34
+  Y35 -> =IFERROR((VLOOKUP($X34,Organigrama!$G$4:$AD$2009,'6'!$DH$6,0)),"")
+  AC35 -> =IFERROR((VLOOKUP($X35,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y36 -> =IFERROR((VLOOKUP($X36,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC36 -> =IFERROR((VLOOKUP($X36,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y37 -> =IFERROR((VLOOKUP($X34,Organigrama!$G$4:$AD$2009,'6'!$DI$6,0)),"")
+  CA37 -> =Y37
+  D59 -> =Organigrama!#REF!
+  Q59 -> =Organigrama!$AG$4
+  BF59 -> =Organigrama!#REF!
+  BS59 -> =Organigrama!$AG$4
+
+=== Hoja: 7 ===
+Encabezados (fila 1):  |  | 
+ |  |  |  |  |  |  |  |  |  |  | Plan de Organización
+DATO MODIFICADO MANUALMENTE POR PRIVACIDAD |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | MX-APL 4.1 |  |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  | Plan de Organización
+DATO MODIFICADO MANUALMENTE POR PRIVACIDAD |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | MX-APL 4.1 |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+Formulas encontradas: 118
+  DF6 -> ='6'!DF6-1
+  DG6 -> ='6'!DG6-1
+  DH6 -> ='6'!DH6-1
+  DI6 -> ='6'!DI6-1
+  Y9 -> =IFERROR((VLOOKUP($X9,Organigrama!$H$4:$AD$2009,'7'!$DF$6,0)),"")
+  AC9 -> =IFERROR((VLOOKUP($X9,Organigrama!$H$4:$AD$2009,'7'!$DG$6,0)),"")
+  CA9 -> =Y9
+  CE9 -> =AC9
+  Y10 -> =IFERROR((VLOOKUP($X9,Organigrama!$H$4:$AD$2009,'7'!$DH$6,0)),"")
+  AC10 -> =IFERROR((VLOOKUP($X10,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y11 -> =IFERROR((VLOOKUP($X11,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC11 -> =IFERROR((VLOOKUP($X11,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y12 -> =IFERROR((VLOOKUP($X9,Organigrama!$H$4:$AD$2009,'7'!$DI$6,0)),"")
+  CA12 -> =Y12
+  Y15 -> =IFERROR((VLOOKUP($X15,Organigrama!$H$4:$AD$2009,'7'!$DF$6,0)),"")
+  AC15 -> =IFERROR((VLOOKUP($X15,Organigrama!$H$4:$AD$2009,'7'!$DG$6,0)),"")
+  CA15 -> =Y15
+  CE15 -> =AC15
+  Y16 -> =IFERROR((VLOOKUP($X15,Organigrama!$H$4:$AD$2009,'7'!$DH$6,0)),"")
+  AC16 -> =IFERROR((VLOOKUP($X16,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y17 -> =IFERROR((VLOOKUP($X17,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC17 -> =IFERROR((VLOOKUP($X17,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y18 -> =IFERROR((VLOOKUP($X15,Organigrama!$H$4:$AD$2009,'7'!$DI$6,0)),"")
+  CA18 -> =Y18
+  N23 -> =IFERROR((VLOOKUP($M23,Organigrama!$H$4:$AD$2009,'7'!$DF$6,0)),"")
+  R23 -> =IFERROR((VLOOKUP($M23,Organigrama!$H$4:$AD$2009,'7'!$DG$6,0)),"")
+  Y23 -> =IFERROR((VLOOKUP($X23,Organigrama!$H$4:$AD$2009,'7'!$DF$6,0)),"")
+  AC23 -> =IFERROR((VLOOKUP($X23,Organigrama!$H$4:$AD$2009,'7'!$DG$6,0)),"")
+  AJ23 -> =IFERROR((VLOOKUP($AI23,Organigrama!$H$4:$AD$2009,'7'!$DF$6,0)),"")
+  AN23 -> =IFERROR((VLOOKUP($AI23,Organigrama!$H$4:$AD$2009,'7'!$DG$6,0)),"")
+  BP23 -> =N23
+  BT23 -> =R23
+  CA23 -> =Y23
+  CE23 -> =AC23
+  CL23 -> =AJ23
+  CP23 -> =AN23
+  N24 -> =IFERROR((VLOOKUP($M23,Organigrama!$H$4:$AD$2009,'7'!$DH$6,0)),"")
+  R24 -> =IFERROR((VLOOKUP($X24,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y24 -> =IFERROR((VLOOKUP($X23,Organigrama!$H$4:$AD$2009,'7'!$DH$6,0)),"")
+  AC24 -> =IFERROR((VLOOKUP($X24,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AJ24 -> =IFERROR((VLOOKUP($AI23,Organigrama!$H$4:$AD$2009,'7'!$DH$6,0)),"")
+  AN24 -> =IFERROR((VLOOKUP($X24,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  N25 -> =IFERROR((VLOOKUP($X25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  R25 -> =IFERROR((VLOOKUP($X25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y25 -> =IFERROR((VLOOKUP($X25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC25 -> =IFERROR((VLOOKUP($X25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AJ25 -> =IFERROR((VLOOKUP($X25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AN25 -> =IFERROR((VLOOKUP($X25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  N26 -> =IFERROR((VLOOKUP($M23,Organigrama!$H$4:$AD$2009,'7'!$DI$6,0)),"")
+  Y26 -> =IFERROR((VLOOKUP($X23,Organigrama!$H$4:$AD$2009,'7'!$DI$6,0)),"")
+  AJ26 -> =IFERROR((VLOOKUP($AI23,Organigrama!$H$4:$AD$2009,'7'!$DI$6,0)),"")
+  BP26 -> =N26
+  CA26 -> =Y26
+  CL26 -> =AJ26
+  N29 -> =IFERROR((VLOOKUP($M29,Organigrama!$H$4:$AD$2009,'7'!$DF$6,0)),"")
+  R29 -> =IFERROR((VLOOKUP($M29,Organigrama!$H$4:$AD$2009,'7'!$DG$6,0)),"")
+  Y29 -> =IFERROR((VLOOKUP($X29,Organigrama!$H$4:$AD$2009,'7'!$DF$6,0)),"")
+  AC29 -> =IFERROR((VLOOKUP($X29,Organigrama!$H$4:$AD$2009,'7'!$DG$6,0)),"")
+  AJ29 -> =IFERROR((VLOOKUP($AI29,Organigrama!$H$4:$AD$2009,'7'!$DF$6,0)),"")
+  AN29 -> =IFERROR((VLOOKUP($AI29,Organigrama!$H$4:$AD$2009,'7'!$DG$6,0)),"")
+  BP29 -> =N29
+  BT29 -> =R29
+  CA29 -> =Y29
+  CE29 -> =AC29
+  CL29 -> =AJ29
+  CP29 -> =AN29
+  N30 -> =IFERROR((VLOOKUP($M29,Organigrama!$H$4:$AD$2009,'7'!$DH$6,0)),"")
+  R30 -> =IFERROR((VLOOKUP($X30,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y30 -> =IFERROR((VLOOKUP($X29,Organigrama!$H$4:$AD$2009,'7'!$DH$6,0)),"")
+  AC30 -> =IFERROR((VLOOKUP($X30,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AJ30 -> =IFERROR((VLOOKUP($AI29,Organigrama!$H$4:$AD$2009,'7'!$DH$6,0)),"")
+  AN30 -> =IFERROR((VLOOKUP($X30,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  N31 -> =IFERROR((VLOOKUP($X31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  R31 -> =IFERROR((VLOOKUP($X31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y31 -> =IFERROR((VLOOKUP($X31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC31 -> =IFERROR((VLOOKUP($X31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AJ31 -> =IFERROR((VLOOKUP($X31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AN31 -> =IFERROR((VLOOKUP($X31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  N32 -> =IFERROR((VLOOKUP($M29,Organigrama!$H$4:$AD$2009,'7'!$DI$6,0)),"")
+  Y32 -> =IFERROR((VLOOKUP($X29,Organigrama!$H$4:$AD$2009,'7'!$DI$6,0)),"")
+  AJ32 -> =IFERROR((VLOOKUP($AI29,Organigrama!$H$4:$AD$2009,'7'!$DI$6,0)),"")
+  BP32 -> =N32
+  CA32 -> =Y32
+  CL32 -> =AJ32
+  N35 -> =IFERROR((VLOOKUP($M35,Organigrama!$H$4:$AD$2009,'7'!$DF$6,0)),"")
+  R35 -> =IFERROR((VLOOKUP($M35,Organigrama!$H$4:$AD$2009,'7'!$DG$6,0)),"")
+  AJ35 -> =IFERROR((VLOOKUP($AI35,Organigrama!$H$4:$AD$2009,'7'!$DF$6,0)),"")
+  AN35 -> =IFERROR((VLOOKUP($AI35,Organigrama!$H$4:$AD$2009,'7'!$DG$6,0)),"")
+  BP35 -> =N35
+  BT35 -> =R35
+  CL35 -> =AJ35
+  CP35 -> =AN35
+  N36 -> =IFERROR((VLOOKUP($M35,Organigrama!$H$4:$AD$2009,'7'!$DH$6,0)),"")
+  R36 -> =IFERROR((VLOOKUP($X36,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AJ36 -> =IFERROR((VLOOKUP($AI35,Organigrama!$H$4:$AD$2009,'7'!$DH$6,0)),"")
+  AN36 -> =IFERROR((VLOOKUP($X36,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  N37 -> =IFERROR((VLOOKUP($X37,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  R37 -> =IFERROR((VLOOKUP($X37,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AJ37 -> =IFERROR((VLOOKUP($X37,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AN37 -> =IFERROR((VLOOKUP($X37,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  N38 -> =IFERROR((VLOOKUP($M35,Organigrama!$H$4:$AD$2009,'7'!$DI$6,0)),"")
+  AJ38 -> =IFERROR((VLOOKUP($AI35,Organigrama!$H$4:$AD$2009,'7'!$DI$6,0)),"")
+  BP38 -> =N38
+  CL38 -> =AJ38
+  AJ41 -> =IFERROR((VLOOKUP($AI41,Organigrama!$H$4:$AD$2009,'7'!$DF$6,0)),"")
+  AN41 -> =IFERROR((VLOOKUP($AI41,Organigrama!$H$4:$AD$2009,'7'!$DG$6,0)),"")
+  CL41 -> =AJ41
+  CP41 -> =AN41
+  AJ42 -> =IFERROR((VLOOKUP($AI41,Organigrama!$H$4:$AD$2009,'7'!$DH$6,0)),"")
+  AN42 -> =IFERROR((VLOOKUP($X42,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AJ43 -> =IFERROR((VLOOKUP($X43,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AN43 -> =IFERROR((VLOOKUP($X43,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AJ44 -> =IFERROR((VLOOKUP($AI41,Organigrama!$H$4:$AD$2009,'7'!$DI$6,0)),"")
+  CL44 -> =AJ44
+  D58 -> =Organigrama!#REF!
+  Q58 -> =Organigrama!$AG$4
+  BF58 -> =Organigrama!#REF!
+  BS58 -> =Organigrama!$AG$4
+
+=== Hoja: 8 ===
+Encabezados (fila 1):  |  | 
+ |  |  |  |  |  |  |  |  |  |  | Plan de Organización
+DATO MODIFICADO MANUALMENTE POR PRIVACIDAD |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | MX-APL
+LK 1608
+Part 6.5 |  |  |  |  |  |  |  |  |  |  |  | 
+ |  |  |  |  |  |  |  |  |  |  | Plan de Organización
+DATO MODIFICADO MANUALMENTE POR PRIVACIDAD |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  |  | MX-APL
+LK 1608
+Part 6.5 |  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+Formulas encontradas: 246
+  DE6 -> ='7'!DF6-1
+  DF6 -> ='7'!DG6-1
+  DG6 -> ='7'!DH6-1
+  DH6 -> ='7'!DI6-1
+  Y8 -> =IFERROR((VLOOKUP($X8,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  AC8 -> =IFERROR((VLOOKUP($X8,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  BZ8 -> =IFERROR((VLOOKUP($X8,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  CD8 -> =IFERROR((VLOOKUP($X8,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  Y9 -> =IFERROR((VLOOKUP($X8,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  AC9 -> =IFERROR((VLOOKUP($X9,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BZ9 -> =IFERROR((VLOOKUP($X8,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  CD9 -> =IFERROR((VLOOKUP($X9,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y10 -> =IFERROR((VLOOKUP($X10,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC10 -> =IFERROR((VLOOKUP($X10,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BZ10 -> =IFERROR((VLOOKUP($X10,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CD10 -> =IFERROR((VLOOKUP($X10,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y11 -> =IFERROR((VLOOKUP($X8,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  BZ11 -> =IFERROR((VLOOKUP($X8,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  Y14 -> =IFERROR((VLOOKUP($X14,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  AC14 -> =IFERROR((VLOOKUP($X14,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  BZ14 -> =IFERROR((VLOOKUP($X14,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  CD14 -> =IFERROR((VLOOKUP($X14,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  Y15 -> =IFERROR((VLOOKUP($X14,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  AC15 -> =IFERROR((VLOOKUP($X15,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BZ15 -> =IFERROR((VLOOKUP($X14,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  CD15 -> =IFERROR((VLOOKUP($X15,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y16 -> =IFERROR((VLOOKUP($X16,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AC16 -> =IFERROR((VLOOKUP($X16,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BZ16 -> =IFERROR((VLOOKUP($X16,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CD16 -> =IFERROR((VLOOKUP($X16,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  Y17 -> =IFERROR((VLOOKUP($X14,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  AR17 -> =IFERROR((VLOOKUP($AQ17,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  AV17 -> =IFERROR((VLOOKUP($AQ17,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  BZ17 -> =IFERROR((VLOOKUP($X14,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  CS17 -> =IFERROR((VLOOKUP($AQ17,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  CW17 -> =IFERROR((VLOOKUP($AQ17,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  AR18 -> =IFERROR((VLOOKUP($AQ17,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  AV18 -> =IFERROR((VLOOKUP($X18,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CS18 -> =IFERROR((VLOOKUP($AQ17,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  CW18 -> =IFERROR((VLOOKUP($X18,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AR19 -> =IFERROR((VLOOKUP($X19,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AV19 -> =IFERROR((VLOOKUP($X19,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CS19 -> =IFERROR((VLOOKUP($X19,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CW19 -> =IFERROR((VLOOKUP($X19,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AR20 -> =IFERROR((VLOOKUP($AQ17,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  CS20 -> =IFERROR((VLOOKUP($AQ17,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  I23 -> =IFERROR((VLOOKUP($H23,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  M23 -> =IFERROR((VLOOKUP($H23,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  T23 -> =IFERROR((VLOOKUP($S23,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  X23 -> =IFERROR((VLOOKUP($S23,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  AE23 -> =IFERROR((VLOOKUP($AD23,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  AI23 -> =IFERROR((VLOOKUP($AD23,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  AP23 -> =IFERROR((VLOOKUP($AO23,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  AT23 -> =IFERROR((VLOOKUP($AO23,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  BJ23 -> =IFERROR((VLOOKUP($H23,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  BN23 -> =IFERROR((VLOOKUP($H23,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  BU23 -> =IFERROR((VLOOKUP($S23,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  BY23 -> =IFERROR((VLOOKUP($S23,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  CF23 -> =IFERROR((VLOOKUP($AD23,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  CJ23 -> =IFERROR((VLOOKUP($AD23,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  CQ23 -> =IFERROR((VLOOKUP($AO23,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  CU23 -> =IFERROR((VLOOKUP($AO23,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  I24 -> =IFERROR((VLOOKUP($H23,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  M24 -> =IFERROR((VLOOKUP($AD24,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  T24 -> =IFERROR((VLOOKUP($S23,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  X24 -> =IFERROR((VLOOKUP($AD24,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AE24 -> =IFERROR((VLOOKUP($AD23,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  AI24 -> =IFERROR((VLOOKUP($AD24,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AP24 -> =IFERROR((VLOOKUP($AO23,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  AT24 -> =IFERROR((VLOOKUP($AD24,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BJ24 -> =IFERROR((VLOOKUP($H23,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  BN24 -> =IFERROR((VLOOKUP($AD24,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BU24 -> =IFERROR((VLOOKUP($S23,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  BY24 -> =IFERROR((VLOOKUP($AD24,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CF24 -> =IFERROR((VLOOKUP($AD23,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  CJ24 -> =IFERROR((VLOOKUP($AD24,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CQ24 -> =IFERROR((VLOOKUP($AO23,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  CU24 -> =IFERROR((VLOOKUP($AD24,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  I25 -> =IFERROR((VLOOKUP($AD25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  M25 -> =IFERROR((VLOOKUP($AD25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  T25 -> =IFERROR((VLOOKUP($AD25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  X25 -> =IFERROR((VLOOKUP($AD25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AE25 -> =IFERROR((VLOOKUP($AD25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AI25 -> =IFERROR((VLOOKUP($AD25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AP25 -> =IFERROR((VLOOKUP($AD25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AT25 -> =IFERROR((VLOOKUP($AD25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BJ25 -> =IFERROR((VLOOKUP($AD25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BN25 -> =IFERROR((VLOOKUP($AD25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BU25 -> =IFERROR((VLOOKUP($AD25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BY25 -> =IFERROR((VLOOKUP($AD25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CF25 -> =IFERROR((VLOOKUP($AD25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CJ25 -> =IFERROR((VLOOKUP($AD25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CQ25 -> =IFERROR((VLOOKUP($AD25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CU25 -> =IFERROR((VLOOKUP($AD25,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  I26 -> =IFERROR((VLOOKUP($H23,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  T26 -> =IFERROR((VLOOKUP($S23,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  AE26 -> =IFERROR((VLOOKUP($AD23,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  AP26 -> =IFERROR((VLOOKUP($AO23,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  BJ26 -> =IFERROR((VLOOKUP($H23,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  BU26 -> =IFERROR((VLOOKUP($S23,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  CF26 -> =IFERROR((VLOOKUP($AD23,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  CQ26 -> =IFERROR((VLOOKUP($AO23,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  I29 -> =IFERROR((VLOOKUP($H29,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  M29 -> =IFERROR((VLOOKUP($H29,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  T29 -> =IFERROR((VLOOKUP($S29,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  X29 -> =IFERROR((VLOOKUP($S29,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  AE29 -> =IFERROR((VLOOKUP($AD29,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  AI29 -> =IFERROR((VLOOKUP($AD29,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  AP29 -> =IFERROR((VLOOKUP($AO29,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  AT29 -> =IFERROR((VLOOKUP($AO29,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  BJ29 -> =IFERROR((VLOOKUP($H29,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  BN29 -> =IFERROR((VLOOKUP($H29,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  BU29 -> =IFERROR((VLOOKUP($S29,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  BY29 -> =IFERROR((VLOOKUP($S29,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  CF29 -> =IFERROR((VLOOKUP($AD29,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  CJ29 -> =IFERROR((VLOOKUP($AD29,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  CQ29 -> =IFERROR((VLOOKUP($AO29,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  CU29 -> =IFERROR((VLOOKUP($AO29,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  I30 -> =IFERROR((VLOOKUP($H29,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  M30 -> =IFERROR((VLOOKUP($AD30,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  T30 -> =IFERROR((VLOOKUP($S29,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  X30 -> =IFERROR((VLOOKUP($AD30,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AE30 -> =IFERROR((VLOOKUP($AD29,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  AI30 -> =IFERROR((VLOOKUP($AD30,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AP30 -> =IFERROR((VLOOKUP($AO29,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  AT30 -> =IFERROR((VLOOKUP($AD30,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BJ30 -> =IFERROR((VLOOKUP($H29,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  BN30 -> =IFERROR((VLOOKUP($AD30,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BU30 -> =IFERROR((VLOOKUP($S29,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  BY30 -> =IFERROR((VLOOKUP($AD30,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CF30 -> =IFERROR((VLOOKUP($AD29,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  CJ30 -> =IFERROR((VLOOKUP($AD30,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CQ30 -> =IFERROR((VLOOKUP($AO29,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  CU30 -> =IFERROR((VLOOKUP($AD30,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  I31 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  M31 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  T31 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  X31 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AE31 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AI31 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AP31 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AT31 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BJ31 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BN31 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BU31 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BY31 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CF31 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CJ31 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CQ31 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CU31 -> =IFERROR((VLOOKUP($AD31,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  I32 -> =IFERROR((VLOOKUP($H29,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  T32 -> =IFERROR((VLOOKUP($S29,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  AE32 -> =IFERROR((VLOOKUP($AD29,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  AP32 -> =IFERROR((VLOOKUP($AO29,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  BJ32 -> =IFERROR((VLOOKUP($H29,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  BU32 -> =IFERROR((VLOOKUP($S29,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  CF32 -> =IFERROR((VLOOKUP($AD29,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  CQ32 -> =IFERROR((VLOOKUP($AO29,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  T35 -> =IFERROR((VLOOKUP($S35,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  X35 -> =IFERROR((VLOOKUP($S35,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  AE35 -> =IFERROR((VLOOKUP($AD35,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  AI35 -> =IFERROR((VLOOKUP($AD35,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  AP35 -> =IFERROR((VLOOKUP($AO35,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  AT35 -> =IFERROR((VLOOKUP($AO35,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  BU35 -> =IFERROR((VLOOKUP($S35,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  BY35 -> =IFERROR((VLOOKUP($S35,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  CF35 -> =IFERROR((VLOOKUP($AD35,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  CJ35 -> =IFERROR((VLOOKUP($AD35,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  CQ35 -> =IFERROR((VLOOKUP($AO35,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  CU35 -> =IFERROR((VLOOKUP($AO35,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  T36 -> =IFERROR((VLOOKUP($S35,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  X36 -> =IFERROR((VLOOKUP($AD36,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AE36 -> =IFERROR((VLOOKUP($AD35,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  AI36 -> =IFERROR((VLOOKUP($AD36,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AP36 -> =IFERROR((VLOOKUP($AO35,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  AT36 -> =IFERROR((VLOOKUP($AD36,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BU36 -> =IFERROR((VLOOKUP($S35,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  BY36 -> =IFERROR((VLOOKUP($AD36,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CF36 -> =IFERROR((VLOOKUP($AD35,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  CJ36 -> =IFERROR((VLOOKUP($AD36,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CQ36 -> =IFERROR((VLOOKUP($AO35,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  CU36 -> =IFERROR((VLOOKUP($AD36,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  T37 -> =IFERROR((VLOOKUP($AD37,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  X37 -> =IFERROR((VLOOKUP($AD37,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AE37 -> =IFERROR((VLOOKUP($AD37,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AI37 -> =IFERROR((VLOOKUP($AD37,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AP37 -> =IFERROR((VLOOKUP($AD37,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AT37 -> =IFERROR((VLOOKUP($AD37,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BU37 -> =IFERROR((VLOOKUP($AD37,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BY37 -> =IFERROR((VLOOKUP($AD37,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CF37 -> =IFERROR((VLOOKUP($AD37,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CJ37 -> =IFERROR((VLOOKUP($AD37,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CQ37 -> =IFERROR((VLOOKUP($AD37,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CU37 -> =IFERROR((VLOOKUP($AD37,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  T38 -> =IFERROR((VLOOKUP($S35,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  AE38 -> =IFERROR((VLOOKUP($AD35,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  AP38 -> =IFERROR((VLOOKUP($AO35,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  BU38 -> =IFERROR((VLOOKUP($S35,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  CF38 -> =IFERROR((VLOOKUP($AD35,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  CQ38 -> =IFERROR((VLOOKUP($AO35,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  T41 -> =IFERROR((VLOOKUP($S41,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  X41 -> =IFERROR((VLOOKUP($S41,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  AE41 -> =IFERROR((VLOOKUP($AD41,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  AI41 -> =IFERROR((VLOOKUP($AD41,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  BU41 -> =IFERROR((VLOOKUP($S41,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  BY41 -> =IFERROR((VLOOKUP($S41,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  CF41 -> =IFERROR((VLOOKUP($AD41,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  CJ41 -> =IFERROR((VLOOKUP($AD41,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  T42 -> =IFERROR((VLOOKUP($S41,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  X42 -> =IFERROR((VLOOKUP($AD42,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AE42 -> =IFERROR((VLOOKUP($AD41,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  AI42 -> =IFERROR((VLOOKUP($AD42,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BU42 -> =IFERROR((VLOOKUP($S41,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  BY42 -> =IFERROR((VLOOKUP($AD42,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CF42 -> =IFERROR((VLOOKUP($AD41,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  CJ42 -> =IFERROR((VLOOKUP($AD42,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  T43 -> =IFERROR((VLOOKUP($AD43,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  X43 -> =IFERROR((VLOOKUP($AD43,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AE43 -> =IFERROR((VLOOKUP($AD43,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  AI43 -> =IFERROR((VLOOKUP($AD43,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BU43 -> =IFERROR((VLOOKUP($AD43,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BY43 -> =IFERROR((VLOOKUP($AD43,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CF43 -> =IFERROR((VLOOKUP($AD43,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  CJ43 -> =IFERROR((VLOOKUP($AD43,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  T44 -> =IFERROR((VLOOKUP($S41,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  AE44 -> =IFERROR((VLOOKUP($AD41,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  BU44 -> =IFERROR((VLOOKUP($S41,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  CF44 -> =IFERROR((VLOOKUP($AD41,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  T47 -> =IFERROR((VLOOKUP($S47,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  X47 -> =IFERROR((VLOOKUP($S47,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  BU47 -> =IFERROR((VLOOKUP($S47,Organigrama!$I$4:$AD$2009,'8'!$DE$6,0)),"")
+  BY47 -> =IFERROR((VLOOKUP($S47,Organigrama!$I$4:$AD$2009,'8'!$DF$6,0)),"")
+  T48 -> =IFERROR((VLOOKUP($S47,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  X48 -> =IFERROR((VLOOKUP($AD48,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BU48 -> =IFERROR((VLOOKUP($S47,Organigrama!$I$4:$AD$2009,'8'!$DG$6,0)),"")
+  BY48 -> =IFERROR((VLOOKUP($AD48,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  T49 -> =IFERROR((VLOOKUP($AD49,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  X49 -> =IFERROR((VLOOKUP($AD49,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BU49 -> =IFERROR((VLOOKUP($AD49,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  BY49 -> =IFERROR((VLOOKUP($AD49,Organigrama!$B$4:$AD$2010,'1'!$AF$5)),"")
+  T50 -> =IFERROR((VLOOKUP($S47,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  BU50 -> =IFERROR((VLOOKUP($S47,Organigrama!$I$4:$AD$2009,'8'!$DH$6,0)),"")
+  D61 -> =Organigrama!#REF!
+  Q61 -> =Organigrama!$AJ$4
+  BE61 -> =Organigrama!#REF!
+  BR61 -> =Organigrama!$AJ$4
+
+=== Hoja: RESULTADO ===
+Encabezados (fila 1):  |  |  |  |  |  |  |  |  |  |  |  |  |  | 
+Formulas encontradas: 2
+  C5 -> =SAP!#REF!
+  B28 -> =Organigrama!Q3

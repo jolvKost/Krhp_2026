@@ -1,0 +1,144 @@
+let
+    Source = Excel.Workbook(File.Contents("."), null, true),
+    Format_Sheet = Source{[Item="Format",Kind="Sheet"]}[Data],
+    #"Promoted Headers" = Table.PromoteHeaders(Format_Sheet, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Nº pers.", Int64.Type}, {"Nombre del empleado o candidat", type text}, {"CeCo", Int64.Type}, {"NIMSS", Int64.Type}, {"Alta", type date}, {"Denominación de la posición", type text}, {"Nombre del encargado", type text}, {"Apellido Paterno", type text}, {"Apellido Materno", type text}, {"Nombre(s)", type text}, {"CURP", type text}, {"Cal.Migratoria", type text}, {"Planta", type text}, {"ÁrPer", type text}}),
+    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","""","",Replacer.ReplaceText,{"Cal.Migratoria"}),
+    #"Removed Columns" = Table.RemoveColumns(#"Replaced Value",{"ÁrPer"})
+in
+    #"Removed Columns"
+
+___________________________________________________________________________________________
+
+let
+    Source = Excel.Workbook(File.Contents("."), null, true),
+    Format_Sheet = Source{[Item="Format",Kind="Sheet"]}[Data],
+    #"Promoted Headers" = Table.PromoteHeaders(Format_Sheet, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Nº pers.", Int64.Type}, {"Nombre del empleado o candidat", type text}, {"CeCo", Int64.Type}, {"NIMSS", Int64.Type}, {"Alta", type date}, {"Denominación de la posición", type text}, {"Nombre del encargado", type text}, {"Apellido Paterno", type text}, {"Apellido Materno", type text}, {"Nombre(s)", type text}, {"CURP", type text}, {"Cal.Migratoria", type text}, {"Planta", type text}, {"ÁrPer", type text}}),
+    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","""","",Replacer.ReplaceText,{"Cal.Migratoria"}),
+    #"Removed Columns" = Table.RemoveColumns(#"Replaced Value",{"NIMSS", "Apellido Paterno", "Apellido Materno", "Nombre(s)", "CURP"}),
+    #"Filtered Rows" = Table.SelectRows(#"Removed Columns", each ([Planta] = "k1" or [Planta] = "K1") and ([ÁrPer] = "CD" or [ÁrPer] = "DD" or [ÁrPer] = "DS")),
+    #"Removed Columns1" = Table.RemoveColumns(#"Filtered Rows",{"ÁrPer"})
+in
+    #"Removed Columns1"
+
+___________________________________________________________________________________________
+
+let
+    Source = Excel.Workbook(File.Contents("."), null, true),
+    Format_Sheet = Source{[Item="Format",Kind="Sheet"]}[Data],
+    #"Promoted Headers" = Table.PromoteHeaders(Format_Sheet, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Nº pers.", Int64.Type}, {"Nombre del empleado o candidat", type text}, {"CeCo", Int64.Type}, {"NIMSS", Int64.Type}, {"Alta", type date}, {"Denominación de la posición", type text}, {"Nombre del encargado", type text}, {"Apellido Paterno", type text}, {"Apellido Materno", type text}, {"Nombre(s)", type text}, {"CURP", type text}, {"Cal.Migratoria", type text}, {"Planta", type text}, {"ÁrPer", type text}}),
+    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","""","",Replacer.ReplaceText,{"Cal.Migratoria"}),
+    #"Removed Columns" = Table.RemoveColumns(#"Replaced Value",{"NIMSS", "Apellido Paterno", "Apellido Materno", "Nombre(s)", "CURP"}),
+    #"Filtered Rows" = Table.SelectRows(#"Removed Columns", each ([Planta] = "k1" or [Planta] = "K1") and ([ÁrPer] <> "CD" and [ÁrPer] <> "DD" and [ÁrPer] <> "DS")),
+    #"Removed Columns1" = Table.RemoveColumns(#"Filtered Rows",{"ÁrPer"})
+in
+    #"Removed Columns1"
+
+___________________________________________________________________________________________
+
+let
+    Source = Excel.Workbook(File.Contents("."), null, true),
+    Format_Sheet = Source{[Item="Format",Kind="Sheet"]}[Data],
+    #"Promoted Headers" = Table.PromoteHeaders(Format_Sheet, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Nº pers.", Int64.Type}, {"Nombre del empleado o candidat", type text}, {"CeCo", Int64.Type}, {"NIMSS", Int64.Type}, {"Alta", type date}, {"Denominación de la posición", type text}, {"Nombre del encargado", type text}, {"Apellido Paterno", type text}, {"Apellido Materno", type text}, {"Nombre(s)", type text}, {"CURP", type text}, {"Cal.Migratoria", type text}, {"Planta", type text}, {"ÁrPer", type text}}),
+    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","""","",Replacer.ReplaceText,{"Cal.Migratoria"}),
+    #"Removed Columns" = Table.RemoveColumns(#"Replaced Value",{"NIMSS", "Apellido Paterno", "Apellido Materno", "Nombre(s)", "CURP"}),
+    #"Filtered Rows" = Table.SelectRows(#"Removed Columns", each ([Planta] = "k2" or [Planta] = "K2") and ([ÁrPer] = "CD" or [ÁrPer] = "DD" or [ÁrPer] = "DS")),
+    #"Removed Columns1" = Table.RemoveColumns(#"Filtered Rows",{"ÁrPer"})
+in
+    #"Removed Columns1"
+___________________________________________________________________________________________
+
+let
+    Source = Excel.Workbook(File.Contents("."), null, true),
+    Format_Sheet = Source{[Item="Format",Kind="Sheet"]}[Data],
+    #"Promoted Headers" = Table.PromoteHeaders(Format_Sheet, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Nº pers.", Int64.Type}, {"Nombre del empleado o candidat", type text}, {"CeCo", Int64.Type}, {"NIMSS", Int64.Type}, {"Alta", type date}, {"Denominación de la posición", type text}, {"Nombre del encargado", type text}, {"Apellido Paterno", type text}, {"Apellido Materno", type text}, {"Nombre(s)", type text}, {"CURP", type text}, {"Cal.Migratoria", type text}, {"Planta", type text}, {"ÁrPer", type text}}),
+    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","""","",Replacer.ReplaceText,{"Cal.Migratoria"}),
+    #"Removed Columns" = Table.RemoveColumns(#"Replaced Value",{"NIMSS", "Apellido Paterno", "Apellido Materno", "Nombre(s)", "CURP"}),
+    #"Filtered Rows" = Table.SelectRows(#"Removed Columns", each ([Planta] = "k2" or [Planta] = "K2") and ([ÁrPer] = "BI" or [ÁrPer] = "CI" or [ÁrPer] = "JI")),
+    #"Removed Columns1" = Table.RemoveColumns(#"Filtered Rows",{"ÁrPer"})
+in
+    #"Removed Columns1"
+___________________________________________________________________________________________
+
+let
+    Source = Excel.Workbook(File.Contents("."), null, true),
+    Format_Sheet = Source{[Item="Format",Kind="Sheet"]}[Data],
+    #"Promoted Headers" = Table.PromoteHeaders(Format_Sheet, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Nº pers.", Int64.Type}, {"Nombre del empleado o candidat", type text}, {"CeCo", Int64.Type}, {"NIMSS", Int64.Type}, {"Alta", type date}, {"Denominación de la posición", type text}, {"Nombre del encargado", type text}, {"Apellido Paterno", type text}, {"Apellido Materno", type text}, {"Nombre(s)", type text}, {"CURP", type text}, {"Cal.Migratoria", type text}, {"Planta", type text}, {"ÁrPer", type text}}),
+    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","""","",Replacer.ReplaceText,{"Cal.Migratoria"}),
+    #"Removed Columns" = Table.RemoveColumns(#"Replaced Value",{"NIMSS", "Apellido Paterno", "Apellido Materno", "Nombre(s)", "CURP"}),
+    #"Filtered Rows" = Table.SelectRows(#"Removed Columns", each ([Planta] = "K3") and ([ÁrPer] = "CD" or [ÁrPer] = "DD" or [ÁrPer] = "DS")),
+    #"Removed Columns1" = Table.RemoveColumns(#"Filtered Rows",{"ÁrPer"})
+in
+    #"Removed Columns1"
+
+___________________________________________________________________________________________
+
+let
+    Source = Excel.Workbook(File.Contents("."), null, true),
+    Format_Sheet = Source{[Item="Format",Kind="Sheet"]}[Data],
+    #"Promoted Headers" = Table.PromoteHeaders(Format_Sheet, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Nº pers.", Int64.Type}, {"Nombre del empleado o candidat", type text}, {"CeCo", Int64.Type}, {"NIMSS", Int64.Type}, {"Alta", type date}, {"Denominación de la posición", type text}, {"Nombre del encargado", type text}, {"Apellido Paterno", type text}, {"Apellido Materno", type text}, {"Nombre(s)", type text}, {"CURP", type text}, {"Cal.Migratoria", type text}, {"Planta", type text}, {"ÁrPer", type text}}),
+    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","""","",Replacer.ReplaceText,{"Cal.Migratoria"}),
+    #"Removed Columns" = Table.RemoveColumns(#"Replaced Value",{"NIMSS", "Apellido Paterno", "Apellido Materno", "Nombre(s)", "CURP"}),
+    #"Filtered Rows" = Table.SelectRows(#"Removed Columns", each ([Planta] = "K3") and ([ÁrPer] <> "CD" and [ÁrPer] <> "DD" and [ÁrPer] <> "DS")),
+    #"Removed Columns1" = Table.RemoveColumns(#"Filtered Rows",{"ÁrPer"})
+in
+    #"Removed Columns1"
+
+___________________________________________________________________________________________
+
+let
+    Source = Excel.Workbook(File.Contents("."), null, true),
+    Format_Sheet = Source{[Item="Format",Kind="Sheet"]}[Data],
+    #"Promoted Headers" = Table.PromoteHeaders(Format_Sheet, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Nº pers.", Int64.Type}, {"Nombre del empleado o candidat", type text}, {"CeCo", Int64.Type}, {"NIMSS", Int64.Type}, {"Alta", type date}, {"Denominación de la posición", type text}, {"Nombre del encargado", type text}, {"Apellido Paterno", type text}, {"Apellido Materno", type text}, {"Nombre(s)", type text}, {"CURP", type text}, {"Cal.Migratoria", type text}, {"Planta", type text}, {"ÁrPer", type text}}),
+    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","""","",Replacer.ReplaceText,{"Cal.Migratoria"}),
+    #"Removed Columns" = Table.RemoveColumns(#"Replaced Value",{"NIMSS", "Apellido Paterno", "Apellido Materno", "Nombre(s)", "CURP"}),
+    #"Filtered Rows" = Table.SelectRows(#"Removed Columns", each ([Planta] = "K4") and ([ÁrPer] <> "CD" and [ÁrPer] <> "DD" and [ÁrPer] <> "DS")),
+    #"Removed Columns1" = Table.RemoveColumns(#"Filtered Rows",{"ÁrPer"})
+in
+    #"Removed Columns1"
+
+___________________________________________________________________________________________
+
+let
+    Source = Excel.Workbook(File.Contents("."), null, true),
+    Format_Sheet = Source{[Item="Format",Kind="Sheet"]}[Data],
+    #"Promoted Headers" = Table.PromoteHeaders(Format_Sheet, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Nº pers.", Int64.Type}, {"Nombre del empleado o candidat", type text}, {"CeCo", Int64.Type}, {"NIMSS", Int64.Type}, {"Alta", type date}, {"Denominación de la posición", type text}, {"Nombre del encargado", type text}, {"Apellido Paterno", type text}, {"Apellido Materno", type text}, {"Nombre(s)", type text}, {"CURP", type text}, {"Cal.Migratoria", type text}, {"Planta", type text}, {"ÁrPer", type text}}),
+    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","""","",Replacer.ReplaceText,{"Cal.Migratoria"}),
+    #"Removed Columns" = Table.RemoveColumns(#"Replaced Value",{"NIMSS", "Apellido Paterno", "Apellido Materno", "Nombre(s)", "CURP"}),
+    #"Filtered Rows" = Table.SelectRows(#"Removed Columns", each ([Planta] = "K4") and ([ÁrPer] = "CD" or [ÁrPer] = "DD" or [ÁrPer] = "DS")),
+    #"Removed Columns1" = Table.RemoveColumns(#"Filtered Rows",{"ÁrPer"})
+in
+    #"Removed Columns1"
+
+___________________________________________________________________________________________
+
+let
+    Source = Excel.Workbook(File.Contents("."), null, true),
+    Format_Sheet = Source{[Item="Format",Kind="Sheet"]}[Data],
+    #"Promoted Headers" = Table.PromoteHeaders(Format_Sheet, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Nº pers.", Int64.Type}, {"Nombre del empleado o candidat", type text}, {"CeCo", Int64.Type}, {"NIMSS", Int64.Type}, {"Alta", type date}, {"Denominación de la posición", type text}, {"Nombre del encargado", type text}, {"Apellido Paterno", type text}, {"Apellido Materno", type text}, {"Nombre(s)", type text}, {"CURP", type text}, {"Cal.Migratoria", type text}, {"Planta", type text}, {"ÁrPer", type text}}),
+    #"Replaced Value" = Table.ReplaceValue(#"Changed Type","""","",Replacer.ReplaceText,{"Cal.Migratoria"}),
+    #"Removed Columns" = Table.RemoveColumns(#"Replaced Value",{"NIMSS", "Apellido Paterno", "Apellido Materno", "Nombre(s)", "CURP"}),
+    #"Filtered Rows" = Table.SelectRows(#"Removed Columns", each ([Planta] = "K5")),
+    #"Removed Columns1" = Table.RemoveColumns(#"Filtered Rows",{"ÁrPer"})
+in
+    #"Removed Columns1"
+
+___________________________________________________________________________________________
+
+let
+    Source = Excel.Workbook(File.Contents("."), null, true),
+    Format_Sheet = Source{[Item="Format",Kind="Sheet"]}[Data],
+    #"Promoted Headers" = Table.PromoteHeaders(Format_Sheet, [PromoteAllScalars=true]),
+    #"Changed Type" = Table.TransformColumnTypes(#"Promoted Headers",{{"Nº pers.", Int64.Type}, {"Nombre del empleado o candidat", type text}, {"CeCo", Int64.Type}, {"NIMSS", Int64.Type}, {"Alta", type date}, {"Denominación de la posición", type text}, {"Nombre del encargado", type text}, {"Apellido Paterno", type text}, {"Apellido Materno", type text}, {"Nombre(s)", type text}, {"CURP", type text}, {"Cal.Migratoria", type text}, {"Planta", type text}, {"ÁrPer", type text}}),
+    #"Removed Columns" = Table.RemoveColumns(#"Changed Type",{"ÁrPer"})
+in
+    #"Removed Columns"

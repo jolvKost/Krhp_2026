@@ -2,9 +2,9 @@
 
 import logging
 from pathlib import Path
-from typing import Tuple, List
+from typing import Tuple
 from reportlab.pdfgen import canvas
-from reportlab.lib.pagesizes import letter, A4, landscape
+from reportlab.lib.pagesizes import A4, landscape
 from reportlab.lib.units import inch
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, PageBreak
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
@@ -159,7 +159,6 @@ class PDFRenderer:
         org = Organigrama(nodo_raiz)
         
         # Usar tamaño landscape A4 para mejor ajuste horizontal
-        from reportlab.lib.pagesizes import landscape, A4
         page_width, page_height = landscape(A4)
         
         # Crear canvas

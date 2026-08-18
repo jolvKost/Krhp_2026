@@ -45,18 +45,17 @@ class HeadsManager:
     
     def guardar_cabezas(self, cabezas: List[str]) -> None:
         """
-        Guarda la lista de cabezas en el archivo JSON.
-        
+        Guarda la lista de cabezas en el archivo JSON, preservando la metadata existente.
+
         Args:
             cabezas: Lista de nombres de cabezas
         """
-        data = {"cabezas": list(dict.fromkeys(cabezas))}
-        
         try:
-            with open(self.archivo_heads, 'w', encoding='utf-8') as f:
-                json.dump(data, f, indent=2, ensure_ascii=False)
-                self.cabezas = data["cabezas"]
-                logger.info(f"Guardadas {len(self.cabezas)} cabezas en {self.archivo_heads}")
+            data = self._leer_json()
+            data["cabezas"] = list(dict.fromkeys(cabezas))
+            self._guardar_json(data)
+            self.cabezas = data["cabezas"]
+            logger.info(f"Guardadas {len(self.cabezas)} cabezas en {self.archivo_heads}")
         except Exception as e:
             logger.error(f"Error al guardar heads.json: {e}")
             raise
@@ -124,25 +123,6 @@ class HeadsManager:
         self.cabezas.append(nombre)
         self.guardar_cabezas(self.cabezas)
         logger.info(f"Cabeza agregada: {nombre}")
-        return True
-    
-    def eliminar_cabeza(self, nombre: str) -> bool:
-        """
-        Elimina una cabeza existente.
-        
-        Args:
-            nombre: Nombre de la cabeza a eliminar
-            
-        Returns:
-            True si se eliminó, False si no existía
-        """
-        if nombre not in self.cabezas:
-            logger.info(f"Cabeza no encontrada: {nombre}")
-            return False
-        
-        self.cabezas.remove(nombre)
-        self.guardar_cabezas(self.cabezas)
-        logger.info(f"Cabeza eliminada: {nombre}")
         return True
     
     def interfaz_seleccion_interactiva(

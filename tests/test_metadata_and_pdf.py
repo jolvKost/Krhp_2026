@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from organigramas.heads_manager import HeadsManager
+from organigramas.hierarchy import HierarchyManager
 from organigramas.models import Persona, Nodo
 from organigramas.pdf_renderer import PDFRenderer
 
@@ -20,6 +21,46 @@ def test_heads_manager_persists_metadata(tmp_path):
 
     assert manager.existe_cabeza("J. Pérez") is True
     assert manager.obtener_metadata("J. Pérez")["departamento"] == "Dirección General"
+
+
+def test_agregar_cabeza_no_borra_metadata_existente(tmp_path):
+    archivo = tmp_path / "heads.json"
+    manager = HeadsManager(str(archivo))
+
+    manager.guardar_metadata(
+        "J. Pérez",
+        {
+            "departamento": "Dirección General",
+            "centro_costos": "DG-001",
+            "responsable": "Ana López",
+        },
+    )
+
+    # Guardar una segunda cabeza no debe borrar la metadata de la primera.
+    manager.agregar_cabeza("M. García")
+
+    assert manager.existe_cabeza("M. García") is True
+    assert manager.obtener_metadata("J. Pérez")["departamento"] == "Dirección General"
+
+
+def test_hierarchy_nombre_ambiguo_no_se_resuelve_silenciosamente():
+    persona_1 = Persona(
+        numero_personal="1",
+        nombre_completo="Ana",
+        nombre_abreviado="A. Hernandez",
+        apellido_paterno="Hernandez",
+    )
+    persona_2 = Persona(
+        numero_personal="2",
+        nombre_completo="Andrea",
+        nombre_abreviado="A. Hernandez",
+        apellido_paterno="Hernandez",
+    )
+
+    manager = HierarchyManager([persona_1, persona_2])
+
+    assert manager._buscar_persona("A. Hernandez") is None
+    assert manager.obtener_nombres_ambiguos().get("a. hernandez") == 2
 
 
 def test_pdf_renderer_generates_bilingual_outputs(tmp_path):

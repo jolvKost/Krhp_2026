@@ -18,18 +18,26 @@ class HierarchyManager:
             personas: Lista de objetos Persona
         """
         self.personas = personas
-        self.personas_por_nombre: Dict[str, Persona] = {}
+        self.personas_por_nombre: Dict[str, List[Persona]] = {}
         self._indexar_personas()
-    
+
     def _indexar_personas(self) -> None:
-        """Crea índice de personas por nombre (case-insensitive)."""
+        """Crea índice de personas por nombre (case-insensitive).
+
+        Cada clave mapea a una lista de personas: si más de una persona
+        comparte el mismo nombre, la clave queda marcada como ambigua en
+        vez de resolverse silenciosamente a la última persona indexada.
+        """
+        self.personas_por_nombre = {}
         for persona in self.personas:
-            # Indexar por nombre_abreviado y nombre_completo
-            self.personas_por_nombre[persona.nombre_abreviado.lower()] = persona
-            self.personas_por_nombre[persona.nombre_completo.lower()] = persona
-            # También por nombre abreviado sin puntos
-            nombre_sin_puntos = persona.nombre_abreviado.replace(".", "").strip()
-            self.personas_por_nombre[nombre_sin_puntos.lower()] = persona
+            claves = {
+                persona.nombre_abreviado.lower(),
+                persona.nombre_completo.lower(),
+                # También por nombre abreviado sin puntos
+                persona.nombre_abreviado.replace(".", "").strip().lower(),
+            }
+            for clave in claves:
+                self.personas_por_nombre.setdefault(clave, []).append(persona)
     
     def construir_arbol(self, cabeza_nombre: str) -> Nodo:
         """
@@ -101,15 +109,39 @@ class HierarchyManager:
     def _buscar_persona(self, nombre: str) -> Optional[Persona]:
         """
         Busca una persona por nombre (case-insensitive).
-        
+
         Args:
             nombre: Nombre a buscar
-            
+
         Returns:
-            Objeto Persona si se encuentra, None en caso contrario
+            Objeto Persona si el nombre resuelve a exactamente una persona,
+            None si no se encuentra o si el nombre es ambiguo (coincide con
+            más de una persona).
         """
         nombre_lower = nombre.strip().lower()
-        return self.personas_por_nombre.get(nombre_lower)
+        candidatos = self.personas_por_nombre.get(nombre_lower, [])
+        if len(candidatos) == 1:
+            return candidatos[0]
+        if len(candidatos) > 1:
+            logger.warning(
+                f"Nombre ambiguo '{nombre}': coincide con {len(candidatos)} personas "
+                f"(números de personal: {[p.numero_personal for p in candidatos]}). "
+                f"No se puede resolver de forma única."
+            )
+        return None
+
+    def obtener_nombres_ambiguos(self) -> Dict[str, int]:
+        """
+        Retorna los nombres del índice que coinciden con más de una persona.
+
+        Returns:
+            Diccionario {nombre: cantidad de personas que coinciden}
+        """
+        return {
+            nombre: len(personas)
+            for nombre, personas in self.personas_por_nombre.items()
+            if len(personas) > 1
+        }
     
     def _buscar_subordinados(self, supervisor: Persona) -> List[Persona]:
         """
@@ -185,5 +217,17 @@ class HierarchyManager:
             reporte["advertencias"].append(
                 f"Supervisores no encontrados: {', '.join(supervisores_no_encontrados)}"
             )
-        
+
+        # Validar nombres ambiguos (colisiones en el índice de búsqueda)
+        nombres_ambiguos = self.obtener_nombres_ambiguos()
+        if nombres_ambiguos:
+            ejemplos = ", ".join(
+                f"'{nombre}' ({cantidad} personas)"
+                for nombre, cantidad in list(nombres_ambiguos.items())[:5]
+            )
+            reporte["advertencias"].append(
+                f"Nombres ambiguos (coinciden con más de una persona): "
+                f"{len(nombres_ambiguos)} casos. Ejemplos: {ejemplos}"
+            )
+
         return reporte

@@ -12,7 +12,6 @@ logger = logging.getLogger(__name__)
 # Encabezados esperados en el Excel (case-insensitive matching)
 ENCABEZADOS_ESPERADOS = {
     "numero_personal": ["Nº pers.", "nº pers", "numero personal", "n° pers"],
-    "nombre_empleado": ["Nombre del empleado o candidat", "nombre del empleado", "nombre empleado"],
     "nombre_completo": ["Nombre(s)", "nombre"],
     "apellido_paterno": ["Apellido Paterno", "apellido paterno"],
     "apellido_materno": ["Apellido Materno", "apellido materno"],

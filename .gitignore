@@ -1,1 +1,5 @@
 CLAUDE.md
+__pycache__/
+.venv/
+.pytest_cache/
+src/organigramas/__pycache__/

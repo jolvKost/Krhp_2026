@@ -37,3 +37,8 @@ Thumbs.db
 # IDE
 .vscode/
 .idea/
+
+# Datos de empleados / estado generado por la app
+data/*.xlsx
+data/heads.json
+organigrama_*.pdf

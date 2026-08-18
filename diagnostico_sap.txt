@@ -1,5 +1,4 @@
-Archivo: C:\Users\olver016.KOSTALMX\Downloads\Reporte para Organigrama 07 ago 26.xlsx
-
+Archivo:
 Hojas del libro: ['Format', 'Header', 'Pivot', 'Sub1', 'Sub2', 'Sub3', 'Sub4', 'Sub5', 'Sub6', 'Sub7', 'Sub8', 'Sub9', 'Sub10', 'RawData', 'RawHeader']
 Hoja leida (la primera): Format
 
@@ -20,6 +19,7 @@ Campos mapeados (13/13):
 
 Personas extraidas: 2874
 Con supervisor: 2874 | sin supervisor: 0
+Jefes distintos nombrados: 56 -> ~51 reportes directos por jefe
 
 Supervisores que SI resuelven: 0
 Supervisores que NO resuelven: 56 distintos
@@ -27,14 +27,14 @@ Supervisores que NO resuelven: 56 distintos
 Formato de 'Nombre del encargado' (enmascarado, compartible):
      4x  Xxxxxx Xxxxx
      4x  Xxxxxx Xxxxxx
-     3x  Xxxxx Xxxxxxx
      3x  Xxxxxxx Xxxxxxx
-     2x  Xxxxxxxx Xxxxxxx
-     2x  Xxxxx Xxxxxx
+     3x  Xxxxx Xxxxxxx
      2x  Xxxx Xxxxxx X9
-     2x  Xxxxx Xxxxxxxx
      2x  Xxxxxxx Xxxxx
-     2x  Xxxxxx Xxxxxxxx
+     2x  Xxxxxxxxx Xxxxxxx
+     2x  Xxxxx Xxxxxx
+     2x  Xxxxxx Xxxxxxx
+     2x  Xxxxxxxx Xxxxxxx
 
 Formato de 'nombre_abreviado' generado (clave del indice):
    165x  X. XXXXXXX XXXXXX
@@ -51,9 +51,15 @@ Formato de 'Nombre del empleado o candidat' (columna hoy sin usar):
     16x  XXXXXX XXXXXXXX XXXXXXX
 
 Cobertura de claves candidatas contra 56 supervisores distintos
-(match exacto tras minusculas/sin acentos -- sin matching difuso):
-     0/56  Nombre del empleado o candidat (tal cual)
-    15/56  Nombre(s) + Ap.Paterno
-    26/56  1er nombre + Ap.Paterno
-     0/56  Nombre(s) + Ap.Paterno + Ap.Materno
-     0/56  Ap.Paterno + Ap.Materno + Nombre(s)
+(2874 personas con supervisor; match exacto tras minusculas/sin acentos,
+sin matching difuso):
+     0/56 jefes      0/2874 personas  Nombre del empleado o candidat (tal cual)
+    15/56 jefes   1248/2874 personas  Nombre(s) + Ap.Paterno
+    26/56 jefes   1682/2874 personas  1er nombre + Ap.Paterno
+     3/56 jefes     11/2874 personas  1er nombre + Ap.Materno
+     6/56 jefes    201/2874 personas  2do nombre + Ap.Paterno
+     0/56 jefes      0/2874 personas  Nombre(s) + Ap.Paterno + Ap.Materno
+     0/56 jefes      0/2874 personas  Ap.Paterno + Ap.Materno + Nombre(s)
+
+UNION de todas las claves: 30/56 jefes  |  1859/2874 personas
+Sin resolver por ninguna clave determinista: 26 jefes  |  1015 personas

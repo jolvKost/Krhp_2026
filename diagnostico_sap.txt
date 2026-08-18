@@ -1,5 +1,4 @@
-Archivo: C:\Users\olver016.KOSTALMX\Downloads\Reporte para Organigrama 07 ago 26.xlsx
-
+Archivo: 
 Hojas del libro: ['Format', 'Header', 'Pivot', 'Sub1', 'Sub2', 'Sub3', 'Sub4', 'Sub5', 'Sub6', 'Sub7', 'Sub8', 'Sub9', 'Sub10', 'RawData', 'RawHeader']
 Hoja leida (la primera): Format
 
@@ -49,24 +48,24 @@ Formato de 'nombre_abreviado' generado (clave actual del indice):
 
 === Cobertura contra 'Cal.Migratoria' ===
 1828 personas con jefe | 1046 en blanco | 203 jefes distintos
-(match exacto tras minusculas/sin acentos/sin comas, sin matching difuso):
-     0/203 jefes      0/1828 personas  Nombre del empleado o candidat (tal cual)
+(match exacto tras minusculas/sin acentos/sin puntuacion, sin matching difuso):
+     3/203 jefes     16/1828 personas  Nombre del empleado o candidat (tal cual)
      0/203 jefes      0/1828 personas  Nombre(s) + Ap.Paterno
      0/203 jefes      0/1828 personas  1er nombre + Ap.Paterno
      0/203 jefes      0/1828 personas  1er nombre + Ap.Materno
      0/203 jefes      0/1828 personas  2do nombre + Ap.Paterno
      0/203 jefes      0/1828 personas  Nombre(s) + Ap.Paterno + Ap.Materno
-     0/203 jefes      0/1828 personas  Ap.Paterno + Nombre(s)
-     1/203 jefes      1/1828 personas  Ap.Paterno + 1er nombre
-     0/203 jefes      0/1828 personas  Ap.Paterno + Ap.Materno + Nombre(s)
-     0/203 jefes      0/1828 personas  Ap.Paterno + Ap.Materno + 1er nombre
+   153/203 jefes   1648/1828 personas  Ap.Paterno + Nombre(s)
+    75/203 jefes    677/1828 personas  Ap.Paterno + 1er nombre
+     3/203 jefes     16/1828 personas  Ap.Paterno + Ap.Materno + Nombre(s)
+     2/203 jefes      8/1828 personas  Ap.Paterno + Ap.Materno + 1er nombre
 
-UNION de todas las claves: 1/203 jefes  |  1/1828 personas
-Sin resolver por ninguna clave determinista: 202 jefes  |  1827 personas
+UNION de todas las claves: 165/203 jefes  |  1689/1828 personas
+Sin resolver por ninguna clave determinista: 38 jefes  |  139 personas
 
 === Cobertura contra 'Nombre del encargado' ===
 2874 personas con jefe | 0 en blanco | 56 jefes distintos
-(match exacto tras minusculas/sin acentos/sin comas, sin matching difuso):
+(match exacto tras minusculas/sin acentos/sin puntuacion, sin matching difuso):
      0/56 jefes      0/2874 personas  Nombre del empleado o candidat (tal cual)
     15/56 jefes   1248/2874 personas  Nombre(s) + Ap.Paterno
     26/56 jefes   1682/2874 personas  1er nombre + Ap.Paterno

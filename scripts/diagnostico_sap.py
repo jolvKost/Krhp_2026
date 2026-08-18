@@ -43,27 +43,52 @@ def cobertura_de_claves(ruta: str, mapa: dict) -> list[str]:
         return df[mapa[campo]].fillna("").astype(str) if campo in mapa else None
 
     nombres, paterno, materno = col("nombre_completo"), col("apellido_paterno"), col("apellido_materno")
+    n1 = nombres.str.split().str[0].fillna("")
+    n2 = nombres.str.split().str[1].fillna("")
 
     candidatos = {
         "Nombre del empleado o candidat (tal cual)": col("nombre_empleado"),
         "Nombre(s) + Ap.Paterno": nombres + " " + paterno,
-        "1er nombre + Ap.Paterno": nombres.str.split().str[0].fillna("") + " " + paterno,
+        "1er nombre + Ap.Paterno": n1 + " " + paterno,
+        "1er nombre + Ap.Materno": n1 + " " + materno,
+        "2do nombre + Ap.Paterno": n2 + " " + paterno,
         "Nombre(s) + Ap.Paterno + Ap.Materno": nombres + " " + paterno + " " + materno,
         "Ap.Paterno + Ap.Materno + Nombre(s)": paterno + " " + materno + " " + nombres,
     }
 
-    supervisores = {normalizar(s) for s in col("supervisor") if normalizar(s)}
+    supervisor = col("supervisor").map(normalizar)
+    distintos = {s for s in supervisor if s}
+    total_personas = int((supervisor != "").sum())
+
     lineas = [
-        f"Cobertura de claves candidatas contra {len(supervisores)} supervisores distintos",
-        "(match exacto tras minusculas/sin acentos -- sin matching difuso):",
+        f"Cobertura de claves candidatas contra {len(distintos)} supervisores distintos",
+        f"({total_personas} personas con supervisor; match exacto tras minusculas/sin acentos,",
+        "sin matching difuso):",
     ]
+
+    union = set()
     for etiqueta, serie in candidatos.items():
         if serie is None:
             lineas.append(f"  ----  {etiqueta}: columna ausente")
             continue
         claves = {normalizar(v) for v in serie if normalizar(v)}
-        aciertos = sum(1 for s in supervisores if s in claves)
-        lineas.append(f"  {aciertos:>4}/{len(supervisores)}  {etiqueta}")
+        resueltos = distintos & claves
+        union |= resueltos
+        personas = int(supervisor.isin(resueltos).sum())
+        lineas.append(
+            f"  {len(resueltos):>4}/{len(distintos)} jefes  {personas:>5}/{total_personas} personas  {etiqueta}"
+        )
+
+    personas_union = int(supervisor.isin(union).sum())
+    lineas.append("")
+    lineas.append(
+        f"UNION de todas las claves: {len(union)}/{len(distintos)} jefes"
+        f"  |  {personas_union}/{total_personas} personas"
+    )
+    lineas.append(
+        f"Sin resolver por ninguna clave determinista: {len(distintos) - len(union)} jefes"
+        f"  |  {total_personas - personas_union} personas"
+    )
     return lineas
 
 
@@ -89,6 +114,13 @@ def diagnosticar(ruta: str) -> str:
     lineas.append(f"Personas extraidas: {len(personas)}")
     con_super = [p for p in personas if p.supervisor_nombre]
     lineas.append(f"Con supervisor: {len(con_super)} | sin supervisor: {len(personas) - len(con_super)}")
+
+    # Cuantos jefes distintos hay define que tan profundo puede ser el arbol.
+    jefes = {normalizar(p.supervisor_nombre) for p in con_super}
+    lineas.append(
+        f"Jefes distintos nombrados: {len(jefes)}"
+        f" -> ~{len(con_super) // max(len(jefes), 1)} reportes directos por jefe"
+    )
     lineas.append("")
 
     jerarquia = HierarchyManager(personas)

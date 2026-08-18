@@ -147,6 +147,16 @@ Ruta completa del PDF (Enter para usar default):
 Gracias por usar el Generador de Organigramas.
 ```
 
+### Interfaz gráfica (GUI)
+
+Si prefieres no usar la terminal, hay una interfaz gráfica de escritorio equivalente:
+
+```bash
+organigramas-gui
+```
+
+Se abre una ventana con dos acciones — **Generar organigrama** e **Integrar Excels** — que siguen el mismo flujo que la CLI pero con diálogos, selección de archivos y formularios. Incluye búsqueda al elegir una cabeza o mapear columnas, e indicadores de progreso mientras se leen Excels o se generan los PDFs. Es igual de offline que la CLI; no requiere ningún paso de instalación adicional.
+
 ## 📁 Estructura del proyecto
 
 ```
@@ -154,6 +164,7 @@ Organigramas/
 ├── src/organigramas/
 │   ├── __init__.py           # Punto de entrada
 │   ├── cli.py               # Interfaz CLI principal
+│   ├── gui.py                # Interfaz gráfica de escritorio (tkinter)
 │   ├── models.py            # Dataclasses: Persona, Nodo
 │   ├── excel_parser.py      # Lectura y parseo de Excel
 │   ├── hierarchy.py         # Construcción de árboles jerárquicos

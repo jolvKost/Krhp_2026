@@ -1,9 +1,11 @@
 """Interfaz gráfica de escritorio (tkinter) para generar organigramas e integrar Excels."""
 
 import logging
+import queue
+import threading
 import tkinter as tk
 from pathlib import Path
-from tkinter import filedialog, messagebox
+from tkinter import filedialog, messagebox, ttk
 
 from .excel_integrator import (
     auto_mapear_columnas,
@@ -19,11 +21,64 @@ from .pdf_renderer import PDFRenderer
 logger = logging.getLogger(__name__)
 
 
+# --- Estilo ---
+
+
+def _configurar_estilo(root: tk.Misc) -> None:
+    """Aplica un tema ttk moderno y define estilos reutilizados por toda la GUI."""
+    estilo = ttk.Style(root)
+    try:
+        estilo.theme_use("clam")
+    except tk.TclError:
+        pass
+
+    fondo = "#f4f6f8"
+    acento = "#2f6fed"
+
+    estilo.configure(".", background=fondo, font=("Segoe UI", 10))
+    estilo.configure("TFrame", background=fondo)
+    estilo.configure("TLabel", background=fondo)
+    estilo.configure("Card.TFrame", background="#ffffff", relief="flat")
+    estilo.configure("Title.TLabel", font=("Segoe UI", 16, "bold"), background=fondo)
+    estilo.configure("Subtitle.TLabel", font=("Segoe UI", 10), foreground="#5a6472", background=fondo)
+    estilo.configure("CardTitle.TLabel", font=("Segoe UI", 11, "bold"), background="#ffffff")
+    estilo.configure("CardDesc.TLabel", font=("Segoe UI", 9), foreground="#5a6472", background="#ffffff")
+    estilo.configure("Accent.TButton", font=("Segoe UI", 10, "bold"), padding=8)
+    estilo.map("Accent.TButton", background=[("active", acento)])
+    estilo.configure("Counter.TLabel", font=("Segoe UI", 8), foreground="#5a6472", background=fondo)
+
+    if isinstance(root, tk.Tk) or isinstance(root, tk.Toplevel):
+        root.configure(background=fondo)
+
+
 # --- Diálogos genéricos reutilizados por ambos flujos ---
 
 
+def _filtrar_indices(opciones: list[str], texto: str) -> list[int]:
+    """Devuelve los índices de `opciones` cuyo texto contiene `texto` (case-insensitive).
+
+    Sin texto de búsqueda, devuelve todos los índices en orden original. El orden del
+    resultado es siempre el orden original de `opciones`, nunca reordenado por relevancia.
+    """
+    texto = texto.strip().lower()
+    if not texto:
+        return list(range(len(opciones)))
+    return [i for i, opcion in enumerate(opciones) if texto in opcion.lower()]
+
+
+def _autocheck_filtrar_indices() -> None:
+    opciones = ["Ana López", "Juan Pérez", "ana Torres", "Beto Ruiz"]
+    assert _filtrar_indices(opciones, "") == [0, 1, 2, 3]
+    assert _filtrar_indices(opciones, "ANA") == [0, 2]
+    assert _filtrar_indices(opciones, "zzz") == []
+    assert _filtrar_indices(opciones, "  juan  ") == [1]
+
+
+_autocheck_filtrar_indices()
+
+
 def _elegir_opcion(root: tk.Misc, titulo: str, opciones: list[str]) -> int | None:
-    """Muestra una lista modal y devuelve el índice elegido, o None si se cancela."""
+    """Muestra una lista modal (con búsqueda) y devuelve el índice elegido, o None si se cancela."""
     if not opciones:
         return None
 
@@ -31,34 +86,78 @@ def _elegir_opcion(root: tk.Misc, titulo: str, opciones: list[str]) -> int | Non
     ventana.title(titulo)
     ventana.transient(root)
     ventana.grab_set()
+    ventana.minsize(360, 320)
+    ventana.columnconfigure(0, weight=1)
+    ventana.rowconfigure(2, weight=1)
 
-    tk.Label(ventana, text=titulo, padx=10, pady=10, wraplength=400).pack()
+    contenedor = ttk.Frame(ventana, padding=12)
+    contenedor.grid(row=0, column=0, sticky="nsew")
+    contenedor.columnconfigure(0, weight=1)
+    ventana.rowconfigure(0, weight=1)
+    contenedor.rowconfigure(2, weight=1)
 
-    lista = tk.Listbox(ventana, width=60, height=min(15, len(opciones) + 1))
-    for opcion in opciones:
-        lista.insert(tk.END, opcion)
-    lista.selection_set(0)
-    lista.pack(padx=10, pady=(0, 10), fill=tk.BOTH, expand=True)
+    ttk.Label(contenedor, text=titulo, wraplength=420, style="CardTitle.TLabel").grid(
+        row=0, column=0, sticky="w", pady=(0, 8)
+    )
+
+    busqueda_var = tk.StringVar()
+    entrada_busqueda = ttk.Entry(contenedor, textvariable=busqueda_var)
+    entrada_busqueda.grid(row=1, column=0, sticky="ew", pady=(0, 6))
+
+    lista_frame = ttk.Frame(contenedor)
+    lista_frame.grid(row=2, column=0, sticky="nsew")
+    lista_frame.columnconfigure(0, weight=1)
+    lista_frame.rowconfigure(0, weight=1)
+
+    lista = tk.Listbox(lista_frame, width=60, height=min(15, len(opciones) + 1), activestyle="dotbox")
+    scrollbar = ttk.Scrollbar(lista_frame, orient="vertical", command=lista.yview)
+    lista.configure(yscrollcommand=scrollbar.set)
+    lista.grid(row=0, column=0, sticky="nsew")
+    scrollbar.grid(row=0, column=1, sticky="ns")
+
+    contador = ttk.Label(contenedor, text="", style="Counter.TLabel")
+    contador.grid(row=3, column=0, sticky="w", pady=(4, 8))
+
+    indices_visibles: list[int] = []
+
+    def refrescar(*_args: object) -> None:
+        indices_visibles.clear()
+        indices_visibles.extend(_filtrar_indices(opciones, busqueda_var.get()))
+        lista.delete(0, tk.END)
+        for i in indices_visibles:
+            lista.insert(tk.END, opciones[i])
+        if indices_visibles:
+            lista.selection_set(0)
+        contador.configure(text=f"{len(indices_visibles)} de {len(opciones)}")
+
+    busqueda_var.trace_add("write", refrescar)
+    refrescar()
 
     resultado: dict[str, int | None] = {"indice": None}
 
-    def aceptar() -> None:
+    def aceptar(_e: object = None) -> None:
         seleccion = lista.curselection()
-        resultado["indice"] = seleccion[0] if seleccion else None
+        if seleccion:
+            resultado["indice"] = indices_visibles[seleccion[0]]
         ventana.destroy()
 
-    def cancelar() -> None:
+    def cancelar(_e: object = None) -> None:
         resultado["indice"] = None
         ventana.destroy()
 
-    lista.bind("<Double-Button-1>", lambda _e: aceptar())
+    lista.bind("<Double-Button-1>", aceptar)
+    ventana.bind("<Return>", aceptar)
+    ventana.bind("<Escape>", cancelar)
 
-    botones = tk.Frame(ventana)
-    botones.pack(pady=(0, 10))
-    tk.Button(botones, text="Aceptar", command=aceptar).pack(side=tk.LEFT, padx=5)
-    tk.Button(botones, text="Cancelar", command=cancelar).pack(side=tk.LEFT, padx=5)
+    botones = ttk.Frame(contenedor)
+    botones.grid(row=4, column=0, pady=(4, 0))
+    ttk.Button(botones, text="Aceptar", command=aceptar, style="Accent.TButton").pack(
+        side=tk.LEFT, padx=5
+    )
+    ttk.Button(botones, text="Cancelar", command=cancelar).pack(side=tk.LEFT, padx=5)
 
     ventana.protocol("WM_DELETE_WINDOW", cancelar)
+    entrada_busqueda.focus_set()
     root.wait_window(ventana)
     return resultado["indice"]
 
@@ -71,34 +170,102 @@ def _pedir_formulario(
     ventana.title(titulo)
     ventana.transient(root)
     ventana.grab_set()
+    ventana.resizable(False, False)
 
-    entradas: dict[str, tk.Entry] = {}
+    contenedor = ttk.Frame(ventana, padding=12)
+    contenedor.pack(fill=tk.BOTH, expand=True)
+
+    grupo = ttk.LabelFrame(contenedor, text=titulo, padding=10)
+    grupo.pack(fill=tk.BOTH, expand=True)
+
+    entradas: dict[str, ttk.Entry] = {}
+    primera_entrada: ttk.Entry | None = None
     for i, (etiqueta, valor_default) in enumerate(campos.items()):
-        tk.Label(ventana, text=etiqueta).grid(row=i, column=0, sticky="w", padx=10, pady=5)
-        entrada = tk.Entry(ventana, width=40)
+        ttk.Label(grupo, text=etiqueta).grid(row=i, column=0, sticky="w", padx=(0, 10), pady=5)
+        entrada = ttk.Entry(grupo, width=40)
         entrada.insert(0, valor_default)
-        entrada.grid(row=i, column=1, padx=10, pady=5)
+        entrada.grid(row=i, column=1, pady=5)
         entradas[etiqueta] = entrada
+        if primera_entrada is None:
+            primera_entrada = entrada
 
     resultado: dict[str, dict[str, str] | None] = {"valores": None}
 
-    def aceptar() -> None:
+    def aceptar(_e: object = None) -> None:
         resultado["valores"] = {clave: entrada.get().strip() for clave, entrada in entradas.items()}
         ventana.destroy()
 
-    def cancelar() -> None:
+    def cancelar(_e: object = None) -> None:
         resultado["valores"] = None
         ventana.destroy()
 
-    fila_botones = len(campos)
-    botones = tk.Frame(ventana)
-    botones.grid(row=fila_botones, column=0, columnspan=2, pady=10)
-    tk.Button(botones, text="Aceptar", command=aceptar).pack(side=tk.LEFT, padx=5)
-    tk.Button(botones, text="Cancelar", command=cancelar).pack(side=tk.LEFT, padx=5)
+    botones = ttk.Frame(contenedor)
+    botones.pack(pady=(10, 0))
+    ttk.Button(botones, text="Aceptar", command=aceptar, style="Accent.TButton").pack(
+        side=tk.LEFT, padx=5
+    )
+    ttk.Button(botones, text="Cancelar", command=cancelar).pack(side=tk.LEFT, padx=5)
 
+    ventana.bind("<Return>", aceptar)
+    ventana.bind("<Escape>", cancelar)
     ventana.protocol("WM_DELETE_WINDOW", cancelar)
+    if primera_entrada is not None:
+        primera_entrada.focus_set()
     root.wait_window(ventana)
     return resultado["valores"]
+
+
+def _ejecutar_con_progreso(root: tk.Misc, mensaje: str, funcion, *args: object, **kwargs: object):
+    """Ejecuta `funcion(*args, **kwargs)` en un hilo mientras muestra un modal con progreso
+    indeterminado. Solo el hilo principal toca widgets de Tk; el hilo worker solo calcula
+    y reporta el resultado (o la excepción) por una cola. Si `funcion` lanza una excepción,
+    se relanza aquí para que el llamador la maneje como si hubiera sido síncrona."""
+    ventana = tk.Toplevel(root)
+    ventana.title("Procesando...")
+    ventana.transient(root)
+    ventana.grab_set()
+    ventana.resizable(False, False)
+    ventana.protocol("WM_DELETE_WINDOW", lambda: None)
+
+    contenedor = ttk.Frame(ventana, padding=20)
+    contenedor.pack()
+    ttk.Label(contenedor, text=mensaje).pack(pady=(0, 10))
+    barra = ttk.Progressbar(contenedor, mode="indeterminate", length=260)
+    barra.pack()
+    barra.start(10)
+
+    cola: queue.Queue = queue.Queue()
+
+    def trabajar() -> None:
+        try:
+            resultado = funcion(*args, **kwargs)
+            cola.put(("ok", resultado))
+        except Exception as exc:  # noqa: BLE001 - se relanza en el hilo principal
+            cola.put(("error", exc))
+
+    hilo = threading.Thread(target=trabajar, daemon=True)
+    hilo.start()
+
+    salida: dict[str, object] = {}
+
+    def sondear() -> None:
+        try:
+            estado, valor = cola.get_nowait()
+        except queue.Empty:
+            root.after(80, sondear)
+            return
+        salida["estado"] = estado
+        salida["valor"] = valor
+        barra.stop()
+        ventana.grab_release()
+        ventana.destroy()
+
+    root.after(80, sondear)
+    root.wait_window(ventana)
+
+    if salida.get("estado") == "error":
+        raise salida["valor"]  # type: ignore[misc]
+    return salida.get("valor")
 
 
 # --- Flujo: Generar organigrama ---
@@ -142,7 +309,9 @@ def _flujo_organigrama(root: tk.Misc) -> None:
         return
 
     try:
-        personas = ExcelParser().leer_excel(ruta_excel)
+        personas = _ejecutar_con_progreso(
+            root, "Leyendo Excel...", ExcelParser().leer_excel, ruta_excel
+        )
     except Exception as e:
         messagebox.showerror("Error al leer el Excel", str(e))
         return
@@ -202,9 +371,17 @@ def _flujo_organigrama(root: tk.Misc) -> None:
         "responsable": metadata["Responsable"] or "N/A",
     }
 
-    renderer = PDFRenderer()
-    renderer.generar_pdf(nodo_raiz, str(ruta_es), idioma="es", metadata=metadata_normalizada)
-    renderer.generar_pdf(nodo_raiz, str(ruta_en), idioma="en", metadata=metadata_normalizada)
+    def _generar_ambos_pdfs() -> None:
+        renderer = PDFRenderer()
+        renderer.generar_pdf(nodo_raiz, str(ruta_es), idioma="es", metadata=metadata_normalizada)
+        renderer.generar_pdf(nodo_raiz, str(ruta_en), idioma="en", metadata=metadata_normalizada)
+
+    try:
+        _ejecutar_con_progreso(root, "Generando organigramas...", _generar_ambos_pdfs)
+    except Exception as e:
+        messagebox.showerror("Error al generar el PDF", str(e))
+        return
+
     heads_manager.guardar_metadata(cabeza, metadata_normalizada)
 
     messagebox.showinfo("Listo", f"Organigramas generados:\n{ruta_es}\n{ruta_en}")
@@ -291,7 +468,9 @@ def _flujo_integrar(root: tk.Misc) -> None:
         return
 
     try:
-        dfs = [leer_hoja(r) for r in rutas]
+        dfs = _ejecutar_con_progreso(
+            root, "Leyendo archivos...", lambda: [leer_hoja(r) for r in rutas]
+        )
     except Exception as e:
         messagebox.showerror("Error al leer los Excels", str(e))
         return
@@ -326,7 +505,13 @@ def _flujo_integrar(root: tk.Misc) -> None:
     if orden_prioridad is None:
         return
 
-    resultado = combinar(tablas, columna_referencia, orden_prioridad)
+    try:
+        resultado = _ejecutar_con_progreso(
+            root, "Combinando datos...", combinar, tablas, columna_referencia, orden_prioridad
+        )
+    except Exception as e:
+        messagebox.showerror("Error al combinar", str(e))
+        return
 
     ruta_salida = filedialog.asksaveasfilename(
         title="Guardar CSV maestro",
@@ -347,12 +532,47 @@ def _flujo_integrar(root: tk.Misc) -> None:
 # --- Ventana principal ---
 
 
+def _crear_tarjeta_accion(
+    padre: tk.Misc, icono: str, titulo: str, descripcion: str, comando
+) -> ttk.Frame:
+    tarjeta = ttk.Frame(padre, style="Card.TFrame", padding=16)
+    tarjeta.columnconfigure(1, weight=1)
+
+    ttk.Label(tarjeta, text=icono, font=("Segoe UI", 20), style="CardTitle.TLabel").grid(
+        row=0, column=0, rowspan=2, padx=(0, 14), sticky="n"
+    )
+    ttk.Label(tarjeta, text=titulo, style="CardTitle.TLabel").grid(row=0, column=1, sticky="w")
+    ttk.Label(tarjeta, text=descripcion, style="CardDesc.TLabel", wraplength=340).grid(
+        row=1, column=1, sticky="w", pady=(2, 10)
+    )
+    ttk.Button(tarjeta, text=titulo, command=comando, style="Accent.TButton").grid(
+        row=2, column=1, sticky="w"
+    )
+    return tarjeta
+
+
 def _crear_ventana_principal() -> tk.Tk:
     root = tk.Tk()
     root.title("Generador de Organigramas")
-    root.geometry("360x200")
+    root.geometry("580x540")
+    root.minsize(500, 480)
+    root.columnconfigure(0, weight=1)
+    root.rowconfigure(0, weight=1)
 
-    tk.Label(root, text="Generador de Organigramas", font=("", 14, "bold")).pack(pady=(20, 10))
+    _configurar_estilo(root)
+
+    contenedor = ttk.Frame(root, padding=20)
+    contenedor.grid(row=0, column=0, sticky="nsew")
+    contenedor.columnconfigure(0, weight=1)
+
+    ttk.Label(contenedor, text="Generador de Organigramas", style="Title.TLabel").grid(
+        row=0, column=0, sticky="w"
+    )
+    ttk.Label(
+        contenedor,
+        text="Genera organigramas jerárquicos bilingües a partir de tus datos de Excel.",
+        style="Subtitle.TLabel",
+    ).grid(row=1, column=0, sticky="w", pady=(2, 18))
 
     def ejecutar(flujo) -> None:
         try:
@@ -361,13 +581,26 @@ def _crear_ventana_principal() -> tk.Tk:
             logger.error("Error inesperado: %s", e, exc_info=True)
             messagebox.showerror("Error inesperado", str(e))
 
-    tk.Button(
-        root, text="Generar organigrama", width=30, command=lambda: ejecutar(_flujo_organigrama)
-    ).pack(pady=5)
-    tk.Button(
-        root, text="Integrar Excels", width=30, command=lambda: ejecutar(_flujo_integrar)
-    ).pack(pady=5)
-    tk.Button(root, text="Salir", width=30, command=root.destroy).pack(pady=5)
+    _crear_tarjeta_accion(
+        contenedor,
+        "🗂",
+        "Generar organigrama",
+        "Elige un Excel de empleados, selecciona una cabeza y genera el PDF jerárquico en español e inglés.",
+        lambda: ejecutar(_flujo_organigrama),
+    ).grid(row=2, column=0, sticky="ew", pady=(0, 12))
+
+    _crear_tarjeta_accion(
+        contenedor,
+        "🔗",
+        "Integrar Excels",
+        "Combina dos o más Excels en un solo CSV maestro, resolviendo columnas y duplicados.",
+        lambda: ejecutar(_flujo_integrar),
+    ).grid(row=3, column=0, sticky="ew")
+
+    contenedor.rowconfigure(4, weight=1)
+    ttk.Button(contenedor, text="Salir", command=root.destroy).grid(
+        row=5, column=0, sticky="e", pady=(12, 0)
+    )
 
     return root
 

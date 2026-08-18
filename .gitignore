@@ -1,5 +1,39 @@
 CLAUDE.md
+
+# Bytecode / cache
 __pycache__/
+*.py[cod]
+*$py.class
+
+# Packaging / build
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Virtual environments
 .venv/
+venv/
+env/
+
+# Testing / coverage
 .pytest_cache/
-src/organigramas/__pycache__/
+.coverage
+.coverage.*
+htmlcov/
+
+# Tool caches
+.mypy_cache/
+.ruff_cache/
+
+# Environment variables
+.env
+.env.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

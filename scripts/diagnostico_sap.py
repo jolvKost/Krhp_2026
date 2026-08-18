@@ -14,7 +14,6 @@ from pathlib import Path
 import pandas as pd
 
 from organigramas.excel_parser import ENCABEZADOS_ESPERADOS, ExcelParser
-from organigramas.hierarchy import HierarchyManager
 
 
 def enmascarar(texto: str) -> str:
@@ -25,19 +24,24 @@ def enmascarar(texto: str) -> str:
 
 
 def normalizar(texto) -> str:
-    """Minusculas, sin acentos, espacios colapsados. Determinista, sin heuristicas."""
-    plano = " ".join(str(texto).split()).casefold()
+    """
+    Minusculas, sin acentos, sin comas, espacios colapsados.
+
+    Se quita la coma para que "PEREZ, JUAN" y "PEREZ JUAN" comparen igual: el
+    orden de los tokens sigue distinguiendo "Apellido Nombre" de "Nombre Apellido".
+    Determinista, sin heuristicas.
+    """
+    plano = " ".join(str(texto).replace(",", " ").split()).casefold()
     return "".join(c for c in unicodedata.normalize("NFD", plano) if not unicodedata.combining(c))
 
 
-def cobertura_de_claves(ruta: str, mapa: dict) -> list[str]:
+def cobertura_de_claves(df, mapa: dict, campo_jefe: str) -> list[str]:
     """
-    Mide que clave candidata resuelve "Nombre del encargado" con match EXACTO.
+    Mide que clave candidata resuelve la columna de jefe indicada, con match EXACTO.
 
     No hace matching difuso: sólo prueba combinaciones deterministas de columnas
-    y reporta cuantos supervisores distintos encuentra cada una.
+    y reporta cuantos jefes distintos encuentra cada una.
     """
-    df = pd.read_excel(ruta, sheet_name=0)
 
     def col(campo):
         return df[mapa[campo]].fillna("").astype(str) if campo in mapa else None
@@ -53,17 +57,26 @@ def cobertura_de_claves(ruta: str, mapa: dict) -> list[str]:
         "1er nombre + Ap.Materno": n1 + " " + materno,
         "2do nombre + Ap.Paterno": n2 + " " + paterno,
         "Nombre(s) + Ap.Paterno + Ap.Materno": nombres + " " + paterno + " " + materno,
+        # Variantes "Apellido, Nombre" (la coma se ignora al normalizar)
+        "Ap.Paterno + Nombre(s)": paterno + " " + nombres,
+        "Ap.Paterno + 1er nombre": paterno + " " + n1,
         "Ap.Paterno + Ap.Materno + Nombre(s)": paterno + " " + materno + " " + nombres,
+        "Ap.Paterno + Ap.Materno + 1er nombre": paterno + " " + materno + " " + n1,
     }
 
-    supervisor = col("supervisor").map(normalizar)
-    distintos = {s for s in supervisor if s}
-    total_personas = int((supervisor != "").sum())
+    jefe = col(campo_jefe)
+    if jefe is None:
+        return [f"Columna '{campo_jefe}' ausente: no se puede medir cobertura."]
+
+    jefe = jefe.map(normalizar)
+    distintos = {s for s in jefe if s}
+    total_personas = int((jefe != "").sum())
+    vacios = int((jefe == "").sum())
 
     lineas = [
-        f"Cobertura de claves candidatas contra {len(distintos)} supervisores distintos",
-        f"({total_personas} personas con supervisor; match exacto tras minusculas/sin acentos,",
-        "sin matching difuso):",
+        f"=== Cobertura contra '{mapa[campo_jefe]}' ===",
+        f"{total_personas} personas con jefe | {vacios} en blanco | {len(distintos)} jefes distintos",
+        "(match exacto tras minusculas/sin acentos/sin comas, sin matching difuso):",
     ]
 
     union = set()
@@ -74,12 +87,12 @@ def cobertura_de_claves(ruta: str, mapa: dict) -> list[str]:
         claves = {normalizar(v) for v in serie if normalizar(v)}
         resueltos = distintos & claves
         union |= resueltos
-        personas = int(supervisor.isin(resueltos).sum())
+        personas = int(jefe.isin(resueltos).sum())
         lineas.append(
             f"  {len(resueltos):>4}/{len(distintos)} jefes  {personas:>5}/{total_personas} personas  {etiqueta}"
         )
 
-    personas_union = int(supervisor.isin(union).sum())
+    personas_union = int(jefe.isin(union).sum())
     lineas.append("")
     lineas.append(
         f"UNION de todas las claves: {len(union)}/{len(distintos)} jefes"
@@ -112,46 +125,40 @@ def diagnosticar(ruta: str) -> str:
     lineas.append("")
 
     lineas.append(f"Personas extraidas: {len(personas)}")
-    con_super = [p for p in personas if p.supervisor_nombre]
-    lineas.append(f"Con supervisor: {len(con_super)} | sin supervisor: {len(personas) - len(con_super)}")
-
-    # Cuantos jefes distintos hay define que tan profundo puede ser el arbol.
-    jefes = {normalizar(p.supervisor_nombre) for p in con_super}
-    lineas.append(
-        f"Jefes distintos nombrados: {len(jefes)}"
-        f" -> ~{len(con_super) // max(len(jefes), 1)} reportes directos por jefe"
-    )
     lineas.append("")
 
-    jerarquia = HierarchyManager(personas)
-    no_encontrados = {
-        p.supervisor_nombre for p in con_super if not jerarquia._buscar_persona(p.supervisor_nombre)
-    }
-    resueltos = len(con_super) - sum(
-        1 for p in con_super if p.supervisor_nombre in no_encontrados
-    )
-    lineas.append(f"Supervisores que SI resuelven: {resueltos}")
-    lineas.append(f"Supervisores que NO resuelven: {len(no_encontrados)} distintos")
-    lineas.append("")
+    df = pd.read_excel(ruta, sheet_name=0)
 
-    lineas.append("Formato de 'Nombre del encargado' (enmascarado, compartible):")
-    for forma, veces in Counter(enmascarar(s) for s in no_encontrados).most_common(10):
-        lineas.append(f"  {veces:>4}x  {forma}")
-    lineas.append("")
+    # Las dos columnas de jefe se miden POR SEPARADO. excel_parser usa
+    # Cal.Migratoria solo como fallback de "Nombre del encargado"; mezclarlas
+    # (como hacia una version previa de este script) falsea las cuentas.
+    for campo in ("supervisor", "cal_migratoria"):
+        if campo not in mapeados:
+            continue
+        columna = df[mapeados[campo]].fillna("").astype(str)
+        normalizada = columna.map(normalizar)
+        distintos = {v for v in normalizada if v}
+        con_dato = int((normalizada != "").sum())
+        lineas.append(f"--- Columna '{mapeados[campo]}' ---")
+        lineas.append(
+            f"  Con dato: {con_dato} | en blanco: {len(df) - con_dato}"
+            f" | jefes distintos: {len(distintos)}"
+            f" -> ~{con_dato // max(len(distintos), 1)} reportes por jefe"
+        )
+        lineas.append("  Formato (enmascarado, compartible):")
+        for forma, veces in Counter(enmascarar(v) for v in columna if v.strip()).most_common(6):
+            lineas.append(f"    {veces:>5}x  {forma}")
+        lineas.append("")
 
-    lineas.append("Formato de 'nombre_abreviado' generado (clave del indice):")
+    lineas.append("Formato de 'nombre_abreviado' generado (clave actual del indice):")
     for forma, veces in Counter(enmascarar(p.nombre_abreviado) for p in personas).most_common(5):
         lineas.append(f"  {veces:>4}x  {forma}")
     lineas.append("")
 
-    if "nombre_empleado" in mapeados:
-        columna = pd.read_excel(ruta, sheet_name=0)[mapeados["nombre_empleado"]].dropna()
-        lineas.append("Formato de 'Nombre del empleado o candidat' (columna hoy sin usar):")
-        for forma, veces in Counter(enmascarar(str(v)) for v in columna).most_common(5):
-            lineas.append(f"  {veces:>4}x  {forma}")
-        lineas.append("")
-
-    lineas.extend(cobertura_de_claves(ruta, mapeados))
+    for campo in ("cal_migratoria", "supervisor"):
+        if campo in mapeados:
+            lineas.extend(cobertura_de_claves(df, mapeados, campo))
+            lineas.append("")
 
     return "\n".join(lineas)
 
@@ -162,9 +169,13 @@ def _selfcheck() -> None:
     assert enmascarar("J. Pérez López") == "X. Xxxxx Xxxxx"
     assert enmascarar("K1-1234") == "X9-9999"
 
-    # normalizar debe cerrar la brecha CAPS/acentos que hoy rompe el match
+    # normalizar debe cerrar la brecha CAPS/acentos/comas que hoy rompe el match
     assert normalizar("  Juan   Pérez ") == "juan perez"
     assert normalizar("PEREZ") == normalizar("Pérez")
+    assert normalizar("PEREZ, JUAN") == "perez juan"
+    assert normalizar("PEREZ,JUAN") == normalizar("PEREZ, JUAN")
+    # el orden sigue distinguiendo "Apellido Nombre" de "Nombre Apellido"
+    assert normalizar("PEREZ, JUAN") != normalizar("JUAN PEREZ")
     print("selfcheck OK")
 
 

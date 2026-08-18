@@ -1,10 +1,27 @@
 """Gestión de jerarquía y construcción de árboles organizacionales."""
 
 import logging
+import unicodedata
 from typing import List, Dict, Optional
 from .models import Persona, Nodo
 
 logger = logging.getLogger(__name__)
+
+
+def normalizar_nombre(texto) -> str:
+    """
+    Minúsculas, sin acentos, sin puntuación, espacios colapsados.
+
+    Se descarta la puntuación porque el extracto SAP entrega el jefe directo
+    encomillado: '"PEREZ, JUAN"'. El ORDEN de los tokens se conserva, así que
+    "Apellido Nombre" y "Nombre Apellido" siguen siendo distintos.
+    """
+    plano = str(texto).casefold()
+    sin_acentos = "".join(
+        c for c in unicodedata.normalize("NFD", plano) if not unicodedata.combining(c)
+    )
+    solo_texto = "".join(c if (c.isalnum() or c.isspace()) else " " for c in sin_acentos)
+    return " ".join(solo_texto.split())
 
 
 class HierarchyManager:
@@ -22,14 +39,30 @@ class HierarchyManager:
         self._indexar_personas()
     
     def _indexar_personas(self) -> None:
-        """Crea índice de personas por nombre (case-insensitive)."""
+        """
+        Crea índice de personas por nombre (normalizado).
+
+        La clave que importa para la jerarquía es "Apellido Paterno + Nombre(s)":
+        es el formato en que el extracto SAP nombra al jefe directo
+        ("PEREZ, JUAN PEDRO"). Las demás claves se conservan porque heads.json
+        guarda las cabezas por nombre_abreviado.
+        """
         for persona in self.personas:
-            # Indexar por nombre_abreviado y nombre_completo
-            self.personas_por_nombre[persona.nombre_abreviado.lower()] = persona
-            self.personas_por_nombre[persona.nombre_completo.lower()] = persona
-            # También por nombre abreviado sin puntos
-            nombre_sin_puntos = persona.nombre_abreviado.replace(".", "").strip()
-            self.personas_por_nombre[nombre_sin_puntos.lower()] = persona
+            claves = {
+                normalizar_nombre(f"{persona.apellido_paterno} {persona.nombre_completo}"),
+                normalizar_nombre(persona.nombre_abreviado),
+                normalizar_nombre(persona.nombre_completo),
+            }
+            for clave in claves:
+                previa = self.personas_por_nombre.get(clave)
+                if previa is not None and previa.numero_personal != persona.numero_personal:
+                    # Dos personas distintas comparten clave: el árbol les
+                    # asignaría los mismos subordinados. Hay que verlo, no tragarlo.
+                    logger.warning(
+                        f"Nombre ambiguo '{clave}': Nº pers. {previa.numero_personal} "
+                        f"y {persona.numero_personal}. Se usara el ultimo."
+                    )
+                self.personas_por_nombre[clave] = persona
     
     def construir_arbol(self, cabeza_nombre: str) -> Nodo:
         """
@@ -108,8 +141,7 @@ class HierarchyManager:
         Returns:
             Objeto Persona si se encuentra, None en caso contrario
         """
-        nombre_lower = nombre.strip().lower()
-        return self.personas_por_nombre.get(nombre_lower)
+        return self.personas_por_nombre.get(normalizar_nombre(nombre))
     
     def _buscar_subordinados(self, supervisor: Persona) -> List[Persona]:
         """

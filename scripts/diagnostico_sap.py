@@ -7,13 +7,13 @@ enmascarado (Xxxx en vez de letras) para poder compartirlo sin exponer nombres.
 
 import argparse
 import re
-import unicodedata
 from collections import Counter
 from pathlib import Path
 
 import pandas as pd
 
 from organigramas.excel_parser import ENCABEZADOS_ESPERADOS, ExcelParser
+from organigramas.hierarchy import normalizar_nombre
 
 
 def enmascarar(texto: str) -> str:
@@ -23,24 +23,9 @@ def enmascarar(texto: str) -> str:
     return texto
 
 
-def normalizar(texto) -> str:
-    """
-    Minusculas, sin acentos, sin puntuacion, espacios colapsados.
-
-    Se descarta la puntuacion porque el extracto SAP entrega Cal.Migratoria
-    encomillada: '"PEREZ, JUAN"'. La propia Power Query del .xlsm limpia esas
-    comillas (Table.ReplaceValue sobre Cal.Migratoria), asi que quitarlas aqui
-    reproduce lo que el proceso actual ya hace.
-
-    El ORDEN de los tokens se conserva, asi que "Apellido Nombre" y
-    "Nombre Apellido" siguen siendo distintos. Determinista, sin heuristicas.
-    """
-    plano = str(texto).casefold()
-    sin_acentos = "".join(
-        c for c in unicodedata.normalize("NFD", plano) if not unicodedata.combining(c)
-    )
-    solo_texto = "".join(c if (c.isalnum() or c.isspace()) else " " for c in sin_acentos)
-    return " ".join(solo_texto.split())
+# Se reusa la misma normalizacion que usa el indice de hierarchy.py: si el
+# diagnostico midiera con otra regla, sus numeros no describirian al pipeline.
+normalizar = normalizar_nombre
 
 
 def cobertura_de_claves(df, mapa: dict, campo_jefe: str) -> list[str]:

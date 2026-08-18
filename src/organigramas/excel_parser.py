@@ -162,9 +162,6 @@ class ExcelParser:
         ceco = self._obtener_valor_opcional(
             row, self.encabezados_mapa.get("ceco")
         )
-        supervisor_nombre = self._obtener_valor_opcional(
-            row, self.encabezados_mapa.get("supervisor")
-        )
         curp = self._obtener_valor_opcional(
             row, self.encabezados_mapa.get("curp")
         )
@@ -175,9 +172,13 @@ class ExcelParser:
             row, self.encabezados_mapa.get("planta")
         )
         
-        # Usar cal_migratoria como supervisor si no hay supervisor_nombre
-        if not supervisor_nombre and cal_migratoria:
-            supervisor_nombre = cal_migratoria
+        # El jefe DIRECTO viene en Cal.Migratoria, en formato "Apellido, Nombre(s)"
+        # (la columna está reutilizada en este extracto de SAP).
+        #
+        # "Nombre del encargado" NO sirve para el árbol: es una etiqueta de área
+        # ("Ing Calidad K1" y similares, 56 valores para 2874 personas), no un
+        # puntero a un empleado. Usarla como respaldo inventaría jefes falsos.
+        supervisor_nombre = cal_migratoria
         
         return Persona(
             numero_personal=numero_personal,

@@ -9,6 +9,7 @@ import json
 import pandas as pd
 
 from organigramas.excel_parser import ExcelParser, cargar_catalogo_areas
+from organigramas.hierarchy import HierarchyManager, normalizar_nombre
 
 
 def test_nombre_abreviado_replica_columna_aa():
@@ -55,6 +56,50 @@ def test_extraccion_desde_layout_sap(tmp_path):
     assert persona.ceco == "1234"  # col T
     assert persona.posicion == "Director General"  # col S
     assert persona.area == "Producción"  # col O
+
+
+def test_normalizar_ignora_comillas_y_comas_pero_no_el_orden():
+    # El extracto SAP entrega el jefe directo encomillado: '"PEREZ, JUAN"'
+    assert normalizar_nombre('"PEREZ, JUAN PEDRO"') == "perez juan pedro"
+    assert normalizar_nombre("PEREZ,JUAN") == normalizar_nombre("PEREZ, JUAN")
+    assert normalizar_nombre("PEREZ") == normalizar_nombre("Pérez")
+    # "Apellido Nombre" y "Nombre Apellido" NO deben colapsar en la misma clave
+    assert normalizar_nombre("PEREZ, JUAN") != normalizar_nombre("JUAN PEREZ")
+
+
+def test_jefe_directo_se_resuelve_desde_cal_migratoria(tmp_path):
+    """Cal.Migratoria trae "Apellido, Nombre(s)" del jefe directo, encomillado."""
+    archivo = tmp_path / "sap.xlsx"
+    pd.DataFrame(
+        [
+            {
+                "Nº pers.": 1001,
+                "Nombre(s)": "JUAN PEDRO",
+                "Apellido Paterno": "PEREZ",
+                "Apellido Materno": "LOPEZ",
+                "Nombre del encargado": "Ing Calidad K1",
+                "Cal.Migratoria": "",
+            },
+            {
+                "Nº pers.": 1002,
+                "Nombre(s)": "ANA",
+                "Apellido Paterno": "RUIZ",
+                "Apellido Materno": "DIAZ",
+                "Nombre del encargado": "Ing Calidad K1",
+                "Cal.Migratoria": '"PEREZ, JUAN PEDRO"',
+            },
+        ]
+    ).to_excel(archivo, index=False)
+
+    personas = ExcelParser(catalogo_areas={}).leer_excel(str(archivo))
+    jefe, subordinado = personas
+
+    # El árbol se arma desde Cal.Migratoria, no desde "Nombre del encargado"
+    assert subordinado.supervisor_nombre == '"PEREZ, JUAN PEDRO"'
+    assert jefe.supervisor_nombre is None
+
+    arbol = HierarchyManager(personas).construir_arbol(jefe.nombre_abreviado)
+    assert [h.persona.numero_personal for h in arbol.hijos] == ["1002"]
 
 
 def test_area_resuelve_con_ceco_flotante(tmp_path):

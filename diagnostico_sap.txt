@@ -1,0 +1,44 @@
+Archivo: C:\Users\olver016.KOSTALMX\Downloads\Reporte para Organigrama 07 ago 26.xlsx
+
+Hojas del libro: ['Format', 'Header', 'Pivot', 'Sub1', 'Sub2', 'Sub3', 'Sub4', 'Sub5', 'Sub6', 'Sub7', 'Sub8', 'Sub9', 'Sub10', 'RawData', 'RawHeader']
+Hoja leida (la primera): Format
+
+Campos mapeados (13/13):
+  OK numero_personal: Nº pers.
+  OK nombre_empleado: Nombre del empleado o candidat
+  OK nombre_completo: Nombre(s)
+  OK apellido_paterno: Apellido Paterno
+  OK apellido_materno: Apellido Materno
+  OK posicion: Denominación de la posición
+  OK ceco: CeCo
+  OK supervisor: Nombre del encargado
+  OK cal_migratoria: Cal.Migratoria
+  OK curp: CURP
+  OK planta: Planta
+  OK nimss: NIMSS
+  OK alta: Alta
+
+Personas extraidas: 2874
+Con supervisor: 2874 | sin supervisor: 0
+
+Supervisores que SI resuelven: 0
+Supervisores que NO resuelven: 56 distintos
+
+Formato de 'Nombre del encargado' (enmascarado, compartible):
+     4x  Xxxxxx Xxxxx
+     4x  Xxxxxx Xxxxxx
+     3x  Xxxxx Xxxxxxx
+     3x  Xxxxxxx Xxxxxxx
+     2x  Xxxxxxxx Xxxxxxx
+     2x  Xxxxxxxxx Xxxxxxx
+     2x  Xxxxxx Xxxxxxx
+     2x  Xxxxxxx Xxxxx
+     2x  Xxxxx Xxxxxxxx
+     2x  Xxxx Xxxxxx X9
+
+Formato de 'nombre_abreviado' generado (clave del indice):
+   165x  X. XXXXXXX XXXXXX
+   161x  X. XXXXXXX XXXXXXX
+   160x  X. XXXXXX XXXXXX
+   147x  X. XXXXXX XXXXXXX
+   123x  X. XXXXX XXXXXXX

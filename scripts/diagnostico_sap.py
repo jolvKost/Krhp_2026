@@ -25,14 +25,22 @@ def enmascarar(texto: str) -> str:
 
 def normalizar(texto) -> str:
     """
-    Minusculas, sin acentos, sin comas, espacios colapsados.
+    Minusculas, sin acentos, sin puntuacion, espacios colapsados.
 
-    Se quita la coma para que "PEREZ, JUAN" y "PEREZ JUAN" comparen igual: el
-    orden de los tokens sigue distinguiendo "Apellido Nombre" de "Nombre Apellido".
-    Determinista, sin heuristicas.
+    Se descarta la puntuacion porque el extracto SAP entrega Cal.Migratoria
+    encomillada: '"PEREZ, JUAN"'. La propia Power Query del .xlsm limpia esas
+    comillas (Table.ReplaceValue sobre Cal.Migratoria), asi que quitarlas aqui
+    reproduce lo que el proceso actual ya hace.
+
+    El ORDEN de los tokens se conserva, asi que "Apellido Nombre" y
+    "Nombre Apellido" siguen siendo distintos. Determinista, sin heuristicas.
     """
-    plano = " ".join(str(texto).replace(",", " ").split()).casefold()
-    return "".join(c for c in unicodedata.normalize("NFD", plano) if not unicodedata.combining(c))
+    plano = str(texto).casefold()
+    sin_acentos = "".join(
+        c for c in unicodedata.normalize("NFD", plano) if not unicodedata.combining(c)
+    )
+    solo_texto = "".join(c if (c.isalnum() or c.isspace()) else " " for c in sin_acentos)
+    return " ".join(solo_texto.split())
 
 
 def cobertura_de_claves(df, mapa: dict, campo_jefe: str) -> list[str]:
@@ -76,7 +84,7 @@ def cobertura_de_claves(df, mapa: dict, campo_jefe: str) -> list[str]:
     lineas = [
         f"=== Cobertura contra '{mapa[campo_jefe]}' ===",
         f"{total_personas} personas con jefe | {vacios} en blanco | {len(distintos)} jefes distintos",
-        "(match exacto tras minusculas/sin acentos/sin comas, sin matching difuso):",
+        "(match exacto tras minusculas/sin acentos/sin puntuacion, sin matching difuso):",
     ]
 
     union = set()
@@ -169,11 +177,13 @@ def _selfcheck() -> None:
     assert enmascarar("J. Pérez López") == "X. Xxxxx Xxxxx"
     assert enmascarar("K1-1234") == "X9-9999"
 
-    # normalizar debe cerrar la brecha CAPS/acentos/comas que hoy rompe el match
+    # normalizar debe cerrar la brecha CAPS/acentos/puntuacion que rompe el match
     assert normalizar("  Juan   Pérez ") == "juan perez"
     assert normalizar("PEREZ") == normalizar("Pérez")
     assert normalizar("PEREZ, JUAN") == "perez juan"
     assert normalizar("PEREZ,JUAN") == normalizar("PEREZ, JUAN")
+    # el extracto SAP entrega Cal.Migratoria encomillada
+    assert normalizar('"PEREZ, JUAN PEDRO"') == "perez juan pedro"
     # el orden sigue distinguiendo "Apellido Nombre" de "Nombre Apellido"
     assert normalizar("PEREZ, JUAN") != normalizar("JUAN PEREZ")
     print("selfcheck OK")

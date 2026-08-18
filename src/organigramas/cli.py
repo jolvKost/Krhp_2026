@@ -1,6 +1,5 @@
 """Interfaz CLI principal del generador de organigramas."""
 
-import sys
 import logging
 from pathlib import Path
 

@@ -125,25 +125,6 @@ class HeadsManager:
         logger.info(f"Cabeza agregada: {nombre}")
         return True
     
-    def eliminar_cabeza(self, nombre: str) -> bool:
-        """
-        Elimina una cabeza existente.
-        
-        Args:
-            nombre: Nombre de la cabeza a eliminar
-            
-        Returns:
-            True si se eliminó, False si no existía
-        """
-        if nombre not in self.cabezas:
-            logger.info(f"Cabeza no encontrada: {nombre}")
-            return False
-        
-        self.cabezas.remove(nombre)
-        self.guardar_cabezas(self.cabezas)
-        logger.info(f"Cabeza eliminada: {nombre}")
-        return True
-    
     def interfaz_seleccion_interactiva(
         self,
         cabezas_disponibles: List[str]

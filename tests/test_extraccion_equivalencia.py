@@ -102,6 +102,34 @@ def test_jefe_directo_se_resuelve_desde_cal_migratoria(tmp_path):
     assert [h.persona.numero_personal for h in arbol.hijos] == ["1002"]
 
 
+def test_cabezas_se_ordenan_por_subordinados():
+    """El menu solo muestra 10 cabezas: las que mandan gente deben ir primero."""
+    from organigramas.models import Persona
+
+    def persona(num, paterno, nombres, jefe=None):
+        return Persona(
+            numero_personal=num,
+            nombre_completo=nombres,
+            nombre_abreviado=f"{nombres[:1]}. {paterno}",
+            apellido_paterno=paterno,
+            supervisor_nombre=jefe,
+        )
+
+    # SOLIS no tiene jefe ni subordinados; PEREZ no tiene jefe pero manda a dos.
+    personas = [
+        persona("1", "SOLIS", "EVA"),
+        persona("2", "PEREZ", "JUAN"),
+        persona("3", "RUIZ", "ANA", jefe="PEREZ, JUAN"),
+        persona("4", "MORA", "LUIS", jefe="PEREZ, JUAN"),
+    ]
+
+    cabezas = HierarchyManager(personas).obtener_todas_las_cabezas_posibles()
+
+    assert [c.numero_personal for c in cabezas] == ["2", "1"]
+    # No se filtra a nadie: la hoja suelta sigue estando, sólo que al final
+    assert len(cabezas) == 2
+
+
 def test_area_resuelve_con_ceco_flotante(tmp_path):
     """pandas tipa CeCo como float si la columna trae huecos: 1234 -> "1234.0"."""
     archivo = tmp_path / "sap.xlsx"

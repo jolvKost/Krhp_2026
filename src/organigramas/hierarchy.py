@@ -167,16 +167,31 @@ class HierarchyManager:
         
         return subordinados
     
+    def contar_subordinados_directos(self) -> Dict[str, int]:
+        """Cuenta reportes directos por Nº pers. del jefe, en una sola pasada."""
+        directos: Dict[str, int] = {}
+        for persona in self.personas:
+            if not persona.supervisor_nombre:
+                continue
+            jefe = self._buscar_persona(persona.supervisor_nombre)
+            if jefe:
+                directos[jefe.numero_personal] = directos.get(jefe.numero_personal, 0) + 1
+        return directos
+
     def obtener_todas_las_cabezas_posibles(self) -> List[Persona]:
         """
-        Retorna lista de todas las personas que pueden ser cabezas válidas
-        (típicamente aquellas sin supervisor o con supervisor no encontrado).
-        
-        Returns:
-            Lista de Persona que pueden ser cabezas
+        Retorna las personas sin supervisor resoluble, ordenadas por cantidad
+        de subordinados directos (de mayor a menor).
+
+        El orden importa: contra el extracto real quedan ~1226 personas sin jefe
+        (las que no traen el dato, más aquellas cuyo jefe no resuelve), y el menú
+        sólo muestra las 10 primeras. Sin ordenar, esas 10 salían en orden de
+        archivo y las cabezas reales quedaban sepultadas. No se filtra a nadie:
+        una cabeza legítima cuyos reportes tengan el dato en blanco aparecería
+        con 0 subordinados, pero seguiría estando en la lista.
         """
         cabezas_posibles = []
-        
+
         for persona in self.personas:
             # Si no tiene supervisor, puede ser cabeza
             if not persona.supervisor_nombre:
@@ -185,7 +200,11 @@ class HierarchyManager:
                 # Si el supervisor no existe en la base de datos, también puede ser cabeza
                 if not self._buscar_persona(persona.supervisor_nombre):
                     cabezas_posibles.append(persona)
-        
+
+        directos = self.contar_subordinados_directos()
+        cabezas_posibles.sort(
+            key=lambda p: directos.get(p.numero_personal, 0), reverse=True
+        )
         return cabezas_posibles
     
     def validar_estructura(self) -> Dict[str, any]:
@@ -214,8 +233,18 @@ class HierarchyManager:
                     supervisores_no_encontrados.add(persona.supervisor_nombre)
         
         if supervisores_no_encontrados:
+            # Sin recortar, esto vuelca cientos de nombres de empleados a consola.
+            muestra = sorted(supervisores_no_encontrados)[:5]
+            resto = len(supervisores_no_encontrados) - len(muestra)
             reporte["advertencias"].append(
-                f"Supervisores no encontrados: {', '.join(supervisores_no_encontrados)}"
+                f"{len(supervisores_no_encontrados)} supervisores no encontrados"
+                f" (ej.: {', '.join(muestra)}{f' y {resto} mas' if resto else ''})"
+            )
+
+        sin_jefe = sum(1 for p in self.personas if not p.supervisor_nombre)
+        if sin_jefe:
+            reporte["advertencias"].append(
+                f"{sin_jefe} personas sin dato de jefe directo (Cal.Migratoria vacia)"
             )
         
         return reporte

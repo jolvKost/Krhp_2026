@@ -1,11 +1,211 @@
-Archivo: 
+Archivo: C:\Users\olver016.KOSTALMX\Downloads\Reporte para Organigrama 07 ago 26.xlsx
+
 Hojas del libro: ['Format', 'Header', 'Pivot', 'Sub1', 'Sub2', 'Sub3', 'Sub4', 'Sub5', 'Sub6', 'Sub7', 'Sub8', 'Sub9', 'Sub10', 'RawData', 'RawHeader']
 Hoja leida (la primera): Format
+
+=== Encabezados por hoja (fila 1, sin datos) ===
+  [Format] 14 columnas
+      Nº pers.
+      Nombre del empleado o candidat
+      CeCo
+      NIMSS
+      Alta
+      Denominación de la posición
+      Nombre del encargado
+      Apellido Paterno
+      Apellido Materno
+      Nombre(s)
+      CURP
+      Cal.Migratoria
+      Planta
+      ÁrPer
+  [Header] 14 columnas
+      Nº pers.
+      Nombre del empleado o candidat
+      CeCo
+      NIMSS
+      Alta
+      Denominación de la posición
+      Nombre del encargado
+      Apellido Paterno
+      Apellido Materno
+      Nombre(s)
+      CURP
+      Cal.Migratoria
+      Planta
+      ÁrPer
+  [Pivot] 0 columnas
+  [Sub1] 14 columnas
+      Nº pers.
+      Nombre del empleado o candidat
+      CeCo
+      NIMSS
+      Alta
+      Denominación de la posición
+      Nombre del encargado
+      Apellido Paterno
+      Apellido Materno
+      Nombre(s)
+      CURP
+      Cal.Migratoria
+      Planta
+      ÁrPer
+  [Sub2] 14 columnas
+      Nº pers.
+      Nombre del empleado o candidat
+      CeCo
+      NIMSS
+      Alta
+      Denominación de la posición
+      Nombre del encargado
+      Apellido Paterno
+      Apellido Materno
+      Nombre(s)
+      CURP
+      Cal.Migratoria
+      Planta
+      ÁrPer
+  [Sub3] 14 columnas
+      Nº pers.
+      Nombre del empleado o candidat
+      CeCo
+      NIMSS
+      Alta
+      Denominación de la posición
+      Nombre del encargado
+      Apellido Paterno
+      Apellido Materno
+      Nombre(s)
+      CURP
+      Cal.Migratoria
+      Planta
+      ÁrPer
+  [Sub4] 14 columnas
+      Nº pers.
+      Nombre del empleado o candidat
+      CeCo
+      NIMSS
+      Alta
+      Denominación de la posición
+      Nombre del encargado
+      Apellido Paterno
+      Apellido Materno
+      Nombre(s)
+      CURP
+      Cal.Migratoria
+      Planta
+      ÁrPer
+  [Sub5] 14 columnas
+      Nº pers.
+      Nombre del empleado o candidat
+      CeCo
+      NIMSS
+      Alta
+      Denominación de la posición
+      Nombre del encargado
+      Apellido Paterno
+      Apellido Materno
+      Nombre(s)
+      CURP
+      Cal.Migratoria
+      Planta
+      ÁrPer
+  [Sub6] 14 columnas
+      Nº pers.
+      Nombre del empleado o candidat
+      CeCo
+      NIMSS
+      Alta
+      Denominación de la posición
+      Nombre del encargado
+      Apellido Paterno
+      Apellido Materno
+      Nombre(s)
+      CURP
+      Cal.Migratoria
+      Planta
+      ÁrPer
+  [Sub7] 14 columnas
+      Nº pers.
+      Nombre del empleado o candidat
+      CeCo
+      NIMSS
+      Alta
+      Denominación de la posición
+      Nombre del encargado
+      Apellido Paterno
+      Apellido Materno
+      Nombre(s)
+      CURP
+      Cal.Migratoria
+      Planta
+      ÁrPer
+  [Sub8] 14 columnas
+      Nº pers.
+      Nombre del empleado o candidat
+      CeCo
+      NIMSS
+      Alta
+      Denominación de la posición
+      Nombre del encargado
+      Apellido Paterno
+      Apellido Materno
+      Nombre(s)
+      CURP
+      Cal.Migratoria
+      Planta
+      ÁrPer
+  [Sub9] 14 columnas
+      Nº pers.
+      Nombre del empleado o candidat
+      CeCo
+      NIMSS
+      Alta
+      Denominación de la posición
+      Nombre del encargado
+      Apellido Paterno
+      Apellido Materno
+      Nombre(s)
+      CURP
+      Cal.Migratoria
+      Planta
+      ÁrPer
+  [Sub10] 14 columnas
+      Nº pers.
+      Nombre del empleado o candidat
+      CeCo
+      NIMSS
+      Alta
+      Denominación de la posición
+      Nombre del encargado
+      Apellido Paterno
+      Apellido Materno
+      Nombre(s)
+      CURP
+      Cal.Migratoria
+      Planta
+      ÁrPer
+  [RawData] 14 columnas
+      Nº pers.
+      Nombre del empleado o candidat
+      CeCo
+      NIMSS
+      Alta
+      Denominación de la posición
+      Nombre del encargado
+      Apellido Paterno
+      Apellido Materno
+      Nombre(s)
+      CURP
+      Cal.Migratoria
+      Planta
+      ÁrPer
+  [RawHeader] 0 columnas
 
 Campos mapeados (13/13):
   OK numero_personal: Nº pers.
   OK nombre_empleado: Nombre del empleado o candidat
-  OK nombre_completo: Nombre(s)
+  OK nombres: Nombre(s)
   OK apellido_paterno: Apellido Paterno
   OK apellido_materno: Apellido Materno
   OK posicion: Denominación de la posición
